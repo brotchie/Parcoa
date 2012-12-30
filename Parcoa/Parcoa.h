@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ParcoaResult.h"
+
+typedef ParcoaResult *(^ParcoaParser)(NSString *input);
 
 @interface Parcoa : NSObject
-
++ (ParcoaParser)string:(NSString *)c;
++ (ParcoaParser)peekString:(NSString *)c;
++ (ParcoaParser)take:(NSUInteger)n;
++ (ParcoaParser)takeWhile:(BOOL(^)(unichar))condition;
++ (ParcoaParser)atEnd;
++ (ParcoaParser)endOfInput;
 @end

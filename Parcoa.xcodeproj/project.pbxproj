@@ -16,6 +16,12 @@
 		E50C9B7716903D1A00851B04 /* libParcoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E50C9B5E16903D1A00851B04 /* libParcoa.a */; };
 		E50C9B7D16903D1A00851B04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E50C9B7B16903D1A00851B04 /* InfoPlist.strings */; };
 		E50C9B8016903D1A00851B04 /* ParcoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E50C9B7F16903D1A00851B04 /* ParcoaTests.m */; };
+		E50C9B8B16903FE000851B04 /* ParcoaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E50C9B8A16903FE000851B04 /* ParcoaResult.m */; };
+		E55CFCCC16905CB800CC08DA /* Parcoa+Combinators.h in Headers */ = {isa = PBXBuildFile; fileRef = E55CFCCA16905CB800CC08DA /* Parcoa+Combinators.h */; };
+		E55CFCCD16905CB800CC08DA /* Parcoa+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */; };
+		E55CFCCF169061EC00CC08DA /* Parcoa+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */; };
+		E55FD46F169054D5006E7263 /* Parcoa.h in Headers */ = {isa = PBXBuildFile; fileRef = E50C9B6616903D1A00851B04 /* Parcoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E55FD470169054D5006E7263 /* ParcoaResult.h in Headers */ = {isa = PBXBuildFile; fileRef = E50C9B8916903FE000851B04 /* ParcoaResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +60,10 @@
 		E50C9B7C16903D1A00851B04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E50C9B7E16903D1A00851B04 /* ParcoaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParcoaTests.h; sourceTree = "<group>"; };
 		E50C9B7F16903D1A00851B04 /* ParcoaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParcoaTests.m; sourceTree = "<group>"; };
+		E50C9B8916903FE000851B04 /* ParcoaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParcoaResult.h; sourceTree = "<group>"; };
+		E50C9B8A16903FE000851B04 /* ParcoaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParcoaResult.m; sourceTree = "<group>"; };
+		E55CFCCA16905CB800CC08DA /* Parcoa+Combinators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Parcoa+Combinators.h"; sourceTree = "<group>"; };
+		E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Parcoa+Combinators.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +123,11 @@
 			children = (
 				E50C9B6616903D1A00851B04 /* Parcoa.h */,
 				E50C9B6816903D1A00851B04 /* Parcoa.m */,
+				E55CFCCA16905CB800CC08DA /* Parcoa+Combinators.h */,
+				E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */,
 				E50C9B6416903D1A00851B04 /* Supporting Files */,
+				E50C9B8916903FE000851B04 /* ParcoaResult.h */,
+				E50C9B8A16903FE000851B04 /* ParcoaResult.m */,
 			);
 			path = Parcoa;
 			sourceTree = "<group>";
@@ -147,6 +161,19 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		E55FD46D169054CB006E7263 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E55FD46F169054D5006E7263 /* Parcoa.h in Headers */,
+				E55FD470169054D5006E7263 /* ParcoaResult.h in Headers */,
+				E55CFCCC16905CB800CC08DA /* Parcoa+Combinators.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		E50C9B5D16903D1900851B04 /* Parcoa */ = {
 			isa = PBXNativeTarget;
@@ -155,6 +182,7 @@
 				E50C9B5A16903D1900851B04 /* Sources */,
 				E50C9B5B16903D1900851B04 /* Frameworks */,
 				E50C9B5C16903D1900851B04 /* CopyFiles */,
+				E55FD46D169054CB006E7263 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -244,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50C9B6916903D1A00851B04 /* Parcoa.m in Sources */,
+				E50C9B8B16903FE000851B04 /* ParcoaResult.m in Sources */,
+				E55CFCCD16905CB800CC08DA /* Parcoa+Combinators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50C9B8016903D1A00851B04 /* ParcoaTests.m in Sources */,
+				E55CFCCF169061EC00CC08DA /* Parcoa+Combinators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +428,7 @@
 				E50C9B8516903D1A00851B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E50C9B8616903D1A00851B04 /* Build configuration list for PBXNativeTarget "ParcoaTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +437,7 @@
 				E50C9B8816903D1A00851B04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
