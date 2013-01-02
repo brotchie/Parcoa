@@ -7,13 +7,21 @@
 //
 
 #import "FPAppDelegate.h"
+#import "ParcoaJSON.h"
+#import "ParcoaRFC2616.h"
 
 @implementation FPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    NSString *json = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"json"] encoding:NSUTF8StringEncoding error:nil];
+    ParcoaResult *result = [Parcoa runParserWithTraceback:[ParcoaJSON parser] input:json];
+    if (result.isOK) {
+        NSLog(@"%@", result.value);
+    }
+    /*[Parcoa runParserWithTraceback:[ParcoaRFC2616 requestParser] input:@"GET /index.html HTTP/1.0\r\nUser-agent: test\r\ncookies: testing 1234\r\n\r\n"];
+    NSLog(@"%@", [ParcoaRFC2616 responseParser](@"HTTP/1.0 200 OK\r\nContent-Type: text/plain\r\n\r\n"));*/
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

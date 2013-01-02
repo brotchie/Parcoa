@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Parcoa.h"
 
 @interface ParcoaRFC2616 : NSObject
-
++ (ParcoaParser)requestParser;
++ (ParcoaParser)responseParser;
 @end
