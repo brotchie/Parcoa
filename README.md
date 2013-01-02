@@ -1,6 +1,6 @@
 #Parcoa
 ## Parser Combinators for Objective-C
-**Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package.
+**Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package. It is released under a MIT license.
 
 ### What the heck is a parser combinator?
 Consider a very simple parser that parses the unicode character `'a'`
