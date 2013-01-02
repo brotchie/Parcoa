@@ -17,6 +17,11 @@
 		E50C9B7D16903D1A00851B04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E50C9B7B16903D1A00851B04 /* InfoPlist.strings */; };
 		E50C9B8016903D1A00851B04 /* ParcoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E50C9B7F16903D1A00851B04 /* ParcoaTests.m */; };
 		E50C9B8B16903FE000851B04 /* ParcoaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E50C9B8A16903FE000851B04 /* ParcoaResult.m */; };
+		E51C2F35169465D00013AD2D /* ParcoaTests+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C2F34169465D00013AD2D /* ParcoaTests+Combinators.m */; };
+		E51C2F39169470F10013AD2D /* Parcoa+Numbers.h in Headers */ = {isa = PBXBuildFile; fileRef = E51C2F37169470F10013AD2D /* Parcoa+Numbers.h */; };
+		E51C2F3A169470F10013AD2D /* Parcoa+Numbers.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C2F38169470F10013AD2D /* Parcoa+Numbers.m */; };
+		E51C2F3D1694750F0013AD2D /* Parcoa+NSDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = E51C2F3B1694750F0013AD2D /* Parcoa+NSDictionary.h */; };
+		E51C2F3E1694750F0013AD2D /* Parcoa+NSDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C2F3C1694750F0013AD2D /* Parcoa+NSDictionary.m */; };
 		E55CFCCC16905CB800CC08DA /* Parcoa+Combinators.h in Headers */ = {isa = PBXBuildFile; fileRef = E55CFCCA16905CB800CC08DA /* Parcoa+Combinators.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E55CFCCD16905CB800CC08DA /* Parcoa+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */; };
 		E55CFCCF169061EC00CC08DA /* Parcoa+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */; };
@@ -64,6 +69,12 @@
 		E50C9B7F16903D1A00851B04 /* ParcoaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParcoaTests.m; sourceTree = "<group>"; };
 		E50C9B8916903FE000851B04 /* ParcoaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParcoaResult.h; sourceTree = "<group>"; };
 		E50C9B8A16903FE000851B04 /* ParcoaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParcoaResult.m; sourceTree = "<group>"; };
+		E51C2F33169465D00013AD2D /* ParcoaTests+Combinators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParcoaTests+Combinators.h"; sourceTree = "<group>"; };
+		E51C2F34169465D00013AD2D /* ParcoaTests+Combinators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ParcoaTests+Combinators.m"; sourceTree = "<group>"; };
+		E51C2F37169470F10013AD2D /* Parcoa+Numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Parcoa+Numbers.h"; sourceTree = "<group>"; };
+		E51C2F38169470F10013AD2D /* Parcoa+Numbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Parcoa+Numbers.m"; sourceTree = "<group>"; };
+		E51C2F3B1694750F0013AD2D /* Parcoa+NSDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Parcoa+NSDictionary.h"; sourceTree = "<group>"; };
+		E51C2F3C1694750F0013AD2D /* Parcoa+NSDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Parcoa+NSDictionary.m"; sourceTree = "<group>"; };
 		E55CFCCA16905CB800CC08DA /* Parcoa+Combinators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Parcoa+Combinators.h"; sourceTree = "<group>"; };
 		E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Parcoa+Combinators.m"; sourceTree = "<group>"; };
 		E55CFCD51694216800CC08DA /* NSString+Parcoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Parcoa.h"; sourceTree = "<group>"; };
@@ -127,8 +138,12 @@
 			children = (
 				E50C9B6616903D1A00851B04 /* Parcoa.h */,
 				E50C9B6816903D1A00851B04 /* Parcoa.m */,
+				E51C2F37169470F10013AD2D /* Parcoa+Numbers.h */,
+				E51C2F38169470F10013AD2D /* Parcoa+Numbers.m */,
 				E55CFCCA16905CB800CC08DA /* Parcoa+Combinators.h */,
 				E55CFCCB16905CB800CC08DA /* Parcoa+Combinators.m */,
+				E51C2F3B1694750F0013AD2D /* Parcoa+NSDictionary.h */,
+				E51C2F3C1694750F0013AD2D /* Parcoa+NSDictionary.m */,
 				E50C9B6416903D1A00851B04 /* Supporting Files */,
 				E50C9B8916903FE000851B04 /* ParcoaResult.h */,
 				E50C9B8A16903FE000851B04 /* ParcoaResult.m */,
@@ -149,6 +164,8 @@
 		E50C9B7816903D1A00851B04 /* ParcoaTests */ = {
 			isa = PBXGroup;
 			children = (
+				E51C2F33169465D00013AD2D /* ParcoaTests+Combinators.h */,
+				E51C2F34169465D00013AD2D /* ParcoaTests+Combinators.m */,
 				E50C9B7E16903D1A00851B04 /* ParcoaTests.h */,
 				E50C9B7F16903D1A00851B04 /* ParcoaTests.m */,
 				E50C9B7916903D1A00851B04 /* Supporting Files */,
@@ -176,6 +193,8 @@
 				E55FD470169054D5006E7263 /* ParcoaResult.h in Headers */,
 				E55CFCCC16905CB800CC08DA /* Parcoa+Combinators.h in Headers */,
 				E55CFCD71694216800CC08DA /* NSString+Parcoa.h in Headers */,
+				E51C2F39169470F10013AD2D /* Parcoa+Numbers.h in Headers */,
+				E51C2F3D1694750F0013AD2D /* Parcoa+NSDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +301,8 @@
 				E50C9B8B16903FE000851B04 /* ParcoaResult.m in Sources */,
 				E55CFCCD16905CB800CC08DA /* Parcoa+Combinators.m in Sources */,
 				E55CFCD81694216800CC08DA /* NSString+Parcoa.m in Sources */,
+				E51C2F3A169470F10013AD2D /* Parcoa+Numbers.m in Sources */,
+				E51C2F3E1694750F0013AD2D /* Parcoa+NSDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +312,7 @@
 			files = (
 				E50C9B8016903D1A00851B04 /* ParcoaTests.m in Sources */,
 				E55CFCCF169061EC00CC08DA /* Parcoa+Combinators.m in Sources */,
+				E51C2F35169465D00013AD2D /* ParcoaTests+Combinators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

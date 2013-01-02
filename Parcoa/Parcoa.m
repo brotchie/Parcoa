@@ -64,12 +64,12 @@
     return [Parcoa annotate:parser expected:expected];
 }
 
-+ (ParcoaParser)unicharLiteral:(unichar)c {
-    return [Parcoa annotate:[Parcoa takeOnce:[Parcoa isUnichar:c]]
++ (ParcoaParser)unichar:(unichar)c {
+    return [Parcoa annotate:[Parcoa satisfy:[Parcoa isUnichar:c]]
        expectedWithFormat:@"Expected character '%c'", c];
 }
 
-+ (ParcoaParser)literal:(NSString *)c {
++ (ParcoaParser)string:(NSString *)c {
     return ^ParcoaResult *(NSString *input) {
         if ([input hasPrefix:c]) {
             return [ParcoaResult ok:c residual:[input substringFromIndex:c.length]];
@@ -99,7 +99,15 @@
     };
 }
 
-+ (ParcoaParser)takeOnce:(ParcoaUnicharPredicate)condition {
++ (ParcoaParser)oneOf:(NSString *)set {
+    return [Parcoa satisfy:[Parcoa inClass:set]];
+}
+
++ (ParcoaParser)noneOf:(NSString *)set {
+    return [Parcoa satisfy:[Parcoa not:[Parcoa inClass:set]]];
+}
+
++ (ParcoaParser)satisfy:(ParcoaUnicharPredicate)condition {
     return ^ParcoaResult *(NSString *input) {
         if (input.length && condition([input characterAtIndex:0])) {
             return [ParcoaResult ok:[input substringToIndex:1] residual:[input substringFromIndex:1]];
@@ -159,13 +167,6 @@
     };
 }
 
-+ (ParcoaParser)skipSpace {
-    return ^ParcoaResult *(NSString *input) {
-        ParcoaResult *result = [Parcoa takeWhileInCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]](input);
-        return [ParcoaResult ok:[NSNull null] residual:(result.isOK) ? result.residual : input];
-    };
-}
-
 + (ParcoaParser)atEnd {
     return ^ParcoaResult *(NSString *input) {
         return [ParcoaResult ok:[NSNumber numberWithBool:input.length == 0] residual:input];
@@ -180,6 +181,53 @@
             return [ParcoaResult failWithRemaining:input expected:@"Expected end of input"];
         }
     };
+}
+
++ (ParcoaParser)spaces {
+    return ^ParcoaResult *(NSString *input) {
+        ParcoaResult *result = [Parcoa takeWhileInCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]](input);
+        return [ParcoaResult ok:[NSNull null] residual:(result.isOK) ? result.residual : input];
+    };
+}
+
++ (ParcoaParser)space {
+    return [Parcoa satisfy:[Parcoa isSpace]];
+}
+
++ (ParcoaParser)newline {
+    return [Parcoa unichar:'\n'];
+}
+
++ (ParcoaParser)tab {
+    return [Parcoa unichar:'\t'];
+}
+
++ (ParcoaParser)upper {
+    return [Parcoa satisfy:[Parcoa inCharacterSet:[NSCharacterSet uppercaseLetterCharacterSet]]];
+}
+
++ (ParcoaParser)lower {
+    return [Parcoa satisfy:[Parcoa inCharacterSet:[NSCharacterSet lowercaseLetterCharacterSet]]];
+}
+
++ (ParcoaParser)alphaNum {
+    return [Parcoa satisfy:[Parcoa inCharacterSet:[NSCharacterSet alphanumericCharacterSet]]];
+}
+
++ (ParcoaParser)digit {
+    return [Parcoa satisfy:[Parcoa inCharacterSet:[NSCharacterSet decimalDigitCharacterSet]]];
+}
+
++ (ParcoaParser)letter {
+    return [Parcoa satisfy:[Parcoa inCharacterSet:[NSCharacterSet letterCharacterSet]]];
+}
+
++ (ParcoaParser)hexDigit {
+    return [Parcoa oneOf:@"0123456789ABCDEFabcdef"];
+}
+
++ (ParcoaParser)anyUnichar {
+    return [Parcoa take:1];
 }
 
 #pragma mark - Predicates
@@ -198,6 +246,16 @@
 
 + (ParcoaUnicharPredicate)inClass:(NSString *)unichars {
     return [Parcoa inCharacterSet:[NSCharacterSet characterSetWithCharactersInString:unichars]];
+}
+
++ (ParcoaUnicharPredicate)not:(ParcoaUnicharPredicate)predicate {
+    return ^BOOL(unichar c) {
+        return !predicate(c);
+    };
+}
+
++ (ParcoaUnicharPredicate)isSpace {
+    return [Parcoa inCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

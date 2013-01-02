@@ -55,7 +55,7 @@
 
 - (void)testParcoaUnichar
 {
-    ParcoaParser unichar = [Parcoa unicharLiteral:'a'];
+    ParcoaParser unichar = [Parcoa unichar:'a'];
     ParcoaResult *ok = unichar(@"ab");
     ParcoaResult *fail = unichar(@"bb");
     STAssertTrue(ok.isOK, @"ab should match.");
@@ -65,7 +65,7 @@
 
 - (void)testParcoaString
 {
-    ParcoaParser hello = [Parcoa literal:@"hello"];
+    ParcoaParser hello = [Parcoa string:@"hello"];
     ParcoaResult *ok = hello(@"hello world");
     ParcoaResult *fail = hello(@"nothing");
     STAssertTrue(ok.isOK, @"hello world should match.");
@@ -75,8 +75,8 @@
 - (void)testParcoaChoice
 {
     ParcoaParser or = [Parcoa choice:@[
-                       [Parcoa literal:@"hello"],
-                       [Parcoa literal:@"world"]]];
+                       [Parcoa string:@"hello"],
+                       [Parcoa string:@"world"]]];
     ParcoaResult *hello = or(@"hello");
     ParcoaResult *world = or(@"world");
     ParcoaResult *fail  = or(@"nothing");
@@ -114,7 +114,7 @@
 
 - (void)testParcoaCount
 {
-    ParcoaParser count = [Parcoa count:[Parcoa literal:@"Hello"] n:3];
+    ParcoaParser count = [Parcoa count:[Parcoa string:@"Hello"] n:3];
     ParcoaResult *ok = count(@"HelloHelloHello");
     ParcoaResult *fail = count(@"HelloWorldHello");
     
@@ -127,7 +127,7 @@
 
 - (void)testParcoaMany
 {
-    ParcoaParser many = [Parcoa many:[Parcoa literal:@"Hello"]];
+    ParcoaParser many = [Parcoa many:[Parcoa string:@"Hello"]];
     ParcoaResult *empty = many(@"");
     ParcoaResult *ok0 = many(@"World");
     ParcoaResult *ok3 = many(@"HelloHelloHello");
@@ -141,7 +141,7 @@
 
 - (void)testParcoaMany1
 {
-    ParcoaParser many1 = [Parcoa many1:[Parcoa literal:@"Hello"]];
+    ParcoaParser many1 = [Parcoa many1:[Parcoa string:@"Hello"]];
     ParcoaResult *empty = many1(@"");
     ParcoaResult *fail0 = many1(@"World");
     ParcoaResult *ok3 = many1(@"HelloHelloHello");
@@ -155,8 +155,8 @@
 - (void)testParcoaSequential
 {
     ParcoaParser sequential = [Parcoa sequential:@[
-                               [Parcoa literal:@"Hello"],
-                               [Parcoa literal:@"World"]]];
+                               [Parcoa string:@"Hello"],
+                               [Parcoa string:@"World"]]];
     ParcoaResult *ok = sequential(@"HelloWorld");
     ParcoaResult *fail = sequential(@"Hello World");
     STAssertTrue(ok.isOK, @"HelloWorld should match.");
@@ -168,9 +168,9 @@
 - (void)testParcoaSequentialKeepLeftMost
 {
     ParcoaParser sequentialLeft = [Parcoa sequentialKeepLeftMost:@[
-                                   [Parcoa literal:@"A"],
-                                   [Parcoa literal:@"B"],
-                                   [Parcoa literal:@"C"]]];
+                                   [Parcoa string:@"A"],
+                                   [Parcoa string:@"B"],
+                                   [Parcoa string:@"C"]]];
     ParcoaResult *ok = sequentialLeft(@"ABC");
     STAssertTrue(ok.isOK, @"ABC should match.");
     STAssertEqualObjects(ok.value, @"A", @"Result should be left most match A.");
@@ -179,9 +179,9 @@
 - (void)testParcoaSequentialKeepRightMost
 {
     ParcoaParser sequentialRight = [Parcoa sequentialKeepRightMost:@[
-                                   [Parcoa literal:@"A"],
-                                   [Parcoa literal:@"B"],
-                                   [Parcoa literal:@"C"]]];
+                                   [Parcoa string:@"A"],
+                                   [Parcoa string:@"B"],
+                                   [Parcoa string:@"C"]]];
     ParcoaResult *ok = sequentialRight(@"ABC");
     STAssertTrue(ok.isOK, @"ABC should match.");
     STAssertEqualObjects(ok.value, @"C", @"Result should be left most match C.");
@@ -189,7 +189,7 @@
 
 - (void)testParcoaSepBy
 {
-    ParcoaParser sepBy = [Parcoa sepBy:[Parcoa literal:@"Hello"] delimiter:[Parcoa literal:@","]];
+    ParcoaParser sepBy = [Parcoa sepBy:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
     ParcoaResult *oknone = sepBy(@"");
     ParcoaResult *ok = sepBy(@"Hello,Hello,Hello");
     ParcoaResult *fail = sepBy(@"Hello,World,Hello");
@@ -203,7 +203,7 @@
 
 - (void)testParcoaSepBy1
 {
-    ParcoaParser sepBy1 = [Parcoa sepBy1:[Parcoa literal:@"Hello"] delimiter:[Parcoa literal:@","]];
+    ParcoaParser sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
     ParcoaResult *failnone = sepBy1(@"");
     ParcoaResult *ok = sepBy1(@"Hello,Hello,Hello");
     ParcoaResult *fail = sepBy1(@"Hello,World,Hello");

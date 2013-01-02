@@ -41,17 +41,31 @@ typedef id (^ParcoaValueTransform)(id value);
 
 /** @name Combining Parsers with Combinators */
 
-/** Returns the result of the first matching parser in
- *  an array of parsers. Fails if no parsers match. */
+/** Returns the value of the first parser to
+ *  match in an array. */
 + (ParcoaParser)choice:(NSArray *)parsers;
 
 /** Matches a parser n times. */
 + (ParcoaParser)count:(ParcoaParser)parser n:(NSUInteger)n;
 
-/** Matches a parser zero or more times. */
+/** If parser fails then return default value, otherwise return
+ *  parser's value. */
++ (ParcoaParser)option:(ParcoaParser)parser default:(id)value;
+
+/** If parser fails then return [NSNull null], otherwise return
+ *  parser's value. */
++ (ParcoaParser)optional:(ParcoaParser)parser;
+
+/** Only matches if parser matches and mustFail fails. mustFail will
+ *  not consume output. Returns the value of parser. */
++ (ParcoaParser)notFollowedBy:(ParcoaParser)parser mustFail:(ParcoaParser)mustFail;
+
+/** Matches a parser zero or more times returning an
+ *  array of the values returned by children. */
 + (ParcoaParser)many:(ParcoaParser)parser;
 
-/** Matches a parser one or more times. */
+/** Matches a parser one or more times returning an
+ *  array of the values returned by children. */
 + (ParcoaParser)many1:(ParcoaParser)parser;
 
 /** Matches a parser zero or more times separated
@@ -82,6 +96,10 @@ typedef id (^ParcoaValueTransform)(id value);
  *  last matched parser. */
 + (ParcoaParser)sequentialKeepRightMost:(NSArray *)parsers;
 
+/** Matches parser sandwiched between a left and right parser.
+ *  If all parsers match then the central value is returned. */
++ (ParcoaParser)between:(ParcoaParser)left parser:(ParcoaParser)parser right:(ParcoaParser)right;
+
 /** Matches a parser sandwiched between two "bookend" parsers.
  *  If the central and bookend parsers all match OK then the result
  *  value is the value of the central parser. */
@@ -91,4 +109,14 @@ typedef id (^ParcoaValueTransform)(id value);
  *  transformed by the transform block. This operation
  *  is equivalent to bind on the ParcoaParser Monad. */
 + (ParcoaParser)transform:(ParcoaParser)parser by:(ParcoaValueTransform)transform;
+
+/** Concatenates the array of strings returns by the parser
+ *  into a single string. */
++ (ParcoaParser)concat:(ParcoaParser)parser;
+
+/** Many followed by concat in a single combinator. */
++ (ParcoaParser)concatMany:(ParcoaParser)parser;
+
+/** Many1 followed by concat in a single combinator. */
++ (ParcoaParser)concatMany1:(ParcoaParser)parser;
 @end

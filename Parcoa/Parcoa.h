@@ -11,7 +11,7 @@
   Copyright (c) 2012 James Brotchie
     - brotchie@gmail.com
     - @brotchie
-  
+ 
   Permission is hereby granted, free of charge, to any person obtaining
   a copy of this software and associated documentation files (the
   "Software"), to deal in the Software without restriction, including
@@ -71,11 +71,11 @@ typedef BOOL (^ParcoaUnicharPredicate)(unichar);
 
 /** A unicode character literal.
  */
-+ (ParcoaParser)unicharLiteral:(unichar)c;
++ (ParcoaParser)unichar:(unichar)c;
 
 /** A string literal.
  */
-+ (ParcoaParser)literal:(NSString *)c;
++ (ParcoaParser)string:(NSString *)c;
 
 /** A string literal; doesn't consume input.
  */
@@ -85,48 +85,48 @@ typedef BOOL (^ParcoaUnicharPredicate)(unichar);
  */
 + (ParcoaParser)take:(NSUInteger)n;
 
++ (ParcoaParser)oneOf:(NSString *)set;
++ (ParcoaParser)noneOf:(NSString *)set;
+
 /** A single unicode character that satisifes the supplied
  *  predicate.
  */
-+ (ParcoaParser)takeOnce:(ParcoaUnicharPredicate)condition;
++ (ParcoaParser)satisfy:(ParcoaUnicharPredicate)condition;
 
-/** Consumes input while the supplied predicate is true.
+/** Parses input while the supplied predicate is true.
  */
 + (ParcoaParser)takeWhile:(ParcoaUnicharPredicate)condition;
 
-/** Consumes input while the supplied predicate is true; the
+/** Parses input while the supplied predicate is true; the
  *  predicate must be true for at least one character
  */
 + (ParcoaParser)takeWhile1:(ParcoaUnicharPredicate)condition;
 
-/* Consumes input until the supplied predicate is true.
+/* Parses input until the supplied predicate is true.
  */
 + (ParcoaParser)takeUntil:(ParcoaUnicharPredicate)condition;
 
-/* Consumes input while input characters are in the supplied
+/* Parses input while input characters are in the supplied
  * character set.
  */
 + (ParcoaParser)takeWhileInCharacterSet:(NSCharacterSet *)set;
 
-/* Consumes input while input characters are in the supplied
+/* Parses input while input characters are in the supplied
  * character set. The input stream must contain at least one
  * matched character.
  */
 + (ParcoaParser)takeWhile1InCharacterSet:(NSCharacterSet *)set;
 
-/* Consumes input while input characters are members of the
+/* Parses input while input characters are members of the
  * supplied string.
  */
 + (ParcoaParser)takeWhileInClass:(NSString *)unichars;
 
-/* Consumes input while input characters are members of the
+/* Parses input while input characters are members of the
  * supplied string. The input stream must contain at least one
  * matched character.
  */
 + (ParcoaParser)takeWhile1InClass:(NSString *)unichars;
-
-/** Consumes any input white space. */
-+ (ParcoaParser)skipSpace;
 
 /** Returns a [NSNumber numberWithBool:TRUE] if no input
  *  remains; FALSE otherwise.
@@ -137,20 +137,54 @@ typedef BOOL (^ParcoaUnicharPredicate)(unichar);
  */
 + (ParcoaParser)endOfInput;
 
+/** Parses any input whitespace. */
++ (ParcoaParser)spaces;
+
+/** Parses a single whitespace character. */
++ (ParcoaParser)space;
+
+/** Parses a newline '\n' character. */
++ (ParcoaParser)newline;
+
+/** Parses a tab '\t' character. */
++ (ParcoaParser)tab;
+
+/** Parses any uppercase unicode character. */
++ (ParcoaParser)upper;
+
+/** Parses any lowercase unicode character. */
++ (ParcoaParser)lower;
+
+/** Parses any alpha numeric unicode character. */
++ (ParcoaParser)alphaNum;
+
+/** Parses any letter unicode character. */
++ (ParcoaParser)letter;
+
+/** Parses any digit unicode character. */
++ (ParcoaParser)digit;
+
+/** Parses any hex digit: {0123456789ABCDEFabcdef}. */
++ (ParcoaParser)hexDigit;
+
+/** Parses any unicode character. */
++ (ParcoaParser)anyUnichar;
+
 /** Creates a predicate that returns TRUE for the
- *  the supplied unicode character.
- */
+ *  the supplied unicode character. */
 + (ParcoaUnicharPredicate)isUnichar:(unichar)c;
 
-/** Creates a predicate that returns TRUE for any
- *  characters in the supplied character set.
- */
+/** Returns TRUE for any characters in the supplied character set. */
 + (ParcoaUnicharPredicate)inCharacterSet:(NSCharacterSet *)set;
 
-/** Creates a predicate that returns TRUE for any
- *  characters in the supplied string.
- */
+/** Returns TRUE for any characters in the supplied string. */
 + (ParcoaUnicharPredicate)inClass:(NSString *)unichars;
+
+/** Inverts the predicate. */
++ (ParcoaUnicharPredicate)not:(ParcoaUnicharPredicate)predicate;
+
+/** Returns TRUE for any whitespace character. */
++ (ParcoaUnicharPredicate)isSpace;
 
 @end
 

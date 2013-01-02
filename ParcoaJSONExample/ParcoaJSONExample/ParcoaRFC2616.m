@@ -74,15 +74,15 @@ static ParcoaParser _responseParser;
     ParcoaUnicharPredicate isDigitOrDecimal = [Parcoa inClass:@"0123456789."];
     
     ParcoaParser token = [Parcoa takeWhile1:isToken];
-    ParcoaParser singleSpace = [Parcoa takeOnce:isSpace];
+    ParcoaParser singleSpace = [Parcoa satisfy:isSpace];
     ParcoaParser horizontalSpace = [Parcoa takeWhile:isSpace];
     ParcoaParser endOfLine = [Parcoa choice:@[
-                              [Parcoa literal:@"\r\n"],
-                              [Parcoa unicharLiteral:'\n']]];
+                              [Parcoa string:@"\r\n"],
+                              [Parcoa unichar:'\n']]];
     
-    ParcoaParser headerSep = [Parcoa unicharLiteral:':'];
+    ParcoaParser headerSep = [Parcoa unichar:':'];
     ParcoaParser httpVersion = [Parcoa sequentialKeepRightMost:@[
-                                [Parcoa literal:@"HTTP/"],
+                                [Parcoa string:@"HTTP/"],
                                 [Parcoa takeWhile1:isDigitOrDecimal]]];
     ParcoaParser responseCode = [Parcoa takeWhile1:isDigit];
     ParcoaParser uri = [Parcoa takeUntil:isSpace];

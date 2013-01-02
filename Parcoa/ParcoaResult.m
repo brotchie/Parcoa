@@ -105,7 +105,7 @@
     return self;
 }
 
-- (id)initFail:(NSArray *)context {
+- (id)initFail:(ParcoaFailContext *)context {
     self = [super init];
     if (self) {
         _type = ParcoaResultFail;
@@ -169,7 +169,7 @@
 #pragma mark - Traceback Generation
 
 - (NSString *)traceback:(NSString *)input {
-    return [self traceback:input full:NO];
+    return [self traceback:input full:YES];
 }
 
 - (NSString *)traceback:(NSString *)input full:(BOOL)full {

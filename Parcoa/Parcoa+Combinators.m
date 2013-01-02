@@ -109,6 +109,42 @@
     };
 }
 
++ (ParcoaParser)option:(ParcoaParser)parser default:(id)value {
+    return ^ParcoaResult *(NSString *input) {
+        ParcoaResult *result = parser(input);
+        if (result.isOK) {
+            return result;
+        } else {
+            return [ParcoaResult ok:value residual:input];
+        }
+    };
+}
+
++ (ParcoaParser)optional:(ParcoaParser)parser {
+    return [Parcoa option:parser default:[NSNull null]];
+}
+
++ (ParcoaParser)notFollowedBy:(ParcoaParser)parser mustFail:(ParcoaParser)mustFail {
+    return ^ParcoaResult *(NSString *input) {
+        ParcoaResult *result = parser(input);
+        
+        // Don't need to consider the must fail parser if
+        // the primary parser fails.
+        if (result.isFail) {
+            return result;
+        }
+        
+        ParcoaResult *mustFailResult = mustFail(result.residual);
+        if (mustFailResult.isFail) {
+            return result;
+        } else {
+            // Both parsers OK, this fails the combinator.
+            return [ParcoaResult failWithRemaining:input expected:@"Expected following parser to fail."];
+        }
+        
+    };
+}
+
 + (ParcoaParser)many:(ParcoaParser)parser {
     return ^ParcoaResult *(NSString *input) {
         NSMutableArray *values = [NSMutableArray array];
@@ -168,6 +204,10 @@
     };
 }
 
++ (ParcoaParser)between:(ParcoaParser)left parser:(ParcoaParser)parser right:(ParcoaParser)right {
+    return [Parcoa sequential:@[left, parser, right] keepIndex:1];
+}
+
 + (ParcoaParser)surrounded:(ParcoaParser)parser bookend:(ParcoaParser)bookend {
     return [Parcoa sequential:@[bookend, parser, bookend] keepIndex:1];
 }
@@ -182,4 +222,19 @@
         }
     };
 }
+
++ (ParcoaParser)concat:(ParcoaParser)parser {
+    return [Parcoa transform:parser by:^NSString *(NSArray *value) {
+        return [value componentsJoinedByString:@""];
+    }];
+}
+
++ (ParcoaParser)concatMany:(ParcoaParser)parser {
+    return [Parcoa concat:[Parcoa many:parser]];
+}
+
++ (ParcoaParser)concatMany1:(ParcoaParser)parser {
+    return [Parcoa concat:[Parcoa many1:parser]];
+}
+
 @end
