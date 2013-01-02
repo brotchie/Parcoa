@@ -141,17 +141,6 @@
     };
 }
 
-/*+ (ParcoaParser)zeroOrOne:(ParcoaParser)parser {
-    return ^ParcoaResult *(NSString *input) {
-        ParcoaResult *result = [Parcoa many:parser](input);
-        if ([result.value] <= 1) {
-            return result;
-        } else {
-            return [ParcoaResult failWithFormat:@"More than one result -> %@", result];
-        }
-    };
-}*/
-
 + (ParcoaParser)sepBy:(ParcoaParser)parser delimiter:(ParcoaParser)delimiter {
     return ^ParcoaResult *(NSString *input) {
         ParcoaResult *many = [Parcoa many:[Parcoa sequentialKeepLeftMost:@[

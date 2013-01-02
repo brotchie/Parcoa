@@ -39,19 +39,56 @@ typedef id (^ParcoaValueTransform)(id value);
 
 @interface Parcoa (Combinators)
 
+/** @name Combining Parsers with Combinators */
+
+/** Returns the result of the first matching parser in
+ *  an array of parsers. Fails if no parsers match. */
 + (ParcoaParser)choice:(NSArray *)parsers;
+
+/** Matches a parser n times. */
 + (ParcoaParser)count:(ParcoaParser)parser n:(NSUInteger)n;
+
+/** Matches a parser zero or more times. */
 + (ParcoaParser)many:(ParcoaParser)parser;
+
+/** Matches a parser one or more times. */
 + (ParcoaParser)many1:(ParcoaParser)parser;
-+ (ParcoaParser)zeroOrOne:(ParcoaParser)parser;
+
+/** Matches a parser zero or more times separated
+ *  by a delimiter parser. */
 + (ParcoaParser)sepBy:(ParcoaParser)parser delimiter:(ParcoaParser)delimiter;
+
+/** Matches a parser one or more times separated
+ *  by a delimiter parser. */
 + (ParcoaParser)sepBy1:(ParcoaParser)parser delimiter:(ParcoaParser)delimiter;
 
+/** Matches an array of parsers in order. If all parsers
+ *  match OK then the result value is an array
+ *  containing all of the individual parser's values. */
 + (ParcoaParser)sequential:(NSArray *)parsers;
+
+/** Matches an array of parsers in order. If all parsers
+ *  match OK then the result value is the value of the n'th
+ *  matched parser. */
 + (ParcoaParser)sequential:(NSArray *)parsers keepIndex:(NSInteger)n;
+
+/** Matches an array of parsers in order. If all parsers
+ *  match OK then the result value is the value of the
+ *  first matched parser. */
 + (ParcoaParser)sequentialKeepLeftMost:(NSArray *)parsers;
+
+/** Matches an array of parsers in order. If all parsers
+ *  match OK then the result value is the value of the
+ *  last matched parser. */
 + (ParcoaParser)sequentialKeepRightMost:(NSArray *)parsers;
 
+/** Matches a parser sandwiched between two "bookend" parsers.
+ *  If the central and bookend parsers all match OK then the result
+ *  value is the value of the central parser. */
 + (ParcoaParser)surrounded:(ParcoaParser)parser bookend:(ParcoaParser)bookend;
+
+/** If the wrapped parser matches OK then the result value is
+ *  transformed by the transform block. This operation
+ *  is equivalent to bind on the ParcoaParser Monad. */
 + (ParcoaParser)transform:(ParcoaParser)parser by:(ParcoaValueTransform)transform;
 @end

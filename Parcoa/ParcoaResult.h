@@ -40,35 +40,74 @@ typedef enum {
     ParcoaResultOK
 } ParcoaResultType;
 
+/** An immutable context tree that captures the state
+ *  of a failed parser. */
 @interface ParcoaFailContext : NSObject
+/** The number of input characters remaining. */
 @property (readonly) NSUInteger charactersRemaining;
+
+/** A string describing what the parser expected. */
 @property (readonly) NSString *expected;
+
+/** An array containing ParcoaFailContext children. */
 @property (readonly) NSArray *children;
+
+/** Creates an immutable ParcoFailContext. */
 + (ParcoaFailContext *)contextWithRemaining:(NSString *)remaining expected:(NSString *)expected children:(NSArray *)children;
+
+/** The minimum value of charactersRemaining for this context
+ *  and all its children. This property is memoized such that
+ *  subsequent calls are costless. */
 - (NSUInteger)minCharactersRemaining;
 @end
 
+/** An immutable parsing result returned by every
+ *  Parcoa parser. */
 @interface ParcoaResult : NSObject
+
+/** The result type: OK or Fail */
 @property (readonly) ParcoaResultType type;
+
+/** The fail context for the result. nil if type
+ *  is OK. */
 @property (readonly) ParcoaFailContext *context;
+
+/** The residual input remaining after parsing. nil
+ *  if type is Fail. */
 @property (readonly) NSString *residual;
+
+/** The parsed value. nil if type is Fail. */
 @property (readonly) id value;
 
-- (BOOL)isFail;
+/** TRUE if OK. */
 - (BOOL)isOK;
 
-- (ParcoaResult *)prependContextWithRemaining:(NSString *)remaining expected:(NSString *)expected;
-- (ParcoaResult *)prependContextWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
+/** TRUE if Fail. */
+- (BOOL)isFail;
 
-+ (ParcoaResult *)failWithFailures:(NSArray *)failures remaining:(NSString *)remaining expected:(NSString *)expected;
-+ (ParcoaResult *)failWithRemaining:(NSString *)remaining expected:(NSString *)expected;
-+ (ParcoaResult *)failWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
+/** Creates an OK result with value and residual input. */
 + (ParcoaResult *)ok:(id)value residual:(NSString *)residual;
+
+/** Creates a Fail result. */
++ (ParcoaResult *)failWithRemaining:(NSString *)remaining expected:(NSString *)expected;
+
+/** Creates a Fail result using a printf style format string. */
++ (ParcoaResult *)failWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
+
+/** Creates a Fail result by aggregating the contexts of an array of failures as children. */
++ (ParcoaResult *)failWithFailures:(NSArray *)failures remaining:(NSString *)remaining expected:(NSString *)expected;
+
+/** Creates a Fail result with this result's context as a child. */
+- (ParcoaResult *)prependContextWithRemaining:(NSString *)remaining expected:(NSString *)expected;
+
+/** Creates a Fail result with this result's context as a child; expected
+ *  value generated using printf style format string. */
+- (ParcoaResult *)prependContextWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
 
 /** Generates a traceback of Parcoa contexts. If full is TRUE
  *  then a complete snapshot of the Parcoa context is given,
  *  if FALSE only the parser branch that consumed the most
- *  input is shown.
+ *  input is output.
  *
  * @param input The previously supplied parser input.
  * @param full TRUE for all contexts, FALSE for the context

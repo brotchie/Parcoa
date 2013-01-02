@@ -35,11 +35,14 @@
 
 #import <Foundation/Foundation.h>
 
+/** An index to a line and column. */
 typedef struct {
     NSUInteger line;
     NSUInteger column;
 } ParcoaLineColumn;
 
 @interface NSString (Parcoa)
+/** Returns the line and column within the string of the
+ *  given character index. */
 - (ParcoaLineColumn)lineAndColumnForIndex:(NSUInteger)index;
 @end

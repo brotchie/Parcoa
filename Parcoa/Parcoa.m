@@ -37,9 +37,6 @@
 
 @implementation Parcoa
 
-/** Executes a parser against some input returning the parsing result. If the
- *  parser fails a traceback is written to debug output using NSLog.
- */
 + (ParcoaResult *)runParserWithTraceback:(ParcoaParser)parser input:(NSString *)input {
     ParcoaResult *result = parser(input);
     if (result.isFail) {
