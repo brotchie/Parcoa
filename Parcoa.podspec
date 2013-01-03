@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/brotchie/Parcoa"
   s.license      = 'MIT'
   s.author       = { "James Brotchie" => "brotchie@gmail.com" }
-  s.source       = { :git => "https://github.com/brotchie/Parcoa.git", :commit => "de2d50250a0c0bbfc69014f9417880c431ea0a5d" }
+  s.source       = { :git => "https://github.com/brotchie/Parcoa.git", :tag => "v#{spec.version}"}
   s.source_files = 'Parcoa/**/*.{h,m}'
   s.requires_arc = true
 end
