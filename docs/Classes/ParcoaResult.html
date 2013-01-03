@@ -1,0 +1,1227 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ParcoaResult Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Parcoa </a></h1>
+				<a id="developerHome" href="../index.html">Factorial Products</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ParcoaResult Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/expectation">&nbsp;&nbsp;&nbsp;&nbsp;expectation</option>
+	
+	<option value="//api/name/residual">&nbsp;&nbsp;&nbsp;&nbsp;residual</option>
+	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
+	<option value="//api/name/value">&nbsp;&nbsp;&nbsp;&nbsp;value</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/failWithChildren:remaining:expected:">&nbsp;&nbsp;&nbsp;&nbsp;+ failWithChildren:remaining:expected:</option>
+	
+	<option value="//api/name/failWithRemaining:expected:">&nbsp;&nbsp;&nbsp;&nbsp;+ failWithRemaining:expected:</option>
+	
+	<option value="//api/name/failWithRemaining:expectedWithFormat:">&nbsp;&nbsp;&nbsp;&nbsp;+ failWithRemaining:expectedWithFormat:</option>
+	
+	<option value="//api/name/ok:residual:expected:">&nbsp;&nbsp;&nbsp;&nbsp;+ ok:residual:expected:</option>
+	
+	<option value="//api/name/ok:residual:expectedWithFormat:">&nbsp;&nbsp;&nbsp;&nbsp;+ ok:residual:expectedWithFormat:</option>
+	
+	<option value="//api/name/okWithChildren:value:residual:expected:">&nbsp;&nbsp;&nbsp;&nbsp;+ okWithChildren:value:residual:expected:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
+	
+	<option value="//api/name/formatTraceback:expectation:indent:">&nbsp;&nbsp;&nbsp;&nbsp;- formatTraceback:expectation:indent:</option>
+	
+	<option value="//api/name/initFail:">&nbsp;&nbsp;&nbsp;&nbsp;- initFail:</option>
+	
+	<option value="//api/name/initOK:residual:expectation:">&nbsp;&nbsp;&nbsp;&nbsp;- initOK:residual:expectation:</option>
+	
+	<option value="//api/name/isFail">&nbsp;&nbsp;&nbsp;&nbsp;- isFail</option>
+	
+	<option value="//api/name/isOK">&nbsp;&nbsp;&nbsp;&nbsp;- isOK</option>
+	
+	<option value="//api/name/prependExpectationWithRemaining:expected:">&nbsp;&nbsp;&nbsp;&nbsp;- prependExpectationWithRemaining:expected:</option>
+	
+	<option value="//api/name/prependExpectationWithRemaining:expectedWithFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- prependExpectationWithRemaining:expectedWithFormat:</option>
+	
+	<option value="//api/name/reduceTraceback:expectation:targetMinCharactersRemaining:indent:">&nbsp;&nbsp;&nbsp;&nbsp;- reduceTraceback:expectation:targetMinCharactersRemaining:indent:</option>
+	
+	<option value="//api/name/traceback:">&nbsp;&nbsp;&nbsp;&nbsp;- traceback:</option>
+	
+	<option value="//api/name/traceback:full:">&nbsp;&nbsp;&nbsp;&nbsp;- traceback:full:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/expectation">expectation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/residual">residual</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/value">value</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/failWithChildren:remaining:expected:">failWithChildren:remaining:expected:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/failWithRemaining:expected:">failWithRemaining:expected:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/failWithRemaining:expectedWithFormat:">failWithRemaining:expectedWithFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ok:residual:expected:">ok:residual:expected:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ok:residual:expectedWithFormat:">ok:residual:expectedWithFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/okWithChildren:value:residual:expected:">okWithChildren:value:residual:expected:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/formatTraceback:expectation:indent:">formatTraceback:expectation:indent:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initFail:">initFail:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initOK:residual:expectation:">initOK:residual:expectation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isFail">isFail</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isOK">isOK</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prependExpectationWithRemaining:expected:">prependExpectationWithRemaining:expected:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prependExpectationWithRemaining:expectedWithFormat:">prependExpectationWithRemaining:expectedWithFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reduceTraceback:expectation:targetMinCharactersRemaining:indent:">reduceTraceback:expectation:targetMinCharactersRemaining:indent:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/traceback:">traceback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/traceback:full:">traceback:full:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ParcoaResult Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ParcoaResult Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ParcoaResult.h<br />ParcoaResult.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An immutable parsing result returned by every
+<a href="../Classes/Parcoa.html">Parcoa</a> parser.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+		<span class="tooltip"><p>The result type: OK or Fail</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expectation">&nbsp;&nbsp;expectation</a></code>
+		<span class="tooltip"><p>The parsers expectation. For a failure describes what the parser
+expected to find in the input. For an OK result describes input that
+would have allowed the parser to consume more.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/residual">&nbsp;&nbsp;residual</a></code>
+		<span class="tooltip"><p>The residual input remaining after parsing. nil
+if <a href="#//api/name/type">type</a> is Fail.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/value">&nbsp;&nbsp;value</a></code>
+		<span class="tooltip"><p>The parsed value. nil if <a href="#//api/name/type">type</a> is Fail.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isOK">&ndash;&nbsp;isOK</a></code>
+		<span class="tooltip"><p>TRUE if OK.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isFail">&ndash;&nbsp;isFail</a></code>
+		<span class="tooltip"><p>TRUE if Fail.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ok:residual:expected:">+&nbsp;ok:residual:expected:</a></code>
+		<span class="tooltip"><p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
+that would let the parser consume more.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ok:residual:expectedWithFormat:">+&nbsp;ok:residual:expectedWithFormat:</a></code>
+		<span class="tooltip"><p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
+that would let the parser consume more. Expected <a href="#//api/name/value">value</a> is generated using a
+printf style format string.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/failWithRemaining:expected:">+&nbsp;failWithRemaining:expected:</a></code>
+		<span class="tooltip"><p>Creates a Fail result.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/failWithRemaining:expectedWithFormat:">+&nbsp;failWithRemaining:expectedWithFormat:</a></code>
+		<span class="tooltip"><p>Creates a Fail result using a printf style format string.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/failWithChildren:remaining:expected:">+&nbsp;failWithChildren:remaining:expected:</a></code>
+		<span class="tooltip"><p>Creates a Fail result by aggregating the expectations of an array of failures as children.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/okWithChildren:value:residual:expected:">+&nbsp;okWithChildren:value:residual:expected:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/prependExpectationWithRemaining:expected:">&ndash;&nbsp;prependExpectationWithRemaining:expected:</a></code>
+		<span class="tooltip"><p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/prependExpectationWithRemaining:expectedWithFormat:">&ndash;&nbsp;prependExpectationWithRemaining:expectedWithFormat:</a></code>
+		<span class="tooltip"><p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child; expected
+<a href="#//api/name/value">value</a> generated using printf style format string.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/traceback:full:">&ndash;&nbsp;traceback:full:</a></code>
+		<span class="tooltip"><p>Generates a traceback of <a href="../Classes/Parcoa.html">Parcoa</a> expectations. If full is TRUE
+then a complete snapshot of the <a href="../Classes/Parcoa.html">Parcoa</a> <a href="#//api/name/expectation">expectation</a> is given,
+if FALSE only the parser branch that consumed the most
+input is output.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/traceback:">&ndash;&nbsp;traceback:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initOK:residual:expectation:">&ndash;&nbsp;initOK:residual:expectation:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initFail:">&ndash;&nbsp;initFail:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reduceTraceback:expectation:targetMinCharactersRemaining:indent:">&ndash;&nbsp;reduceTraceback:expectation:targetMinCharactersRemaining:indent:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/formatTraceback:expectation:indent:">&ndash;&nbsp;formatTraceback:expectation:indent:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/expectation" title="expectation"></a>
+	<h3 class="subsubtitle method-title">expectation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The parsers expectation. For a failure describes what the parser
+expected to find in the input. For an OK result describes input that
+would have allowed the parser to consume more.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly) ParcoaExpectation *expectation</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The parsers expectation. For a failure describes what the parser
+expected to find in the input. For an OK result describes input that
+would have allowed the parser to consume more.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/residual" title="residual"></a>
+	<h3 class="subsubtitle method-title">residual</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The residual input remaining after parsing. nil
+if <a href="#//api/name/type">type</a> is Fail.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly) NSString *residual</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The residual input remaining after parsing. nil
+if <a href="#//api/name/type">type</a> is Fail.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The result type: OK or Fail</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly) ParcoaResultType type</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The result type: OK or Fail</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/value" title="value"></a>
+	<h3 class="subsubtitle method-title">value</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The parsed value. nil if <a href="#//api/name/type">type</a> is Fail.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly) id value</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The parsed value. nil if <a href="#//api/name/type">type</a> is Fail.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/failWithChildren:remaining:expected:" title="failWithChildren:remaining:expected:"></a>
+	<h3 class="subsubtitle method-title">failWithChildren:remaining:expected:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a Fail result by aggregating the expectations of an array of failures as children.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)failWithChildren:(NSArray *)<em>children</em> remaining:(NSString *)<em>remaining</em> expected:(NSString *)<em>expected</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a Fail result by aggregating the expectations of an array of failures as children.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/failWithRemaining:expected:" title="failWithRemaining:expected:"></a>
+	<h3 class="subsubtitle method-title">failWithRemaining:expected:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a Fail result.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)failWithRemaining:(NSString *)<em>remaining</em> expected:(NSString *)<em>expected</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a Fail result.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/failWithRemaining:expectedWithFormat:" title="failWithRemaining:expectedWithFormat:"></a>
+	<h3 class="subsubtitle method-title">failWithRemaining:expectedWithFormat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a Fail result using a printf style format string.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)failWithRemaining:(NSString *)<em>remaining</em> expectedWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a Fail result using a printf style format string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/ok:residual:expected:" title="ok:residual:expected:"></a>
+	<h3 class="subsubtitle method-title">ok:residual:expected:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
+that would let the parser consume more.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)ok:(id)<em>value</em> residual:(NSString *)<em>residual</em> expected:(NSString *)<em>expected</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
+that would let the parser consume more.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/ok:residual:expectedWithFormat:" title="ok:residual:expectedWithFormat:"></a>
+	<h3 class="subsubtitle method-title">ok:residual:expectedWithFormat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
+that would let the parser consume more. Expected <a href="#//api/name/value">value</a> is generated using a
+printf style format string.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)ok:(id)<em>value</em> residual:(NSString *)<em>residual</em> expectedWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
+that would let the parser consume more. Expected <a href="#//api/name/value">value</a> is generated using a
+printf style format string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/okWithChildren:value:residual:expected:" title="okWithChildren:value:residual:expected:"></a>
+	<h3 class="subsubtitle method-title">okWithChildren:value:residual:expected:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)okWithChildren:(NSArray *)<em>children</em> value:(id)<em>value</em> residual:(NSString *)<em>residual</em> expected:(NSString *)<em>expected</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/description" title="description"></a>
+	<h3 class="subsubtitle method-title">description</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)description</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/formatTraceback:expectation:indent:" title="formatTraceback:expectation:indent:"></a>
+	<h3 class="subsubtitle method-title">formatTraceback:expectation:indent:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)formatTraceback:(NSString *)<em>input</em> expectation:(ParcoaExpectation *)<em>expectation</em> indent:(NSUInteger)<em>indent</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initFail:" title="initFail:"></a>
+	<h3 class="subsubtitle method-title">initFail:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initFail:(ParcoaExpectation *)<em>expectation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initOK:residual:expectation:" title="initOK:residual:expectation:"></a>
+	<h3 class="subsubtitle method-title">initOK:residual:expectation:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initOK:(id)<em>value</em> residual:(NSString *)<em>residual</em> expectation:(ParcoaExpectation *)<em>expectation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isFail" title="isFail"></a>
+	<h3 class="subsubtitle method-title">isFail</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>TRUE if Fail.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isFail</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>TRUE if Fail.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isOK" title="isOK"></a>
+	<h3 class="subsubtitle method-title">isOK</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>TRUE if OK.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isOK</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>TRUE if OK.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/prependExpectationWithRemaining:expected:" title="prependExpectationWithRemaining:expected:"></a>
+	<h3 class="subsubtitle method-title">prependExpectationWithRemaining:expected:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaResult *)prependExpectationWithRemaining:(NSString *)<em>remaining</em> expected:(NSString *)<em>expected</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/prependExpectationWithRemaining:expectedWithFormat:" title="prependExpectationWithRemaining:expectedWithFormat:"></a>
+	<h3 class="subsubtitle method-title">prependExpectationWithRemaining:expectedWithFormat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child; expected
+<a href="#//api/name/value">value</a> generated using printf style format string.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaResult *)prependExpectationWithRemaining:(NSString *)<em>remaining</em> expectedWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child; expected
+<a href="#//api/name/value">value</a> generated using printf style format string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reduceTraceback:expectation:targetMinCharactersRemaining:indent:" title="reduceTraceback:expectation:targetMinCharactersRemaining:indent:"></a>
+	<h3 class="subsubtitle method-title">reduceTraceback:expectation:targetMinCharactersRemaining:indent:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)reduceTraceback:(NSString *)<em>input</em> expectation:(ParcoaExpectation *)<em>expectation</em> targetMinCharactersRemaining:(NSUInteger)<em>targetMinCharactersRemaining</em> indent:(NSUInteger)<em>indent</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/traceback:" title="traceback:"></a>
+	<h3 class="subsubtitle method-title">traceback:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)traceback:(NSString *)<em>input</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/traceback:full:" title="traceback:full:"></a>
+	<h3 class="subsubtitle method-title">traceback:full:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generates a traceback of <a href="../Classes/Parcoa.html">Parcoa</a> expectations. If full is TRUE
+then a complete snapshot of the <a href="../Classes/Parcoa.html">Parcoa</a> <a href="#//api/name/expectation">expectation</a> is given,
+if FALSE only the parser branch that consumed the most
+input is output.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)traceback:(NSString *)<em>input</em> full:(BOOL)<em>full</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>input</em></dt>
+			<dd><p>The previously supplied parser input.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>full</em></dt>
+			<dd><p>TRUE for all expectations, FALSE for the <a href="#//api/name/expectation">expectation</a>
+the consumed the most input.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A traceback containing line and column numbers
+along with details of what the parser expected.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Generates a traceback of <a href="../Classes/Parcoa.html">Parcoa</a> expectations. If full is TRUE
+then a complete snapshot of the <a href="../Classes/Parcoa.html">Parcoa</a> <a href="#//api/name/expectation">expectation</a> is given,
+if FALSE only the parser branch that consumed the most
+input is output.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Factorial Products. All rights reserved. (Last updated: 2013-01-04)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

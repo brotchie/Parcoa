@@ -1,0 +1,955 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ParcoaParser Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Parcoa </a></h1>
+				<a id="developerHome" href="../index.html">Factorial Products</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ParcoaParser Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	
+	<option value="//api/name/summary">&nbsp;&nbsp;&nbsp;&nbsp;summary</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/parserWithBlock:name:summary:">&nbsp;&nbsp;&nbsp;&nbsp;+ parserWithBlock:name:summary:</option>
+	
+	<option value="//api/name/parserWithBlock:name:summaryWithFormat:">&nbsp;&nbsp;&nbsp;&nbsp;+ parserWithBlock:name:summaryWithFormat:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/between:and:">&nbsp;&nbsp;&nbsp;&nbsp;- between:and:</option>
+	
+	<option value="//api/name/concat">&nbsp;&nbsp;&nbsp;&nbsp;- concat</option>
+	
+	<option value="//api/name/concatMany">&nbsp;&nbsp;&nbsp;&nbsp;- concatMany</option>
+	
+	<option value="//api/name/concatMany1">&nbsp;&nbsp;&nbsp;&nbsp;- concatMany1</option>
+	
+	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
+	
+	<option value="//api/name/dictionary">&nbsp;&nbsp;&nbsp;&nbsp;- dictionary</option>
+	
+	<option value="//api/name/initWithBlock:name:summary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBlock:name:summary:</option>
+	
+	<option value="//api/name/keepLeft:">&nbsp;&nbsp;&nbsp;&nbsp;- keepLeft:</option>
+	
+	<option value="//api/name/keepRight:">&nbsp;&nbsp;&nbsp;&nbsp;- keepRight:</option>
+	
+	<option value="//api/name/many">&nbsp;&nbsp;&nbsp;&nbsp;- many</option>
+	
+	<option value="//api/name/many1">&nbsp;&nbsp;&nbsp;&nbsp;- many1</option>
+	
+	<option value="//api/name/or:">&nbsp;&nbsp;&nbsp;&nbsp;- or:</option>
+	
+	<option value="//api/name/parse:">&nbsp;&nbsp;&nbsp;&nbsp;- parse:</option>
+	
+	<option value="//api/name/parserWithName:summary:">&nbsp;&nbsp;&nbsp;&nbsp;- parserWithName:summary:</option>
+	
+	<option value="//api/name/parserWithName:summaryWithFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- parserWithName:summaryWithFormat:</option>
+	
+	<option value="//api/name/sepBy1:">&nbsp;&nbsp;&nbsp;&nbsp;- sepBy1:</option>
+	
+	<option value="//api/name/sepBy:">&nbsp;&nbsp;&nbsp;&nbsp;- sepBy:</option>
+	
+	<option value="//api/name/skipSurroundingSpaces">&nbsp;&nbsp;&nbsp;&nbsp;- skipSurroundingSpaces</option>
+	
+	<option value="//api/name/then:">&nbsp;&nbsp;&nbsp;&nbsp;- then:</option>
+	
+	<option value="//api/name/transform:name:">&nbsp;&nbsp;&nbsp;&nbsp;- transform:name:</option>
+	
+	<option value="//api/name/valueAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- valueAtIndex:</option>
+	
+	<option value="//api/name/withDefault:">&nbsp;&nbsp;&nbsp;&nbsp;- withDefault:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NSDictionary Methods">NSDictionary Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Combinators Methods">Combinators Methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/summary">summary</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parserWithBlock:name:summary:">parserWithBlock:name:summary:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parserWithBlock:name:summaryWithFormat:">parserWithBlock:name:summaryWithFormat:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/between:and:">between:and:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/concat">concat</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/concatMany">concatMany</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/concatMany1">concatMany1</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dictionary">dictionary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBlock:name:summary:">initWithBlock:name:summary:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keepLeft:">keepLeft:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keepRight:">keepRight:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/many">many</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/many1">many1</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/or:">or:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parse:">parse:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parserWithName:summary:">parserWithName:summary:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parserWithName:summaryWithFormat:">parserWithName:summaryWithFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy1:">sepBy1:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy:">sepBy:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/skipSurroundingSpaces">skipSurroundingSpaces</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/then:">then:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transform:name:">transform:name:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/valueAtIndex:">valueAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/withDefault:">withDefault:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ParcoaParser Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ParcoaParser Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ParcoaParser.h<br />ParcoaParser.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The primary <a href="../Classes/Parcoa.html">Parcoa</a> parser block: A function that accepts
+an input and returns an OK or Fail result.</p>
+
+<p>The parser combinators in the Parcoa+Combinators category
+are all pure class methods. This ParcoaParser+Combinators
+category adds instance methods to easily apply combinators.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/summary">&nbsp;&nbsp;summary</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parserWithBlock:name:summary:">+&nbsp;parserWithBlock:name:summary:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parserWithBlock:name:summaryWithFormat:">+&nbsp;parserWithBlock:name:summaryWithFormat:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithBlock:name:summary:">&ndash;&nbsp;initWithBlock:name:summary:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parserWithName:summary:">&ndash;&nbsp;parserWithName:summary:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parserWithName:summaryWithFormat:">&ndash;&nbsp;parserWithName:summaryWithFormat:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parse:">&ndash;&nbsp;parse:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="NSDictionary Methods" name="task_NSDictionary Methods"></a>
+						<h3 class="subsubtitle task-title">NSDictionary Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dictionary">&ndash;&nbsp;dictionary</a></code>
+		<span class="tooltip"><p>Naturally transforms the value of a parser
+returning a NSArray of two element NSArrays
+into a dictionary.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Combinators Methods" name="task_Combinators Methods"></a>
+						<h3 class="subsubtitle task-title">Combinators Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/or:">&ndash;&nbsp;or:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/withDefault:">&ndash;&nbsp;withDefault:</a></code>
+		<span class="tooltip"><p>Equivalent to [<a href="../Classes/Parcoa.html">Parcoa</a> choice:self default:value].</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/many">&ndash;&nbsp;many</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/many1">&ndash;&nbsp;many1</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sepBy:">&ndash;&nbsp;sepBy:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sepBy1:">&ndash;&nbsp;sepBy1:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/then:">&ndash;&nbsp;then:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/keepLeft:">&ndash;&nbsp;keepLeft:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/keepRight:">&ndash;&nbsp;keepRight:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/between:and:">&ndash;&nbsp;between:and:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/concat">&ndash;&nbsp;concat</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/concatMany">&ndash;&nbsp;concatMany</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/concatMany1">&ndash;&nbsp;concatMany1</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/skipSurroundingSpaces">&ndash;&nbsp;skipSurroundingSpaces</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transform:name:">&ndash;&nbsp;transform:name:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/valueAtIndex:">&ndash;&nbsp;valueAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *name</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/summary" title="summary"></a>
+	<h3 class="subsubtitle method-title">summary</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *summary</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/parserWithBlock:name:summary:" title="parserWithBlock:name:summary:"></a>
+	<h3 class="subsubtitle method-title">parserWithBlock:name:summary:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)<em>block</em> name:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parserWithBlock:name:summaryWithFormat:" title="parserWithBlock:name:summaryWithFormat:"></a>
+	<h3 class="subsubtitle method-title">parserWithBlock:name:summaryWithFormat:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)<em>block</em> name:(NSString *)<em>name</em> summaryWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/between:and:" title="between:and:"></a>
+	<h3 class="subsubtitle method-title">between:and:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)between:(ParcoaParser *)<em>left</em> and:(ParcoaParser *)<em>right</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/concat" title="concat"></a>
+	<h3 class="subsubtitle method-title">concat</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)concat</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/concatMany" title="concatMany"></a>
+	<h3 class="subsubtitle method-title">concatMany</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)concatMany</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/concatMany1" title="concatMany1"></a>
+	<h3 class="subsubtitle method-title">concatMany1</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)concatMany1</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/description" title="description"></a>
+	<h3 class="subsubtitle method-title">description</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)description</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dictionary" title="dictionary"></a>
+	<h3 class="subsubtitle method-title">dictionary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Naturally transforms the value of a parser
+returning a NSArray of two element NSArrays
+into a dictionary.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)dictionary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Naturally transforms the value of a parser
+returning a NSArray of two element NSArrays
+into a dictionary.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+NSDictionary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithBlock:name:summary:" title="initWithBlock:name:summary:"></a>
+	<h3 class="subsubtitle method-title">initWithBlock:name:summary:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithBlock:(ParcoaParserBlock)<em>block</em> name:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/keepLeft:" title="keepLeft:"></a>
+	<h3 class="subsubtitle method-title">keepLeft:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)keepLeft:(ParcoaParser *)<em>right</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/keepRight:" title="keepRight:"></a>
+	<h3 class="subsubtitle method-title">keepRight:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)keepRight:(ParcoaParser *)<em>right</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/many" title="many"></a>
+	<h3 class="subsubtitle method-title">many</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)many</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/many1" title="many1"></a>
+	<h3 class="subsubtitle method-title">many1</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)many1</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/or:" title="or:"></a>
+	<h3 class="subsubtitle method-title">or:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)or:(ParcoaParser *)<em>right</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parse:" title="parse:"></a>
+	<h3 class="subsubtitle method-title">parse:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaResult *)parse:(NSString *)<em>input</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parserWithName:summary:" title="parserWithName:summary:"></a>
+	<h3 class="subsubtitle method-title">parserWithName:summary:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)parserWithName:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parserWithName:summaryWithFormat:" title="parserWithName:summaryWithFormat:"></a>
+	<h3 class="subsubtitle method-title">parserWithName:summaryWithFormat:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)parserWithName:(NSString *)<em>name</em> summaryWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sepBy1:" title="sepBy1:"></a>
+	<h3 class="subsubtitle method-title">sepBy1:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)sepBy1:(ParcoaParser *)<em>delimiter</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sepBy:" title="sepBy:"></a>
+	<h3 class="subsubtitle method-title">sepBy:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)sepBy:(ParcoaParser *)<em>delimiter</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/skipSurroundingSpaces" title="skipSurroundingSpaces"></a>
+	<h3 class="subsubtitle method-title">skipSurroundingSpaces</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)skipSurroundingSpaces</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/then:" title="then:"></a>
+	<h3 class="subsubtitle method-title">then:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)then:(ParcoaParser *)<em>right</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transform:name:" title="transform:name:"></a>
+	<h3 class="subsubtitle method-title">transform:name:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)transform:(ParcoaValueTransform)<em>transform</em> name:(NSString *)<em>name</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/valueAtIndex:" title="valueAtIndex:"></a>
+	<h3 class="subsubtitle method-title">valueAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)valueAtIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/withDefault:" title="withDefault:"></a>
+	<h3 class="subsubtitle method-title">withDefault:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Equivalent to [<a href="../Classes/Parcoa.html">Parcoa</a> choice:self default:value].</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)withDefault:(id)<em>value</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Equivalent to [<a href="../Classes/Parcoa.html">Parcoa</a> choice:self default:value].</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Factorial Products. All rights reserved. (Last updated: 2013-01-04)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
