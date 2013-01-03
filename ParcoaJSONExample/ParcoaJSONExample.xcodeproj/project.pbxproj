@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E5323F06169522BD008A2F82 /* libParcoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5323F011695229A008A2F82 /* libParcoa.a */; };
-		E55CFCD416931B5300CC08DA /* ParcoaRFC2616.m in Sources */ = {isa = PBXBuildFile; fileRef = E55CFCD316931B5300CC08DA /* ParcoaRFC2616.m */; };
 		E55CFCDA16942E6E00CC08DA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = E55CFCD916942E6E00CC08DA /* example.json */; };
 		E55FD43216905448006E7263 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55FD43116905448006E7263 /* UIKit.framework */; };
 		E55FD43416905448006E7263 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55FD43316905448006E7263 /* Foundation.framework */; };
@@ -337,7 +336,6 @@
 				E55FD43E16905448006E7263 /* main.m in Sources */,
 				E55FD44216905448006E7263 /* FPAppDelegate.m in Sources */,
 				E55FD46C169054AC006E7263 /* ParcoaJSON.m in Sources */,
-				E55CFCD416931B5300CC08DA /* ParcoaRFC2616.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

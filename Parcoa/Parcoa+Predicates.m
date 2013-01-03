@@ -33,34 +33,35 @@
  
  */
 
-#import "ParcoaTests+Combinators.h"
-#import "Parcoa.h"
+#import "Parcoa+Predicates.h"
 
-@implementation ParcoaTests_Combinators
+@implementation Parcoa (Predicates)
 
-- (void)testParcoaNotFollowedBy {
-    ParcoaParser *let = [Parcoa string:@"let"];
-    ParcoaParser *alphanum = [Parcoa alphaNum];
-    ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
-    
-    NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
-    
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
++ (ParcoaPredicate *)isUnichar:(unichar)c {
+    return [ParcoaPredicate predicateWithBlock:^BOOL(unichar x) {
+        return x == c;
+    } name:@"isUnichar" summaryWithFormat:@"'%c'", c];
 }
 
-- (void)testParcoaSepBy1
-{
-    ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
-    
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
++ (ParcoaPredicate *)inCharacterSet:(NSCharacterSet *)set setName:(NSString *)setName {
+    return [ParcoaPredicate predicateWithBlock:^BOOL(unichar x) {
+        return [set characterIsMember:x];
+    } name:@"inCharacterSet" summary:setName];
 }
+
++ (ParcoaPredicate *)inClass:(NSString *)unichars {
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:unichars];
+    return [[Parcoa inCharacterSet:set setName:nil] predicateWithName:@"inClass" summary:unichars];
+}
+
++ (ParcoaPredicate *)not:(ParcoaPredicate *)predicate {
+    return [ParcoaPredicate predicateWithBlock:^BOOL(unichar x) {
+        return ![predicate check:x];
+    } name:@"not" summary:predicate.description];
+}
+
++ (ParcoaPredicate *)isSpace {
+    return [Parcoa inCharacterSet:[NSCharacterSet whitespaceCharacterSet] setName:@"whitespace"];
+}
+
 @end

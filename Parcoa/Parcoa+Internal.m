@@ -33,9 +33,8 @@
 
 */
 
-#import <Foundation/Foundation.h>
 #import "Parcoa.h"
 
-@interface ParcoaJSON : NSObject
-+ (ParcoaParser *)parser;
+@implementation Parcoa
+
 @end

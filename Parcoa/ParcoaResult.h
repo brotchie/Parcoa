@@ -34,32 +34,12 @@
 */
 
 #import <Foundation/Foundation.h>
+#import "ParcoaExpectation.h"
 
 typedef enum {
     ParcoaResultFail,
     ParcoaResultOK
 } ParcoaResultType;
-
-/** An immutable context tree that captures the state
- *  of a failed parser. */
-@interface ParcoaFailContext : NSObject
-/** The number of input characters remaining. */
-@property (readonly) NSUInteger charactersRemaining;
-
-/** A string describing what the parser expected. */
-@property (readonly) NSString *expected;
-
-/** An array containing ParcoaFailContext children. */
-@property (readonly) NSArray *children;
-
-/** Creates an immutable ParcoFailContext. */
-+ (ParcoaFailContext *)contextWithRemaining:(NSString *)remaining expected:(NSString *)expected children:(NSArray *)children;
-
-/** The minimum value of charactersRemaining for this context
- *  and all its children. This property is memoized such that
- *  subsequent calls are costless. */
-- (NSUInteger)minCharactersRemaining;
-@end
 
 /** An immutable parsing result returned by every
  *  Parcoa parser. */
@@ -68,9 +48,10 @@ typedef enum {
 /** The result type: OK or Fail */
 @property (readonly) ParcoaResultType type;
 
-/** The fail context for the result. nil if type
- *  is OK. */
-@property (readonly) ParcoaFailContext *context;
+/** The parsers expectation. For a failure describes what the parser
+ *  expected to find in the input. For an OK result describes input that
+ *  would have allowed the parser to consume more. */
+@property (readonly) ParcoaExpectation *expectation;
 
 /** The residual input remaining after parsing. nil
  *  if type is Fail. */
@@ -85,8 +66,14 @@ typedef enum {
 /** TRUE if Fail. */
 - (BOOL)isFail;
 
-/** Creates an OK result with value and residual input. */
-+ (ParcoaResult *)ok:(id)value residual:(NSString *)residual;
+/** Creates an OK result with value, residual input, and description of input
+ *  that would let the parser consume more. */
++ (ParcoaResult *)ok:(id)value residual:(NSString *)residual expected:(NSString *)expected;
+
+/** Creates an OK result with value, residual input, and description of input
+ *  that would let the parser consume more. Expected value is generated using a
+ *  printf style format string. */
++ (ParcoaResult *)ok:(id)value residual:(NSString *)residual expectedWithFormat:(NSString *)format, ...;
 
 /** Creates a Fail result. */
 + (ParcoaResult *)failWithRemaining:(NSString *)remaining expected:(NSString *)expected;
@@ -94,23 +81,25 @@ typedef enum {
 /** Creates a Fail result using a printf style format string. */
 + (ParcoaResult *)failWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
 
-/** Creates a Fail result by aggregating the contexts of an array of failures as children. */
-+ (ParcoaResult *)failWithFailures:(NSArray *)failures remaining:(NSString *)remaining expected:(NSString *)expected;
+/** Creates a Fail result by aggregating the expectations of an array of failures as children. */
++ (ParcoaResult *)failWithChildren:(NSArray *)children remaining:(NSString *)remaining expected:(NSString *)expected;
 
-/** Creates a Fail result with this result's context as a child. */
-- (ParcoaResult *)prependContextWithRemaining:(NSString *)remaining expected:(NSString *)expected;
++ (ParcoaResult *)okWithChildren:(NSArray *)children value:(id)value residual:(NSString *)residual expected:(NSString *)expected;
 
-/** Creates a Fail result with this result's context as a child; expected
+/** Creates a Fail result with this result's expectation as a child. */
+- (ParcoaResult *)prependExpectationWithRemaining:(NSString *)remaining expected:(NSString *)expected;
+
+/** Creates a Fail result with this result's expectation as a child; expected
  *  value generated using printf style format string. */
-- (ParcoaResult *)prependContextWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
+- (ParcoaResult *)prependExpectationWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
 
-/** Generates a traceback of Parcoa contexts. If full is TRUE
- *  then a complete snapshot of the Parcoa context is given,
+/** Generates a traceback of Parcoa expectations. If full is TRUE
+ *  then a complete snapshot of the Parcoa expectation is given,
  *  if FALSE only the parser branch that consumed the most
  *  input is output.
  *
  * @param input The previously supplied parser input.
- * @param full TRUE for all contexts, FALSE for the context
+ * @param full TRUE for all expectations, FALSE for the expectation
  *        the consumed the most input.
  * @return A traceback containing line and column numbers
  *         along with details of what the parser expected.

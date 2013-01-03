@@ -33,34 +33,29 @@
  
  */
 
-#import "ParcoaTests+Combinators.h"
-#import "Parcoa.h"
+#import <Foundation/Foundation.h>
+#import "ParcoaResult.h"
 
-@implementation ParcoaTests_Combinators
+/** The primary Parcoa parser block: A function that accepts
+ *  an input and returns an OK or Fail result.
+ */
+typedef ParcoaResult *(^ParcoaParserBlock)(NSString *input);
 
-- (void)testParcoaNotFollowedBy {
-    ParcoaParser *let = [Parcoa string:@"let"];
-    ParcoaParser *alphanum = [Parcoa alphaNum];
-    ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
-    
-    NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
-    
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
+@interface ParcoaParser : NSObject {
+@private
+    ParcoaParserBlock _block;
 }
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *summary;
 
-- (void)testParcoaSepBy1
-{
-    ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
-    
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
-}
++ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary;
++ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summaryWithFormat:(NSString *)format, ...;
+
+- (id)initWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary;
+
+- (ParcoaParser *)parserWithName:(NSString *)name summary:(NSString *)summary;
+- (ParcoaParser *)parserWithName:(NSString *)name summaryWithFormat:(NSString *)format, ...;
+
+- (ParcoaResult *)parse:(NSString *)input;
+
 @end

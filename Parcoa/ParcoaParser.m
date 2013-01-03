@@ -33,14 +33,48 @@
  
  */
 
-#import "Parcoa.h"
 #import "ParcoaParser.h"
 
-@interface Parcoa (Numbers)
-/** Parses an integer and returns it as a NSNumber. */
-+ (ParcoaParser *)integer;
+@implementation ParcoaParser
+@synthesize name = _name;
+@synthesize summary = _summary;
 
-/** Parses a boolean "true" or "false" and returns it
- *  as a NSNumber. */
-+ (ParcoaParser *)bool;
+- (id)initWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary {
+    self = [super init];
+    if (self) {
+        _block = block;
+        _name = name;
+        _summary = summary;
+    }
+    return self;
+}
+
++ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary {
+    return [[ParcoaParser alloc] initWithBlock:block name:name summary:summary];
+}
+
++ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summaryWithFormat:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *summary = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    return [ParcoaParser parserWithBlock:block name:name summary:summary];
+}
+
+- (ParcoaParser *)parserWithName:(NSString *)name summary:(NSString *)summary {
+    return [ParcoaParser parserWithBlock:_block name:name summary:summary];
+}
+
+- (ParcoaParser *)parserWithName:(NSString *)name summaryWithFormat:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *summary = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    return [self parserWithName:name summary:summary];
+}
+
+- (ParcoaResult *)parse:(NSString *)input {
+    return _block(input);
+}
+
 @end

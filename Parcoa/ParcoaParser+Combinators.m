@@ -33,22 +33,63 @@
  
  */
 
-#import "Parcoa+Primitives.h"
-#import "Parcoa+Numbers.h"
-#import "Parcoa+Combinators.h"
 #import "ParcoaParser+Combinators.h"
 
-@implementation Parcoa (Numbers)
-+ (ParcoaParser *)integer {
-    return [[Parcoa concatMany1:[Parcoa digit]] transform:^id(id value) {
-        return [NSNumber numberWithInteger:[value integerValue]];
-    } name:@"integer"];
+@implementation ParcoaParser (Combinators)
+
+- (ParcoaParser *)transform:(ParcoaValueTransform)transform name:(NSString *)name {
+    return [Parcoa parser:self transform:transform name:name];
 }
 
-+ (ParcoaParser *)bool {
-    ParcoaParser *boolParser = [Parcoa choice:@[[Parcoa string:@"true"], [Parcoa string:@"false"]]];
-    return [boolParser transform:^id(id value) {
-        return [NSNumber numberWithBool:[value boolValue]];
-    } name:@"integer"];
+- (ParcoaParser *)valueAtIndex:(NSUInteger)index {
+    return [Parcoa parser:self valueAtIndex:index];
+}
+
+- (ParcoaParser *)keepLeft:(ParcoaParser *)right {
+    return [Parcoa keepLeft:self right:right];
+}
+
+- (ParcoaParser *)keepRight:(ParcoaParser *)right {
+    return [Parcoa keepRight:self right:right];
+}
+
+- (ParcoaParser *)sepBy:(ParcoaParser *)delimiter {
+    return [Parcoa sepBy:self delimiter:delimiter];
+}
+
+- (ParcoaParser *)sepBy1:(ParcoaParser *)delimiter {
+    return [Parcoa sepBy1:self delimiter:delimiter];
+}
+
+- (ParcoaParser *)between:(ParcoaParser *)left and:(ParcoaParser *)right {
+    return [Parcoa between:left parser:self right:right];
+}
+
+- (ParcoaParser *)skipSurroundingSpaces {
+    return [Parcoa skipSurroundingSpaces:self];
+}
+
+- (ParcoaParser *)or:(ParcoaParser *)right {
+    return [Parcoa choice:@[self, right]];
+}
+
+- (ParcoaParser *)then:(ParcoaParser *)right {
+    return [Parcoa sequential:@[self, right]];
+}
+
+- (ParcoaParser *)many {
+    return [Parcoa many:self];
+}
+
+- (ParcoaParser *)many1 {
+    return [Parcoa many1:self];
+}
+
+- (ParcoaParser *)concat {
+    return [Parcoa concat:self];
+}
+
+- (ParcoaParser *)concatMany {
+    return [Parcoa concatMany:self];
 }
 @end

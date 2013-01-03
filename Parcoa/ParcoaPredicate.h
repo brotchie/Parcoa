@@ -1,5 +1,5 @@
 /*
- ____
+  ____
  |  _ \ __ _ _ __ ___ ___   __ _   Parcoa - Objective-C Parser Combinators
  | |_) / _` | '__/ __/ _ \ / _` |
  |  __/ (_| | | | (_| (_) | (_| |  Copyright (c) 2012 James Brotchie
@@ -32,35 +32,22 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
  */
+#import <Foundation/Foundation.h>
 
-#import "ParcoaTests+Combinators.h"
-#import "Parcoa.h"
+typedef BOOL (^ParcoaPredicateBlock)(unichar x);
 
-@implementation ParcoaTests_Combinators
-
-- (void)testParcoaNotFollowedBy {
-    ParcoaParser *let = [Parcoa string:@"let"];
-    ParcoaParser *alphanum = [Parcoa alphaNum];
-    ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
-    
-    NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
-    
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
+@interface ParcoaPredicate : NSObject {
+@private
+    ParcoaPredicateBlock _block;
 }
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *summary;
 
-- (void)testParcoaSepBy1
-{
-    ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
-    
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
-}
+- (BOOL)check:(unichar)c;
+
++ (ParcoaPredicate *)predicateWithBlock:(ParcoaPredicateBlock)block name:(NSString *)name summary:(NSString *)summary;
++ (ParcoaPredicate *)predicateWithBlock:(ParcoaPredicateBlock)block name:(NSString *)name summaryWithFormat:(NSString *)format, ...;
+
+- (ParcoaPredicate *)predicateWithName:(NSString *)name summary:(NSString *)summary;
+- (ParcoaPredicate *)predicateWithName:(NSString *)name summaryWithFormat:(NSString *)format, ...;
 @end

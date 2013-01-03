@@ -35,15 +35,16 @@
 
 #import "Parcoa+NSDictionary.h"
 #import "Parcoa+Combinators.h"
+#import "ParcoaParser+Combinators.h"
 
 @implementation Parcoa (NSDictionary)
-+ (ParcoaParser)dictionary:(ParcoaParser)parser {
-    return [Parcoa transform:parser by:^NSDictionary *(NSArray *value) {
++ (ParcoaParser *)dictionary:(ParcoaParser *)parser {
+    return [parser transform:^id(id value) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [value enumerateObjectsUsingBlock:^(NSArray *obj, NSUInteger idx, BOOL *stop) {
             dict[obj[0]] = obj[1];
         }];
         return dict;
-    }];
+    } name:@"dictionary"];
 }
 @end

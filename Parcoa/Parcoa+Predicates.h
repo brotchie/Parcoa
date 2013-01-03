@@ -33,34 +33,23 @@
  
  */
 
-#import "ParcoaTests+Combinators.h"
-#import "Parcoa.h"
+#import <Parcoa/Parcoa.h>
+#import "ParcoaPredicate.h"
 
-@implementation ParcoaTests_Combinators
+@interface Parcoa (Predicates)
+/** Creates a predicate that returns TRUE for the
+ *  the supplied unicode character. */
++ (ParcoaPredicate *)isUnichar:(unichar)c;
 
-- (void)testParcoaNotFollowedBy {
-    ParcoaParser *let = [Parcoa string:@"let"];
-    ParcoaParser *alphanum = [Parcoa alphaNum];
-    ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
-    
-    NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
-    
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
-}
+/** Returns TRUE for any characters in the supplied character set. */
++ (ParcoaPredicate *)inCharacterSet:(NSCharacterSet *)set setName:(NSString *)setName;
 
-- (void)testParcoaSepBy1
-{
-    ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
-    
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
-}
+/** Returns TRUE for any characters in the supplied string. */
++ (ParcoaPredicate *)inClass:(NSString *)unichars;
+
+/** Inverts the predicate. */
++ (ParcoaPredicate *)not:(ParcoaPredicate *)predicate;
+
+/** Returns TRUE for any whitespace character. */
++ (ParcoaPredicate *)isSpace;
 @end

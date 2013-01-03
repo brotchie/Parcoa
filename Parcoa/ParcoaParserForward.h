@@ -33,34 +33,12 @@
  
  */
 
-#import "ParcoaTests+Combinators.h"
-#import "Parcoa.h"
+#import "Parcoaparser.h"
 
-@implementation ParcoaTests_Combinators
-
-- (void)testParcoaNotFollowedBy {
-    ParcoaParser *let = [Parcoa string:@"let"];
-    ParcoaParser *alphanum = [Parcoa alphaNum];
-    ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
-    
-    NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
-    
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
+@interface ParcoaParserForward : ParcoaParser {
+@private
+    ParcoaParser *_implementation;
 }
-
-- (void)testParcoaSepBy1
-{
-    ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
-    
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
-}
++ (ParcoaParserForward *)forwardWithName:(NSString *)name summary:(NSString *)summary;
+- (void)setImplementation:(ParcoaParser *)parser;
 @end

@@ -34,6 +34,7 @@
 */
 
 #import <Foundation/Foundation.h>
+#import "Parcoa.h"
 
 /** An index to a line and column. */
 typedef struct {

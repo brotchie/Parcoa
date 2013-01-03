@@ -33,34 +33,34 @@
  
  */
 
-#import "ParcoaTests+Combinators.h"
-#import "Parcoa.h"
+#import <Foundation/Foundation.h>
 
-@implementation ParcoaTests_Combinators
+/** An immutable context tree that captures the state
+ *  of a failed parser. */
+@interface ParcoaExpectation : NSObject
+/** The number of input characters remaining. */
+@property (readonly) NSUInteger charactersRemaining;
 
-- (void)testParcoaNotFollowedBy {
-    ParcoaParser *let = [Parcoa string:@"let"];
-    ParcoaParser *alphanum = [Parcoa alphaNum];
-    ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
-    
-    NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
-    
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
-}
+/** A string describing what the parser expected.
+ *  If the parser failed then this explains what text would
+ *  have satisfied the parser, otherwise it explains what
+ *  input would have allowed the parser to match more input
+ *  than it did. */
+@property (readonly) NSString *expected;
 
-- (void)testParcoaSepBy1
-{
-    ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
-    
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
-}
+/** An array containing ParcoaFailContext children. */
+@property (readonly) NSArray *children;
+
+/** Creates an immutable ParcoFailContext. */
++ (ParcoaExpectation *)expectationWithRemaining:(NSString *)remaining expected:(NSString *)expected children:(NSArray *)children;
+
+/** The minimum value of charactersRemaining for this context
+ *  and all its chilsren. This property is memoized such that
+ *  subsequent calls are costless. */
+- (NSUInteger)minCharactersRemaining;
+
+/** An expectation string indicating that there exists no input that would have
+ *  allowed the parsers to consume more input. */
++ (NSString *)unsatisfiable;
++ (NSString *)choice;
 @end

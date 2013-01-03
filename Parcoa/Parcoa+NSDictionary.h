@@ -34,7 +34,8 @@
  */
 
 #import "Parcoa.h"
+#import "ParcoaParser.h"
 
 @interface Parcoa (NSDictionary)
-+ (ParcoaParser)dictionary:(ParcoaParser)parser;
++ (ParcoaParser *)dictionary:(ParcoaParser *)parser;
 @end

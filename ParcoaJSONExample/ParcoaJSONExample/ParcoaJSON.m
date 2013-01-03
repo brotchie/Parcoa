@@ -34,18 +34,15 @@
 */
 
 #import "ParcoaJSON.h"
-#import "Parcoa+Combinators.h"
-#import "Parcoa+Numbers.h"
-#import "Parcoa+NSDictionary.h"
 
-static ParcoaParser _parser;
+static ParcoaParser *_parser;
 
 @interface ParcoaJSON ()
-+ (ParcoaParser)buildParser;
++ (ParcoaParser *)buildParser;
 @end
 
 @implementation ParcoaJSON
-+ (ParcoaParser)parser {
++ (ParcoaParser *)parser {
     if (!_parser) {
         _parser = [ParcoaJSON buildParser];
     }
@@ -54,30 +51,30 @@ static ParcoaParser _parser;
 
 #pragma mark - Parser Construction
 
-+ (ParcoaParser)buildParser {
-    ParcoaParser colon        = [Parcoa skipSurroundingSpaces:[Parcoa unichar:':']];
-    ParcoaParser comma        = [Parcoa skipSurroundingSpaces:[Parcoa unichar:',']];
-    ParcoaParser openBrace    = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'{']];
-    ParcoaParser closeBrace   = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'}']];
-    ParcoaParser openBracket  = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'[']];
-    ParcoaParser closeBracket = [Parcoa skipSurroundingSpaces:[Parcoa unichar:']']];
++ (ParcoaParser *)buildParser {
+    ParcoaParser *colon        = [[Parcoa unichar:':'] skipSurroundingSpaces];
+    ParcoaParser *comma        = [[Parcoa unichar:','] skipSurroundingSpaces];
+    ParcoaParser *openBrace    = [[Parcoa unichar:'{'] skipSurroundingSpaces];
+    ParcoaParser *closeBrace   = [[Parcoa unichar:'}'] skipSurroundingSpaces];
+    ParcoaParser *openBracket  = [[Parcoa unichar:'['] skipSurroundingSpaces];
+    ParcoaParser *closeBracket = [[Parcoa unichar:']'] skipSurroundingSpaces];
     
-    ParcoaParser quote         = [Parcoa unichar:'"'];
-    ParcoaParser notQuote      = [Parcoa noneOf:@"\""];
-    ParcoaParser escapedQuote  = [Parcoa string:@"\\\""];
-    ParcoaParser stringContent = [Parcoa concatMany:[Parcoa choice:@[escapedQuote, notQuote]]];
+    ParcoaParser *quote         = [Parcoa unichar:'"'];
+    ParcoaParser *notQuote      = [Parcoa noneOf:@"\""];
+    ParcoaParser *escapedQuote  = [Parcoa string:@"\\\""];
+    ParcoaParser *stringContent = [[escapedQuote or: notQuote] concatMany];
     
-    ParcoaForwardDeclaration(json);
+    ParcoaParserForward *json = [ParcoaParserForward forwardWithName:@"json" summary:@"json forward declaration"];
     
-    ParcoaParser string  = [Parcoa between:quote parser:stringContent right:quote];
-    ParcoaParser null    = [Parcoa string:@"null"];
-    ParcoaParser boolean = [Parcoa bool];
-    ParcoaParser integer = [Parcoa integer];
-    ParcoaParser pair    = [Parcoa sequential:@[[Parcoa sequentialKeepLeftMost:@[string, colon]], json]];
-    ParcoaParser object  = [Parcoa dictionary:[Parcoa between:openBrace parser:[Parcoa sepBy:pair delimiter:comma] right:closeBrace]];
-    ParcoaParser list    = [Parcoa between:openBracket parser:[Parcoa sepBy:json delimiter:comma] right:closeBracket];
+    ParcoaParser *string  = [stringContent between:quote and: quote];
+    ParcoaParser *null    = [Parcoa string:@"null"];
+    ParcoaParser *boolean = [Parcoa bool];
+    ParcoaParser *integer = [Parcoa integer];
+    ParcoaParser *pair    = [[string keepLeft: colon] then: json];
+    ParcoaParser *object  = [[[pair sepBy:comma] between:openBrace   and: closeBrace] dictionary];
+    ParcoaParser *list    =  [[json sepBy:comma] between:openBracket and: closeBracket];
 
-    ParcoaForwardImpl(json) = [Parcoa choice:@[object, list, string, integer, boolean, null]];
+    [json setImplementation:[Parcoa choice:@[object, list, string, integer, boolean, null]]];
     
     return json;
 }

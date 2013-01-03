@@ -33,7 +33,8 @@
 
 */
 
-#import "Parcoa.h"
+#import "Parcoa+Internal.h"
+#import "ParcoaParser.h"
 
 typedef id (^ParcoaValueTransform)(id value);
 
@@ -43,78 +44,71 @@ typedef id (^ParcoaValueTransform)(id value);
 
 /** Returns the value of the first parser to
  *  match in an array. */
-+ (ParcoaParser)choice:(NSArray *)parsers;
++ (ParcoaParser *)choice:(NSArray *)parsers;
 
 /** Matches a parser n times. */
-+ (ParcoaParser)count:(ParcoaParser)parser n:(NSUInteger)n;
++ (ParcoaParser *)count:(ParcoaParser *)parser n:(NSUInteger)n;
 
 /** If parser fails then return default value, otherwise return
  *  parser's value. */
-+ (ParcoaParser)option:(ParcoaParser)parser default:(id)value;
++ (ParcoaParser *)option:(ParcoaParser *)parser default:(id)value;
 
 /** If parser fails then return [NSNull null], otherwise return
  *  parser's value. */
-+ (ParcoaParser)optional:(ParcoaParser)parser;
++ (ParcoaParser *)optional:(ParcoaParser *)parser;
 
 /** Only matches if parser matches and mustFail fails. mustFail will
  *  not consume output. Returns the value of parser. */
-+ (ParcoaParser)notFollowedBy:(ParcoaParser)parser mustFail:(ParcoaParser)mustFail;
++ (ParcoaParser *)parser:(ParcoaParser *)parser notFollowedBy:(ParcoaParser *)following;
 
 /** Matches a parser zero or more times returning an
  *  array of the values returned by children. */
-+ (ParcoaParser)many:(ParcoaParser)parser;
++ (ParcoaParser *)many:(ParcoaParser *)parser;
 
 /** Matches a parser one or more times returning an
  *  array of the values returned by children. */
-+ (ParcoaParser)many1:(ParcoaParser)parser;
++ (ParcoaParser *)many1:(ParcoaParser *)parser;
 
 /** Matches a parser zero or more times separated
  *  by a delimiter parser. */
-+ (ParcoaParser)sepBy:(ParcoaParser)parser delimiter:(ParcoaParser)delimiter;
++ (ParcoaParser *)sepBy:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter;
 
 /** Matches a parser one or more times separated
  *  by a delimiter parser. */
-+ (ParcoaParser)sepBy1:(ParcoaParser)parser delimiter:(ParcoaParser)delimiter;
++ (ParcoaParser *)sepBy1:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter;
 
 /** Matches an array of parsers in order. If all parsers
  *  match OK then the result value is an array
  *  containing all of the individual parser's values. */
-+ (ParcoaParser)sequential:(NSArray *)parsers;
++ (ParcoaParser *)sequential:(NSArray *)parsers;
 
-/** Matches an array of parsers in order. If all parsers
- *  match OK then the result value is the value of the n'th
- *  matched parser. */
-+ (ParcoaParser)sequential:(NSArray *)parsers keepIndex:(NSInteger)n;
+/** Matches both parsers and return the left parser's value. */
++ (ParcoaParser *)keepLeft:(ParcoaParser *)left right:(ParcoaParser *)right;
 
-/** Matches an array of parsers in order. If all parsers
- *  match OK then the result value is the value of the
- *  first matched parser. */
-+ (ParcoaParser)sequentialKeepLeftMost:(NSArray *)parsers;
-
-/** Matches an array of parsers in order. If all parsers
- *  match OK then the result value is the value of the
- *  last matched parser. */
-+ (ParcoaParser)sequentialKeepRightMost:(NSArray *)parsers;
+/** Matches both parsers and return the right parser's value. */
++ (ParcoaParser *)keepRight:(ParcoaParser *)left right:(ParcoaParser *)right;
 
 /** Matches parser sandwiched between a left and right parser.
  *  If all parsers match then the central value is returned. */
-+ (ParcoaParser)between:(ParcoaParser)left parser:(ParcoaParser)parser right:(ParcoaParser)right;
++ (ParcoaParser *)between:(ParcoaParser *)left parser:(ParcoaParser *)parser right:(ParcoaParser *)right;
 
 /** If the wrapped parser matches OK then the result value is
  *  transformed by the transform block. This operation
- *  is equivalent to bind on the ParcoaParser Monad. */
-+ (ParcoaParser)transform:(ParcoaParser)parser by:(ParcoaValueTransform)transform;
+ *  is equivalent to bind on the ParcoaParser * Monad. */
++ (ParcoaParser *)parser:(ParcoaParser *)parser transform:(ParcoaValueTransform)transform name:(NSString *)name;
 
 /** Concatenates the array of strings returns by the parser
  *  into a single string. */
-+ (ParcoaParser)concat:(ParcoaParser)parser;
++ (ParcoaParser *)concat:(ParcoaParser *)parser;
 
 /** Many followed by concat in a single combinator. */
-+ (ParcoaParser)concatMany:(ParcoaParser)parser;
++ (ParcoaParser *)concatMany:(ParcoaParser *)parser;
 
 /** Many1 followed by concat in a single combinator. */
-+ (ParcoaParser)concatMany1:(ParcoaParser)parser;
++ (ParcoaParser *)concatMany1:(ParcoaParser *)parser;
 
 /** Matches the parser, skipping any whitespace before of after. */
-+ (ParcoaParser)skipSurroundingSpaces:(ParcoaParser)parser;
++ (ParcoaParser *)skipSurroundingSpaces:(ParcoaParser *)parser;
+
++ (ParcoaParser *)parser:(ParcoaParser *)parser valueAtIndex:(NSUInteger)index;
 @end
