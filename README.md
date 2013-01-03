@@ -2,23 +2,29 @@
 ## Parser Combinators for Objective-C
 **Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package. It is released under a MIT license.
 
-### What the heck is a parser combinator?
-Consider a very simple parser that parses the unicode character `'a'`
+### Pure Parcoa Parsers
+A Parcoa parser is any pure function that takes a single `NSString *` argument, attempts to parse some value from this string, then returns an `OK` or `Fail` result. On success the parser returns both the parsed value and the unconsumed residual input. On failure the parser returns a string description of what it *expected* to find in the input.
+
+![Parser Diagram](https://raw.github.com/brotchie/Parcoa/master/docs/diagrams/parser.png)
+
+Consider a very simple parser that expects the unicode character `'a'`
 
     ParcoaParser simpleA = [Parcoa unichar:'a'];
 
 If we pass it the string `"abcd"` it parses the first character and returns an OK result:
 
     ParcoaResult *result = simpleA(@"abcd");
-    NSAssert(result.isOK, @"simpleA parser should parse abcd.");
-    NSAssert([result.value isEqualToString:@"a"],
-             @"simpleA parser should return value 'a'");
+    
+    result.isOK == TRUE
+    result.value == @"a"
 
 If there's no leading `'a'` then parsing fails:
 
     ParcoaResult *result = simpleA(@"bcd");
-    NSAssert(result.isFail, @"simpleA parser shouldn't parse bcd.");
     
+    result.isFail == TRUE
+
+### What the heck is a parser combinator?
 A [parser combinator](http://en.wikipedia.org/wiki/Parser_combinator) is simply a function that takes one or more parsers as arguments and creates a *new* parser with added functionality.
 
 ```
@@ -26,8 +32,9 @@ A [parser combinator](http://en.wikipedia.org/wiki/Parser_combinator) is simply 
 ParcoaParser manyA = [Parcoa many:simpleA];
 
 ParcoaResult *result = manyA(@"aaaabcd");
-NSAssert(result.isOK, @"manyA parser should parse aaaabcd");
-NSAssert([result.value isEqual:@[@"a", @"a", @"a", @"a"]]);
+
+result.isOK == TRUE
+result.value == @[@"a", @"a", @"a", @"a"]]
 ```
 
 ```
@@ -36,12 +43,13 @@ ParcoaParser manyAConcat = [Parcoa concat:manyA];
 ParcoaParser thisorthat = [Parcoa choice:@[manyAConcat, hello]];
 
 ParcoaResult *result = thisorthat(@"helloworld");
-NSAssert(result.isOK);
-NSAssert([result.value isEqual:@"hello"]);
+
+result.isOK == TRUE
+result.value == @"hello"
 
 result = thisorthat(@"aaaaaworld");
-NSAssert(result.isOK);
-NSAssert([result.value isEqual:@"aaaaa"]);
+result.isOK == TRUE
+result.value = @"aaaaa"
 
 ```
     
