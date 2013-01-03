@@ -107,3 +107,35 @@ we get native Objective-C objects as output
 
 ## Installing
 You can clone Parcoa from it's [github repository](https://github.com/brotchie/Parcoa) or install it using [CocoaPods](http://cocoapods.org/).
+
+### CocoaPod
+Install and configure [CocoaPods](http://cocoapods.org/).
+
+In the root of your project create a file named `Podfile` containing
+
+    xcodeproj '<# YOUR PROJECT #>.xcodeproj'
+    pod 'Parcoa', :git => "https://github.com/brotchie/Parcoa.git"
+    
+then run
+
+    pod install
+    
+**Note:** After running `pod install` open `<# YOUR PROJECT #>.xcworkspace` in xcode, not `<# YOUR PROJECT #>.xcodeproj`.
+    
+### Git
+Parcoa builds a static library `libParcoa.a`. The library target is in `Parcoa.xcodeproj`. To link Parcoa with your target:
+
+1. Clone the `Parcoa` github repostiory ```git clone https://github.com/brotchie/Parcoa.git```.
+2. Drag `Parcoa.xcodeproj` into your XCode project.
+3. Add `libParcoa.a` to `Linked Frameworks and Libraries` on your target's `Summary` tab.
+4. Ensure `Parcoa (Parcoa)` is in `Target Dependencies` on your target's `Build Phases` tab.
+5. Add `-ObjC` to `Other Linker Flags` on your target's `Build Settings` tab.
+
+### Git Submodule
+From the root of your project clone the `Parcoa` repostiory into a git submodule
+
+    mkdir -p Submodules
+    git submodule add https://github.com/brotchie/Parcoa.git Submodules/Parcoa
+    git submodule update --init
+    
+then follow the steps under the **Git** heading above.
