@@ -42,4 +42,10 @@
         return [NSNumber numberWithInteger:[value integerValue]];
     }];
 }
+
++ (ParcoaParser)bool {
+    return [Parcoa transform:[Parcoa choice:@[[Parcoa string:@"true"], [Parcoa string:@"false"]]] by:^NSNumber *(NSString *value) {
+        return [NSNumber numberWithBool:[value boolValue]];
+    }];
+}
 @end

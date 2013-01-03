@@ -100,11 +100,6 @@ typedef id (^ParcoaValueTransform)(id value);
  *  If all parsers match then the central value is returned. */
 + (ParcoaParser)between:(ParcoaParser)left parser:(ParcoaParser)parser right:(ParcoaParser)right;
 
-/** Matches a parser sandwiched between two "bookend" parsers.
- *  If the central and bookend parsers all match OK then the result
- *  value is the value of the central parser. */
-+ (ParcoaParser)surrounded:(ParcoaParser)parser bookend:(ParcoaParser)bookend;
-
 /** If the wrapped parser matches OK then the result value is
  *  transformed by the transform block. This operation
  *  is equivalent to bind on the ParcoaParser Monad. */
@@ -119,4 +114,7 @@ typedef id (^ParcoaValueTransform)(id value);
 
 /** Many1 followed by concat in a single combinator. */
 + (ParcoaParser)concatMany1:(ParcoaParser)parser;
+
+/** Matches the parser, skipping any whitespace before of after. */
++ (ParcoaParser)skipSurroundingSpaces:(ParcoaParser)parser;
 @end

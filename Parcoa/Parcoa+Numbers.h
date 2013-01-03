@@ -36,5 +36,10 @@
 #import "Parcoa.h"
 
 @interface Parcoa (Numbers)
+/** Parses an integer and returns it as a NSNumber. */
 + (ParcoaParser)integer;
+
+/** Parses a boolean "true" or "false" and returns it
+ *  as a NSNumber. */
++ (ParcoaParser)bool;
 @end

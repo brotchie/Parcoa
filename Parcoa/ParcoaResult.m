@@ -77,7 +77,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Remaining: %d Expected: %@", self.charactersRemaining, self.expected];
+    return [NSString stringWithFormat:@"Remaining: %u Expected: %@", self.charactersRemaining, self.expected];
 }
 
 @end
@@ -198,7 +198,7 @@
 - (NSString *)formatTraceback:(NSString *)input context:(ParcoaFailContext *)context indent:(NSUInteger)indent {
     ParcoaLineColumn position = [input lineAndColumnForIndex:input.length - context.charactersRemaining];
     NSString *tabs = [@"" stringByPaddingToLength:indent withString:@"\t" startingAtIndex:0];
-    return [NSString stringWithFormat:@"%@Line %d Column %d: %@\n", tabs, position.line, position.column, context.expected];
+    return [NSString stringWithFormat:@"%@Line %u Column %u: %@\n", tabs, position.line, position.column, context.expected];
 }
 
 @end

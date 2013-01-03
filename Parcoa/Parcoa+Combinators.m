@@ -208,10 +208,6 @@
     return [Parcoa sequential:@[left, parser, right] keepIndex:1];
 }
 
-+ (ParcoaParser)surrounded:(ParcoaParser)parser bookend:(ParcoaParser)bookend {
-    return [Parcoa sequential:@[bookend, parser, bookend] keepIndex:1];
-}
-
 + (ParcoaParser)transform:(ParcoaParser)parser by:(ParcoaValueTransform)transform {
     return ^ParcoaResult *(NSString *input) {
         ParcoaResult *result = parser(input);
@@ -235,6 +231,10 @@
 
 + (ParcoaParser)concatMany1:(ParcoaParser)parser {
     return [Parcoa concat:[Parcoa many1:parser]];
+}
+
++ (ParcoaParser)skipSurroundingSpaces:(ParcoaParser)parser {
+    return [Parcoa between:[Parcoa spaces] parser:parser right:[Parcoa spaces]];
 }
 
 @end

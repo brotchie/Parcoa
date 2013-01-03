@@ -85,7 +85,10 @@ typedef BOOL (^ParcoaUnicharPredicate)(unichar);
  */
 + (ParcoaParser)take:(NSUInteger)n;
 
+/** A single character that a member of the set. */
 + (ParcoaParser)oneOf:(NSString *)set;
+
+/** A single character that isn't a member of the set. */
 + (ParcoaParser)noneOf:(NSString *)set;
 
 /** A single unicode character that satisifes the supplied
