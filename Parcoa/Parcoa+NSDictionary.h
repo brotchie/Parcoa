@@ -37,5 +37,8 @@
 #import "ParcoaParser.h"
 
 @interface Parcoa (NSDictionary)
+/** Naturally transforms the value of a parser
+ *  returning a NSArray of two element NSArrays
+ *  into a dictionary. */
 + (ParcoaParser *)dictionary:(ParcoaParser *)parser;
 @end

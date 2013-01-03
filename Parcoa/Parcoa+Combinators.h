@@ -46,6 +46,9 @@ typedef id (^ParcoaValueTransform)(id value);
  *  match in an array. */
 + (ParcoaParser *)choice:(NSArray *)parsers;
 
+/** Equivalent to [Parcoa choice:@[parser, right]]. */
++ (ParcoaParser *)parser:(ParcoaParser *)parser or:(ParcoaParser *)right;
+
 /** Matches a parser n times. */
 + (ParcoaParser *)count:(ParcoaParser *)parser n:(NSUInteger)n;
 
@@ -82,11 +85,14 @@ typedef id (^ParcoaValueTransform)(id value);
  *  containing all of the individual parser's values. */
 + (ParcoaParser *)sequential:(NSArray *)parsers;
 
+/** Equivalent to [Parcoa sequential:@[parser, right]]. */
++ (ParcoaParser *)parser:(ParcoaParser *)parser then:(ParcoaParser *)right;
+
 /** Matches both parsers and return the left parser's value. */
-+ (ParcoaParser *)keepLeft:(ParcoaParser *)left right:(ParcoaParser *)right;
++ (ParcoaParser *)parser:(ParcoaParser *)left keepLeft:(ParcoaParser *)right;
 
 /** Matches both parsers and return the right parser's value. */
-+ (ParcoaParser *)keepRight:(ParcoaParser *)left right:(ParcoaParser *)right;
++ (ParcoaParser *)parser:(ParcoaParser *)left keepRight:(ParcoaParser *)right;
 
 /** Matches parser sandwiched between a left and right parser.
  *  If all parsers match then the central value is returned. */
@@ -110,5 +116,7 @@ typedef id (^ParcoaValueTransform)(id value);
 /** Matches the parser, skipping any whitespace before of after. */
 + (ParcoaParser *)skipSurroundingSpaces:(ParcoaParser *)parser;
 
+/** For parsers with NSArray return values returns the element at the
+ *  provided index. */
 + (ParcoaParser *)parser:(ParcoaParser *)parser valueAtIndex:(NSUInteger)index;
 @end

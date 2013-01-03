@@ -38,36 +38,6 @@
 
 @implementation Parcoa (Combinators)
 
-+ (ParcoaParser *)sequential:(NSArray *)parsers {
-    NSString *summary = [[parsers valueForKeyPath:@"description"] componentsJoinedByString:@", "];
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
-        NSMutableArray *values = [NSMutableArray array];
-        NSMutableArray *results = [NSMutableArray array];
-        NSString *residual = input;
-        for (NSUInteger i = 0; i < parsers.count; i++) {
-            ParcoaParser *parser = parsers[i];
-            ParcoaResult *result = [parser parse:residual];
-            [results addObject:result];
-            
-            if (result.isOK) {
-                residual = result.residual;
-                [values setObject:result.value atIndexedSubscript:i];
-            } else {
-                return [ParcoaResult failWithChildren:results remaining:input expected:@"All parsers in sequence to match"];
-            }
-        }
-        return [ParcoaResult okWithChildren:results value:values residual:residual expected:[ParcoaExpectation unsatisfiable]];
-    } name:@"sequential" summary:summary];
-}
-
-+ (ParcoaParser *)keepLeft:(ParcoaParser *)left right:(ParcoaParser *)right {
-    return [Parcoa parser:[Parcoa sequential:@[left, right]] valueAtIndex:0];
-}
-
-+ (ParcoaParser *)keepRight:(ParcoaParser *)left right:(ParcoaParser *)right {
-    return [Parcoa parser:[Parcoa sequential:@[left, right]] valueAtIndex:1];
-}
-
 + (ParcoaParser *)choice:(NSArray *)parsers {
     NSString *summary = [[parsers valueForKeyPath:@"description"] componentsJoinedByString:@", "];
     
@@ -87,6 +57,10 @@
         return [ParcoaResult failWithChildren:failures remaining:input expected:@"At least one match"];
 
     } name:@"choice" summary:summary];
+}
+
++ (ParcoaParser *)parser:(ParcoaParser *)parser or:(ParcoaParser *)right {
+    return [Parcoa choice:@[parser, right]];
 }
 
 + (ParcoaParser *)count:(ParcoaParser *)parser n:(NSUInteger)n {
@@ -175,7 +149,7 @@
 
 + (ParcoaParser *)sepBy1:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter {
     return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
-        ParcoaResult *result = [[Parcoa sequential:@[parser, [Parcoa many:[Parcoa keepRight:delimiter right:parser]]]] parse:input];
+        ParcoaResult *result = [[Parcoa sequential:@[parser, [Parcoa many:[Parcoa parser:delimiter keepRight:parser]]]] parse:input];
         if (result.isOK) {
             id value = [@[result.value[0]] arrayByAddingObjectsFromArray:result.value[1]];
             return [ParcoaResult okWithChildren:@[result] value:value residual:result.residual expected:@"More matches of delimiter and child parser"];
@@ -183,6 +157,40 @@
             return [result prependExpectationWithRemaining:input expected:@"Expected one or more separated items."];
         }
     } name:@"sepBy1" summaryWithFormat:@"%@, %@", parser, delimiter];
+}
+
++ (ParcoaParser *)sequential:(NSArray *)parsers {
+    NSString *summary = [[parsers valueForKeyPath:@"description"] componentsJoinedByString:@", "];
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+        NSMutableArray *values = [NSMutableArray array];
+        NSMutableArray *results = [NSMutableArray array];
+        NSString *residual = input;
+        for (NSUInteger i = 0; i < parsers.count; i++) {
+            ParcoaParser *parser = parsers[i];
+            ParcoaResult *result = [parser parse:residual];
+            [results addObject:result];
+            
+            if (result.isOK) {
+                residual = result.residual;
+                [values setObject:result.value atIndexedSubscript:i];
+            } else {
+                return [ParcoaResult failWithChildren:results remaining:input expected:@"All parsers in sequence to match"];
+            }
+        }
+        return [ParcoaResult okWithChildren:results value:values residual:residual expected:[ParcoaExpectation unsatisfiable]];
+    } name:@"sequential" summary:summary];
+}
+
++ (ParcoaParser *)parser:(ParcoaParser *)parser then:(ParcoaParser *)right {
+    return [Parcoa sequential:@[parser, right]];
+}
+
++ (ParcoaParser *)parser:(ParcoaParser *)left keepLeft:(ParcoaParser *)right {
+    return [Parcoa parser:[Parcoa sequential:@[left, right]] valueAtIndex:0];
+}
+
++ (ParcoaParser *)parser:(ParcoaParser *)left keepRight:(ParcoaParser *)right {
+    return [Parcoa parser:[Parcoa sequential:@[left, right]] valueAtIndex:1];
 }
 
 + (ParcoaParser *)between:(ParcoaParser *)left parser:(ParcoaParser *)parser right:(ParcoaParser *)right {

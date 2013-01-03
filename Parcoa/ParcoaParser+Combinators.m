@@ -37,44 +37,12 @@
 
 @implementation ParcoaParser (Combinators)
 
-- (ParcoaParser *)transform:(ParcoaValueTransform)transform name:(NSString *)name {
-    return [Parcoa parser:self transform:transform name:name];
-}
-
-- (ParcoaParser *)valueAtIndex:(NSUInteger)index {
-    return [Parcoa parser:self valueAtIndex:index];
-}
-
-- (ParcoaParser *)keepLeft:(ParcoaParser *)right {
-    return [Parcoa keepLeft:self right:right];
-}
-
-- (ParcoaParser *)keepRight:(ParcoaParser *)right {
-    return [Parcoa keepRight:self right:right];
-}
-
-- (ParcoaParser *)sepBy:(ParcoaParser *)delimiter {
-    return [Parcoa sepBy:self delimiter:delimiter];
-}
-
-- (ParcoaParser *)sepBy1:(ParcoaParser *)delimiter {
-    return [Parcoa sepBy1:self delimiter:delimiter];
-}
-
-- (ParcoaParser *)between:(ParcoaParser *)left and:(ParcoaParser *)right {
-    return [Parcoa between:left parser:self right:right];
-}
-
-- (ParcoaParser *)skipSurroundingSpaces {
-    return [Parcoa skipSurroundingSpaces:self];
-}
-
 - (ParcoaParser *)or:(ParcoaParser *)right {
     return [Parcoa choice:@[self, right]];
 }
 
-- (ParcoaParser *)then:(ParcoaParser *)right {
-    return [Parcoa sequential:@[self, right]];
+- (ParcoaParser *)withDefault:(id)value {
+    return [Parcoa option:self default:value];
 }
 
 - (ParcoaParser *)many {
@@ -85,11 +53,51 @@
     return [Parcoa many1:self];
 }
 
+- (ParcoaParser *)sepBy:(ParcoaParser *)delimiter {
+    return [Parcoa sepBy:self delimiter:delimiter];
+}
+
+- (ParcoaParser *)sepBy1:(ParcoaParser *)delimiter {
+    return [Parcoa sepBy1:self delimiter:delimiter];
+}
+
+- (ParcoaParser *)then:(ParcoaParser *)right {
+    return [Parcoa sequential:@[self, right]];
+}
+
+- (ParcoaParser *)keepLeft:(ParcoaParser *)right {
+    return [Parcoa parser:self keepLeft:right];
+}
+
+- (ParcoaParser *)keepRight:(ParcoaParser *)right {
+    return [Parcoa parser:self keepRight:right];
+}
+
+- (ParcoaParser *)between:(ParcoaParser *)left and:(ParcoaParser *)right {
+    return [Parcoa between:left parser:self right:right];
+}
+
 - (ParcoaParser *)concat {
     return [Parcoa concat:self];
 }
 
 - (ParcoaParser *)concatMany {
     return [Parcoa concatMany:self];
+}
+
+- (ParcoaParser *)concatMany1 {
+    return [Parcoa concatMany1:self];
+}
+
+- (ParcoaParser *)skipSurroundingSpaces {
+    return [Parcoa skipSurroundingSpaces:self];
+}
+
+- (ParcoaParser *)transform:(ParcoaValueTransform)transform name:(NSString *)name {
+    return [Parcoa parser:self transform:transform name:name];
+}
+
+- (ParcoaParser *)valueAtIndex:(NSUInteger)index {
+    return [Parcoa parser:self valueAtIndex:index];
 }
 @end

@@ -62,7 +62,7 @@ static ParcoaParser *_parser;
     ParcoaParser *quote         = [Parcoa unichar:'"'];
     ParcoaParser *notQuote      = [Parcoa noneOf:@"\""];
     ParcoaParser *escapedQuote  = [Parcoa string:@"\\\""];
-    ParcoaParser *stringContent = [[escapedQuote or: notQuote] concatMany];
+    ParcoaParser *stringContent = [Parcoa concatMany:[escapedQuote or: notQuote]];
     
     ParcoaParserForward *json = [ParcoaParserForward forwardWithName:@"json" summary:@"json forward declaration"];
     

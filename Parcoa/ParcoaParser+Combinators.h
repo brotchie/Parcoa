@@ -36,19 +36,29 @@
 #import "ParcoaParser.h"
 #import "Parcoa+Combinators.h"
 
+/** The parser combinators in the Parcoa+Combinators category
+ *  are all pure class methods. This ParcoaParser+Combinators
+ *  category adds instance methods to easily apply combinators. */
 @interface ParcoaParser (Combinators)
-- (ParcoaParser *)transform:(ParcoaValueTransform)transform name:(NSString *)name;
-- (ParcoaParser *)valueAtIndex:(NSUInteger)index;
-- (ParcoaParser *)keepLeft:(ParcoaParser *)right;
-- (ParcoaParser *)keepRight:(ParcoaParser *)right;
-- (ParcoaParser *)sepBy:(ParcoaParser *)delimiter;
-- (ParcoaParser *)sepBy1:(ParcoaParser *)delimiter;
-- (ParcoaParser *)between:(ParcoaParser *)left and:(ParcoaParser *)right;
-- (ParcoaParser *)skipSurroundingSpaces;
+
 - (ParcoaParser *)or:(ParcoaParser *)right;
-- (ParcoaParser *)then:(ParcoaParser *)right;
+
+/** Equivalent to [Parcoa choice:self default:value]. */
+- (ParcoaParser *)withDefault:(id)value;
+
 - (ParcoaParser *)many;
 - (ParcoaParser *)many1;
+- (ParcoaParser *)sepBy:(ParcoaParser *)delimiter;
+- (ParcoaParser *)sepBy1:(ParcoaParser *)delimiter;
+- (ParcoaParser *)then:(ParcoaParser *)right;
+- (ParcoaParser *)keepLeft:(ParcoaParser *)right;
+- (ParcoaParser *)keepRight:(ParcoaParser *)right;
+- (ParcoaParser *)between:(ParcoaParser *)left and:(ParcoaParser *)right;
 - (ParcoaParser *)concat;
 - (ParcoaParser *)concatMany;
+- (ParcoaParser *)concatMany1;
+- (ParcoaParser *)skipSurroundingSpaces;
+- (ParcoaParser *)transform:(ParcoaValueTransform)transform name:(NSString *)name;
+- (ParcoaParser *)valueAtIndex:(NSUInteger)index;
+
 @end
