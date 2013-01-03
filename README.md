@@ -102,6 +102,14 @@ we get native Objective-C objects as output
             Name = James;
         }
     )
+    
+## Contibuting
+Parcoa is still in active development. Some current sore points:
+
+- There is some unit test coverage. Ideally all primitive parsers and combinators will have full unit tests.
+- There are no performance benchmarks.
+- Most of the Parsec combinators are implemented. If you find a recurring primitive pattern or combinator during your parsing travails, feel free to send a pull request.
+- Error reporting and tracebacks are currently *programmer* and not *end user* friendly.
 
 ## Installing
 You can clone Parcoa from it's [github repository](https://github.com/brotchie/Parcoa) or install it using [CocoaPods](http://cocoapods.org/).
