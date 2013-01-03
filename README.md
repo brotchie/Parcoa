@@ -54,5 +54,56 @@ result.isOK == TRUE
 result.value = @"aaaaa"
 
 ```
-    
+### A simple JSON parser
+Here's a simple JSON parser written using Parcoa. It supports escaped quotes in strings by only support integral number literals.
 
+```objc
+ParcoaParser colon        = [Parcoa skipSurroundingSpaces:[Parcoa unichar:':']];
+ParcoaParser comma        = [Parcoa skipSurroundingSpaces:[Parcoa unichar:',']];
+ParcoaParser openBrace    = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'{']];
+ParcoaParser closeBrace   = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'}']];
+ParcoaParser openBracket  = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'[']];
+ParcoaParser closeBracket = [Parcoa skipSurroundingSpaces:[Parcoa unichar:']']];
+
+ParcoaParser quote         = [Parcoa unichar:'"'];
+ParcoaParser notQuote      = [Parcoa noneOf:@"\""];
+ParcoaParser escapedQuote  = [Parcoa string:@"\\\""];
+ParcoaParser stringContent = [Parcoa concatMany:[Parcoa choice:@[escapedQuote, notQuote]]];
+
+ParcoaForwardDeclaration(json);
+
+ParcoaParser string  = [Parcoa between:quote parser:stringContent right:quote];
+ParcoaParser null    = [Parcoa string:@"null"];
+ParcoaParser boolean = [Parcoa bool];
+ParcoaParser integer = [Parcoa integer];
+ParcoaParser pair    = [Parcoa sequential:@[
+                         [Parcoa sequentialKeepLeftMost:@[string, colon]],
+                         json]];
+ParcoaParser object  = [Parcoa dictionary:
+                         [Parcoa between:openBrace
+                                  parser:[Parcoa sepBy:pair delimiter:comma]
+                                   right:closeBrace]];
+ParcoaParser list    = [Parcoa between:openBracket
+                                parser:[Parcoa sepBy:json delimiter:comma] 
+                                 right:closeBracket];
+                                 
+ParcoaForwardImpl(json) = [Parcoa choice:@[object, list, string, integer, boolean, null]];
+```
+
+If we run the parser on some input
+
+    ParcoaResult *result = json(@"[{\"name\" : \"James\", \"age\" : 28, \"active\" : true}]")
+    NSLog(@"%@", result.value);
+
+we get native Objective-C objects as output
+
+    2013-01-03 11:16:46.666 ParcoaJSONExample[20822:c07] (
+            {
+            Active = 1;
+            Age = 28;
+            Name = James;
+        }
+    )
+
+## Installing
+You can clone Parcoa from it's [github repository](https://github.com/brotchie/Parcoa) or install it using [CocoaPods](http://cocoapods.org/).
