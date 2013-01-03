@@ -58,7 +58,7 @@ result.value = @"aaaaa"
 
 ```
 ### A simple JSON parser
-Here's a simple JSON parser written using Parcoa. It supports escaped quotes in strings by only support integral number literals.
+Below is a simple JSON Parcoa parser. It currently only supports integral number literals.
 
 ```objc
 ParcoaParser *colon        = [[Parcoa unichar:':'] skipSurroundingSpaces];
