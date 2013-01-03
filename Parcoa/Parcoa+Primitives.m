@@ -41,7 +41,7 @@
 + (ParcoaParser *)satisfy:(ParcoaPredicate *)predicate {
     return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
         if (input.length && [predicate check:[input characterAtIndex:0]]) {
-            NSString *value = [input substringFromIndex:0];
+            NSString *value = [input substringToIndex:1];
             NSString *residual = [input substringFromIndex:1];
             return [ParcoaResult ok:value residual:residual expected:[ParcoaExpectation unsatisfiable]];
         } else {

@@ -77,4 +77,8 @@
     return _block(input);
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@(%@)", self.name, self.summary];
+}
+
 @end

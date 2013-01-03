@@ -43,7 +43,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     //NSLog(@"%d", [@"false" boolValue]);
     NSString *json = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"json"] encoding:NSUTF8StringEncoding error:nil];
-    json = @"[1 2]";
+    //json = @"{\"name\" : \"James\"}";
+    json = @"[{\"name\" : \"James\", \"age\" : 28 \"active\" : true}]";
     //ParcoaResult *result = [Parcoa runParserWithTraceback:[ParcoaJSON parser] input:json];
     ParcoaResult *result = [[ParcoaJSON parser] parse:json];
     if (result.isOK) {
