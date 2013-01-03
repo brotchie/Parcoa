@@ -102,8 +102,35 @@ we get native Objective-C objects as output
             Name = James;
         }
     )
+
+Paroca parsers generate tracebacks when fed invalid input
+
+    NSString *input = @"[{\"name\" : \"James\", \"age\" : 28 \"active\" : true}]";
+    ParcoaResult *result = [json parse:input];
+    NSLog(@"%@", [result traceback:input]);
+
+```
+2013-01-04 00:20:55.691 ParcoaJSONExample[26758:c07] Line 1 Column 1: Expected one or more matches.
+  Line 1 Column 1: Expected all parsers in sequence to match.
+    Line 1 Column 2: Expected optional child parser matched.
+	  Line 1 Column 2: Expected one or more separated items.
+		Line 1 Column 2: Expected all parsers in sequence to match.
+		  Line 1 Column 2: Expected one or more matches.
+			Line 1 Column 2: Expected all parsers in sequence to match.
+              Line 1 Column 31: Expected more matches of delimiter and child parser.
+			    Line 1 Column 31: Expected more matches of child parser.
+			      Line 1 Column 31: Expected all parsers in sequence to match.
+					Line 1 Column 31: Expected all parsers in sequence to match.
+				  	  Line 1 Column 32: Expected Character matching predicate inCharacterSet(whitespace).
+					  Line 1 Column 32: Expected Character matching predicate isUnichar(',').
+			  Line 1 Column 31: Expected all parsers in sequence to match.
+			    Line 1 Column 32: Expected Character matching predicate inCharacterSet(whitespace).
+				Line 1 Column 32: Expected Character matching predicate isUnichar('}').
+```
+
+The parser encountered invalid input at `Line 1 Column 32` and was expecting a space, comma `,` or close brace `}`.
     
-## Contibuting
+## Contributing
 Parcoa is still in active development. Some current sore points:
 
 - There is some unit test coverage. Ideally all primitive parsers and combinators will have full unit tests.
