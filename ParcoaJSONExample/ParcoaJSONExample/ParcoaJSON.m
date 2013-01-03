@@ -55,32 +55,27 @@ static ParcoaParser _parser;
 #pragma mark - Parser Construction
 
 + (ParcoaParser)buildParser {
-    ParcoaParser (^skipSurroundingSpace)(unichar c) = ^ParcoaParser(unichar c) {
-        return [Parcoa between:[Parcoa spaces] parser:[Parcoa unichar:c] right:[Parcoa spaces]];
-    };
-    
-    // Eliminate any white space surrounding delimiters.
-    ParcoaParser kvSeparator  = skipSurroundingSpace(':');
-    ParcoaParser comma        = skipSurroundingSpace(',');
-    ParcoaParser openBrace    = skipSurroundingSpace('{');
-    ParcoaParser closeBrace   = skipSurroundingSpace('}');
-    ParcoaParser openBracket  = skipSurroundingSpace('[');
-    ParcoaParser closeBracket = skipSurroundingSpace(']');
+    ParcoaParser colon        = [Parcoa skipSurroundingSpaces:[Parcoa unichar:':']];
+    ParcoaParser comma        = [Parcoa skipSurroundingSpaces:[Parcoa unichar:',']];
+    ParcoaParser openBrace    = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'{']];
+    ParcoaParser closeBrace   = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'}']];
+    ParcoaParser openBracket  = [Parcoa skipSurroundingSpaces:[Parcoa unichar:'[']];
+    ParcoaParser closeBracket = [Parcoa skipSurroundingSpaces:[Parcoa unichar:']']];
     
     ParcoaParser quote         = [Parcoa unichar:'"'];
-    ParcoaParser escapedQuote  = [Parcoa string:@"\\\""];
     ParcoaParser notQuote      = [Parcoa noneOf:@"\""];
+    ParcoaParser escapedQuote  = [Parcoa string:@"\\\""];
     ParcoaParser stringContent = [Parcoa concatMany:[Parcoa choice:@[escapedQuote, notQuote]]];
     
     ParcoaForwardDeclaration(json);
     
-    ParcoaParser string = [Parcoa between:quote parser:stringContent right:quote];
+    ParcoaParser string  = [Parcoa between:quote parser:stringContent right:quote];
     ParcoaParser null    = [Parcoa string:@"null"];
-    ParcoaParser boolean = [Parcoa choice:@[[Parcoa string:@"true"], [Parcoa string:@"false"]]];
-    ParcoaParser pair = [Parcoa sequential:@[[Parcoa sequentialKeepLeftMost:@[string, kvSeparator]], json]];
-    ParcoaParser object  = [Parcoa dictionary:[Parcoa sequential:@[openBrace, [Parcoa sepBy:pair delimiter:comma], closeBrace] keepIndex:1]];
-    ParcoaParser list = [Parcoa sequential:@[openBracket, [Parcoa sepBy:json delimiter:comma], closeBracket] keepIndex:1];
+    ParcoaParser boolean = [Parcoa bool];
     ParcoaParser integer = [Parcoa integer];
+    ParcoaParser pair    = [Parcoa sequential:@[[Parcoa sequentialKeepLeftMost:@[string, colon]], json]];
+    ParcoaParser object  = [Parcoa dictionary:[Parcoa between:openBrace parser:[Parcoa sepBy:pair delimiter:comma] right:closeBrace]];
+    ParcoaParser list    = [Parcoa between:openBracket parser:[Parcoa sepBy:json delimiter:comma] right:closeBracket];
 
     ParcoaForwardImpl(json) = [Parcoa choice:@[object, list, string, integer, boolean, null]];
     

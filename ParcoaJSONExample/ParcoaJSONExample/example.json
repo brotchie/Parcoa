@@ -1,3 +1,4 @@
  [{"Name" : "James",
- "Age" : 28}
+ "Age" : 28,
+  "Active" : true}
  ]

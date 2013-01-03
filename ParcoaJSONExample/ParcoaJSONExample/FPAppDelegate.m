@@ -42,6 +42,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //NSLog(@"%d", [@"false" boolValue]);
+    NSLog(@"%@", [ParcoaJSON parser](@"[{\"name\" : \"James\", \"age\" : 28, \"active\" : true}]"));
     NSString *json = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"json"] encoding:NSUTF8StringEncoding error:nil];
     ParcoaResult *result = [Parcoa runParserWithTraceback:[ParcoaJSON parser] input:json];
     if (result.isOK) {
