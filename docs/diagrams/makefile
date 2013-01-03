@@ -11,7 +11,7 @@ pdf: $(PDFFILES)
 	@rubber --pdf $<
 %.png: %.pdf
 	@echo "creating $@..."
-	@convert -density 1200 -scale 10\% -quality 80 $< $@
+	@convert -density 1200 -scale 13\% -quality 100 $< $@
 clean:
 	@rubber --clean --pdf $(TEXFILES:.tex=)
 	@rm -f *.png *.vrb
