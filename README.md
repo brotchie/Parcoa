@@ -28,7 +28,7 @@ If there's no leading `'a'` then parsing fails:
     result.isFail == TRUE
 
 ### What the heck is a parser combinator?
-Although simple and self-contained, basic Parcoa parsers are useless in isolation. A [parser combinator](http://en.wikipedia.org/wiki/Parser_combinator) is a function that takes one or more parsers and creates a *new* parser with added functionality. Combined parsers can be further combined, enabling complex parsing behaviour via composition of parsing primatives.
+Although simple and self-contained, basic Parcoa parsers are useless in isolation. A [parser combinator](http://en.wikipedia.org/wiki/Parser_combinator) is a function that takes one or more parsers and creates a *new* parser with added functionality. Combined parsers can be further combined, enabling complex parsing behaviour via composition of parsing primitives.
 
 For example, instead of a single `'a'` character, we can match any consecutive sequence of a's
 
@@ -132,7 +132,7 @@ Parcoa builds a static library `libParcoa.a`. The library target is in `Parcoa.x
 6. Add `-ObjC` to `Other Linker Flags` on your target's `Build Settings` tab.
 
 ### Git Submodule
-From the root of your project clone the `Parcoa` repostiory into a git submodule
+From the root of your project clone the `Parcoa` repository into a git submodule
 
     mkdir -p Submodules
     git submodule add https://github.com/brotchie/Parcoa.git Submodules/Parcoa
