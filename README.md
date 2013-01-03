@@ -2,6 +2,9 @@
 ## Objective-C Parser Combinators
 **Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package. It is released under a MIT license.
 
+- Primative parsers for consuming unicode characters and strings can be found in [Parcoa+Primitives.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BPrimitives.h).
+- Parser Combinators for combining these parsers can be found in [Parcoa+Combinators.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BCombinators.h).
+
 ### Pure Parcoa Parsers
 A `ParcoaParser *` is a lite wrapper around a function [block](http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html) that takes a single `NSString *` argument, attempts to parse some value from this string, then returns an `OK` or `Fail` result. On success, the parser block returns the parsed *value*, the unconsumed *residual* input, and a message indicating what input would have allowed the parser to consume more characters. On failure, the parser block returns a string description of what it *expected* to find in the input.
 
