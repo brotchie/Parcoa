@@ -54,7 +54,7 @@
                 [failures addObject:result];
             }
         }
-        return [ParcoaResult failWithChildren:failures remaining:input expected:@"At least one match"];
+        return [ParcoaResult failWithChildren:failures remaining:input expected:@"one or more matches"];
 
     } name:@"choice" summary:summary];
 }
@@ -87,7 +87,7 @@
         if (result.isOK) {
             return result;
         } else {
-            return [ParcoaResult okWithChildren:@[result] value:value residual:input expected:@"Optional child parser failed to match"];
+            return [ParcoaResult okWithChildren:@[result] value:value residual:input expected:@"optional child parser matched"];
         }
     } name:@"option" summaryWithFormat:@"%@, %@", value, parser];
 }
@@ -111,7 +111,7 @@
             return result;
         } else {
             // Both parsers OK, this fails the combinator.
-            return [ParcoaResult failWithRemaining:input expected:@"Expected following parser to fail"];
+            return [ParcoaResult failWithRemaining:input expected:@"followed by parser to fail"];
         }
     } name:@"notFollowedBy" summaryWithFormat:@"%@, not %@", parser, following];
 }
@@ -136,9 +136,9 @@
         }
         [results addObject:result];
         if (values.count > 0) {
-            return [ParcoaResult okWithChildren:results value:values residual:residual expected:@"More matches of child parser"];
+            return [ParcoaResult okWithChildren:results value:values residual:residual expected:@"more matches of child parser"];
         } else {
-            return [result prependExpectationWithRemaining:input expected:@"One or more matches of child parser"];
+            return [result prependExpectationWithRemaining:input expected:@"one or more matches of child parser"];
         }
     } name:@"many1" summary:parser.description];
 }
@@ -152,9 +152,9 @@
         ParcoaResult *result = [[Parcoa sequential:@[parser, [Parcoa many:[Parcoa parser:delimiter keepRight:parser]]]] parse:input];
         if (result.isOK) {
             id value = [@[result.value[0]] arrayByAddingObjectsFromArray:result.value[1]];
-            return [ParcoaResult okWithChildren:@[result] value:value residual:result.residual expected:@"More matches of delimiter and child parser"];
+            return [ParcoaResult okWithChildren:@[result] value:value residual:result.residual expected:@"more matches of delimiter and child parser"];
         } else {
-            return [result prependExpectationWithRemaining:input expected:@"Expected one or more separated items."];
+            return [result prependExpectationWithRemaining:input expected:@"one or more separated items"];
         }
     } name:@"sepBy1" summaryWithFormat:@"%@, %@", parser, delimiter];
 }
@@ -174,7 +174,7 @@
                 residual = result.residual;
                 [values setObject:result.value atIndexedSubscript:i];
             } else {
-                return [ParcoaResult failWithChildren:results remaining:input expected:@"All parsers in sequence to match"];
+                return [ParcoaResult failWithChildren:results remaining:input expected:@"all parsers in sequence to match"];
             }
         }
         return [ParcoaResult okWithChildren:results value:values residual:residual expected:[ParcoaExpectation unsatisfiable]];

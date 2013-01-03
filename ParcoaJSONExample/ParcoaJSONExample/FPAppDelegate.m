@@ -49,7 +49,7 @@
     if (result.isOK) {
         NSLog(@"%@", result.value);
     } else {
-        NSLog(@"%@",[result traceback:json full:YES]);
+        NSLog(@"%@",[result traceback:json full:NO]);
     }
     /*[Parcoa runParserWithTraceback:[ParcoaRFC2616 requestParser] input:@"GET /index.html HTTP/1.0\r\nUser-agent: test\r\ncookies: testing 1234\r\n\r\n"];
     NSLog(@"%@", [ParcoaRFC2616 responseParser](@"HTTP/1.0 200 OK\r\nContent-Type: text/plain\r\n\r\n"));*/

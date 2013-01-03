@@ -135,36 +135,34 @@
 #pragma mark - Traceback Generation
 
 - (NSString *)traceback:(NSString *)input {
-    return [self traceback:input full:YES];
+    return [self traceback:input full:NO];
 }
 
 - (NSString *)traceback:(NSString *)input full:(BOOL)full {
-    return [self reduceTraceback:input expectation:self.expectation indent:0 full:full];
+    NSUInteger targetMinCharactersRemaining = full ? NSUIntegerMax : self.expectation.minCharactersRemaining;
+    return [self reduceTraceback:input expectation:self.expectation targetMinCharactersRemaining:targetMinCharactersRemaining indent:0];
 }
 
-- (NSString *)reduceTraceback:(NSString *)input expectation:(ParcoaExpectation *)expectation indent:(NSUInteger)indent full:(BOOL)full{
-    NSMutableString *tb = [NSMutableString stringWithString:[self formatTraceback:input expectation:expectation indent:indent]];
+- (NSString *)reduceTraceback:(NSString *)input expectation:(ParcoaExpectation *)expectation targetMinCharactersRemaining:(NSUInteger)targetMinCharactersRemaining indent:(NSUInteger)indent {
+    NSMutableString *tb = [NSMutableString string];
     
-    if (full) {
-        [expectation.children enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [tb appendString:[self reduceTraceback:input expectation:obj indent:indent+1 full:YES]];
-        }];
-    } else {
-        if (expectation.children) {
-            NSUInteger minCharactersRemaining = [[expectation.children valueForKeyPath:@"@min.minCharactersRemaining"] integerValue];
-            NSUInteger bestChildIndex = [expectation.children indexOfObjectPassingTest:^BOOL(ParcoaExpectation *obj, NSUInteger idx, BOOL *stop) {
-                return obj.minCharactersRemaining == minCharactersRemaining;
-            }];
-            [tb appendString:[self reduceTraceback:input expectation:expectation.children[bestChildIndex] indent:indent+1 full:NO]];
-        }
-    }
+    BOOL isSatisfiable = ![expectation.expected isEqualToString:[ParcoaExpectation unsatisfiable]];
+    
+    if (isSatisfiable)
+        [tb appendString:[self formatTraceback:input expectation:expectation indent:indent]];
+    
+    [expectation.children enumerateObjectsUsingBlock:^(ParcoaExpectation *obj, NSUInteger idx, BOOL *stop) {
+        if (obj.minCharactersRemaining <= targetMinCharactersRemaining) 
+            [tb appendString:[self reduceTraceback:input expectation:obj targetMinCharactersRemaining:targetMinCharactersRemaining indent:indent+isSatisfiable]];
+    }];
+    
     return tb;
 }
 
 - (NSString *)formatTraceback:(NSString *)input expectation:(ParcoaExpectation *)expectation indent:(NSUInteger)indent {
     ParcoaLineColumn position = [input lineAndColumnForIndex:input.length - expectation.charactersRemaining];
     NSString *tabs = [@"" stringByPaddingToLength:indent withString:@"\t" startingAtIndex:0];
-    return [NSString stringWithFormat:@"%@Line %u Column %u: %@\n", tabs, position.line, position.column, expectation.expected];
+    return [NSString stringWithFormat:@"%@Line %u Column %u: Expected %@.\n", tabs, position.line, position.column, expectation.expected];
 }
 
 @end
