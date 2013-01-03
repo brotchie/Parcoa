@@ -3,7 +3,7 @@
 **Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package. It is released under a MIT license.
 
 ### Pure Parcoa Parsers
-A `ParcoaParser *` is a lite wrapper around a function [block](http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html) that takes a single `NSString *` argument, attempts to parse some value from this string, then returns an `OK` or `Fail` result. On success, the parser block returns both the parsed *value* and the unconsumed *residual* input. On failure the parser block returns a string description of what it *expected* to find in the input.
+A `ParcoaParser *` is a lite wrapper around a function [block](http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html) that takes a single `NSString *` argument, attempts to parse some value from this string, then returns an `OK` or `Fail` result. On success, the parser block returns the parsed *value*, the unconsumed *residual* input, and a message indicating what input would have allowed the parser to consume more characters. On failure, the parser block returns a string description of what it *expected* to find in the input.
 
 ![Parser Diagram](https://raw.github.com/brotchie/Parcoa/master/docs/diagrams/parser.png)
 
