@@ -1,5 +1,4 @@
-#Parcoa
-## Objective-C Parser Combinators
+#Parcoa: Objective-C Parser Combinators
 **Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package and Python's [Parcon](http://www.opengroove.org/parcon/parcon-tutorial.html) library. It is released under a MIT license.
 
 - Primitive parsers for consuming unicode characters and strings can be found in [Parcoa+Primitives.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BPrimitives.h).
