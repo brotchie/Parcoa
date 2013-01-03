@@ -9,11 +9,11 @@
 \begin{document}
     \tikzstyle{block} = [rectangle, draw, text centered]
     \tikzstyle{line} = [draw, -latex']
-    \begin{tikzpicture}[node distance = 3.5cm]
+    \begin{tikzpicture}[node distance = 3.75cm]
         \node [block] (input) {\parbox{2.0cm}{\centering Input\\\scalefont{0.75}\emph{NSString *}}};
-        \node [block, right of=input] (parser) {\parbox{4.0cm}{\centering Parser\\\scalefont{0.75}\emph{\^{}ParcoaResult *(NSString *)}\\A pure function that parses an input string, returning OK if successful or Fail otherwise.}};
-        \node [block, above right of=parser] (ok) {\parbox{4.0cm}{OK\\\scalefont{0.75}\emph{ParcoaResult *}\\(id)value\\(NSString *)residual}};
-        \node [block, below right of=parser] (fail) {\parbox{4.0cm}{Fail\\\scalefont{0.75}\emph{ParcoaResult *}\\(ParcoaFailContext *)context}};
+        \node [block, right of=input] (parser) {\parbox{4.0cm}{\centering Parser Block\\\scalefont{0.75}\emph{\^{}ParcoaResult *(NSString *)}\\A pure function that parses an input string, returning OK if successful or Fail if otherwise.}};
+        \node [block, above right of=parser] (ok) {\parbox{4.2cm}{OK \scalefont{0.75}\emph{ParcoaResult *}\\(id)value\\(NSString *)residual\\(ParcoaExpectation *)expectation}};
+        \node [block, below right of=parser] (fail) {\parbox{4.2cm}{Fail \scalefont{0.75}\emph{ParcoaResult *}\\(ParcoaExpectation *)expectation}};
 
         \draw [line] (input) -- (parser);
         \draw [line] (parser) |- (ok);
