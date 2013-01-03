@@ -50,6 +50,7 @@ result.isOK == TRUE
 result.value == @"hello"
 
 result = [thisorthat parse:@"aaaaaworld"];
+
 result.isOK == TRUE
 result.value = @"aaaaa"
 
@@ -70,7 +71,8 @@ ParcoaParser *notQuote      = [Parcoa noneOf:@"\""];
 ParcoaParser *escapedQuote  = [Parcoa string:@"\\\""];
 ParcoaParser *stringContent = [Parcoa concatMany:[escapedQuote or: notQuote]];
 
-ParcoaParserForward *json = [ParcoaParserForward forwardWithName:@"json" summary:@"json forward declaration"];
+ParcoaParserForward *json = [ParcoaParserForward forwardWithName:@"json"
+                                                         summary:@"json forward declaration"];
 
 ParcoaParser *string  = [stringContent between:quote and: quote];
 ParcoaParser *null    = [Parcoa string:@"null"];
