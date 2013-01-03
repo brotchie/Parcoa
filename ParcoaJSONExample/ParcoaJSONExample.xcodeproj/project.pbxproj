@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5323F06169522BD008A2F82 /* libParcoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5323F011695229A008A2F82 /* libParcoa.a */; };
 		E55CFCD416931B5300CC08DA /* ParcoaRFC2616.m in Sources */ = {isa = PBXBuildFile; fileRef = E55CFCD316931B5300CC08DA /* ParcoaRFC2616.m */; };
 		E55CFCDA16942E6E00CC08DA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = E55CFCD916942E6E00CC08DA /* example.json */; };
 		E55FD43216905448006E7263 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55FD43116905448006E7263 /* UIKit.framework */; };
@@ -23,11 +24,31 @@
 		E55FD45216905448006E7263 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55FD43316905448006E7263 /* Foundation.framework */; };
 		E55FD45A16905448006E7263 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E55FD45816905448006E7263 /* InfoPlist.strings */; };
 		E55FD45D16905448006E7263 /* ParcoaJSONExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E55FD45C16905448006E7263 /* ParcoaJSONExampleTests.m */; };
-		E55FD46716905456006E7263 /* libParcoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E55FD46616905456006E7263 /* libParcoa.a */; };
 		E55FD46C169054AC006E7263 /* ParcoaJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E55FD46B169054AC006E7263 /* ParcoaJSON.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E5323F001695229A008A2F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5323EF816952299008A2F82 /* Parcoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E50C9B5E16903D1A00851B04;
+			remoteInfo = Parcoa;
+		};
+		E5323F021695229A008A2F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5323EF816952299008A2F82 /* Parcoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E50C9B6F16903D1A00851B04;
+			remoteInfo = ParcoaTests;
+		};
+		E5323F04169522B6008A2F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5323EF816952299008A2F82 /* Parcoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E50C9B5D16903D1900851B04;
+			remoteInfo = Parcoa;
+		};
 		E55FD45316905448006E7263 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E55FD42416905448006E7263 /* Project object */;
@@ -38,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5323EF816952299008A2F82 /* Parcoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Parcoa.xcodeproj; path = ../Parcoa.xcodeproj; sourceTree = "<group>"; };
 		E55CFCD216931B5300CC08DA /* ParcoaRFC2616.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParcoaRFC2616.h; sourceTree = "<group>"; };
 		E55CFCD316931B5300CC08DA /* ParcoaRFC2616.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParcoaRFC2616.m; sourceTree = "<group>"; };
 		E55CFCD916942E6E00CC08DA /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
@@ -60,7 +82,6 @@
 		E55FD45916905448006E7263 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E55FD45B16905448006E7263 /* ParcoaJSONExampleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParcoaJSONExampleTests.h; sourceTree = "<group>"; };
 		E55FD45C16905448006E7263 /* ParcoaJSONExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParcoaJSONExampleTests.m; sourceTree = "<group>"; };
-		E55FD46616905456006E7263 /* libParcoa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libParcoa.a; path = "../../build/Release-iphoneos/libParcoa.a"; sourceTree = "<group>"; };
 		E55FD46A169054AC006E7263 /* ParcoaJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParcoaJSON.h; sourceTree = "<group>"; };
 		E55FD46B169054AC006E7263 /* ParcoaJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParcoaJSON.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E55FD46716905456006E7263 /* libParcoa.a in Frameworks */,
+				E5323F06169522BD008A2F82 /* libParcoa.a in Frameworks */,
 				E55FD43216905448006E7263 /* UIKit.framework in Frameworks */,
 				E55FD43416905448006E7263 /* Foundation.framework in Frameworks */,
 				E55FD43616905448006E7263 /* CoreGraphics.framework in Frameworks */,
@@ -90,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5323EF916952299008A2F82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5323F011695229A008A2F82 /* libParcoa.a */,
+				E5323F031695229A008A2F82 /* ParcoaTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E55FD42216905448006E7263 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +127,7 @@
 				E55FD45516905448006E7263 /* ParcoaJSONExampleTests */,
 				E55FD43016905448006E7263 /* Frameworks */,
 				E55FD42E16905448006E7263 /* Products */,
+				E5323EF816952299008A2F82 /* Parcoa.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +183,6 @@
 		E55FD45516905448006E7263 /* ParcoaJSONExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				E55FD46616905456006E7263 /* libParcoa.a */,
 				E55FD45B16905448006E7263 /* ParcoaJSONExampleTests.h */,
 				E55FD45C16905448006E7263 /* ParcoaJSONExampleTests.m */,
 				E55FD45616905448006E7263 /* Supporting Files */,
@@ -183,6 +213,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E5323F05169522B6008A2F82 /* PBXTargetDependency */,
 			);
 			name = ParcoaJSONExample;
 			productName = ParcoaJSONExample;
@@ -228,6 +259,12 @@
 			mainGroup = E55FD42216905448006E7263;
 			productRefGroup = E55FD42E16905448006E7263 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E5323EF916952299008A2F82 /* Products */;
+					ProjectRef = E5323EF816952299008A2F82 /* Parcoa.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E55FD42C16905448006E7263 /* ParcoaJSONExample */,
@@ -235,6 +272,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E5323F011695229A008A2F82 /* libParcoa.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libParcoa.a;
+			remoteRef = E5323F001695229A008A2F82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E5323F031695229A008A2F82 /* ParcoaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ParcoaTests.octest;
+			remoteRef = E5323F021695229A008A2F82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E55FD42B16905448006E7263 /* Resources */ = {
@@ -298,6 +352,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E5323F05169522B6008A2F82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Parcoa;
+			targetProxy = E5323F04169522B6008A2F82 /* PBXContainerItemProxy */;
+		};
 		E55FD45416905448006E7263 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E55FD42C16905448006E7263 /* ParcoaJSONExample */;
