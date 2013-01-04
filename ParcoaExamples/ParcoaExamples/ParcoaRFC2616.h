@@ -33,10 +33,10 @@
 
 */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Parcoa.h"
 
-@interface FPAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface ParcoaRFC2616 : NSObject
++ (ParcoaParser *)requestParser;
++ (ParcoaParser *)responseParser;
 @end

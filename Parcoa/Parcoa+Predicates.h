@@ -33,7 +33,7 @@
 
 */
 
-#import <Parcoa/Parcoa.h>
+#import "Parcoa+Internal.h"
 #import "ParcoaPredicate.h"
 
 @interface Parcoa (Predicates)

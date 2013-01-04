@@ -61,7 +61,7 @@
 }
 
 + (ParcoaPredicate *)isSpace {
-    return [Parcoa inCharacterSet:[NSCharacterSet whitespaceCharacterSet] setName:@"whitespace"];
+    return [Parcoa inCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] setName:@"whitespace"];
 }
 
 @end

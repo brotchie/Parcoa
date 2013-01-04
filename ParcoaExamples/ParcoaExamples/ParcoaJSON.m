@@ -42,14 +42,13 @@ static ParcoaParser *_parser;
 @end
 
 @implementation ParcoaJSON
+
 + (ParcoaParser *)parser {
     if (!_parser) {
         _parser = [ParcoaJSON buildParser];
     }
     return _parser;
 }
-
-#pragma mark - Parser Construction
 
 + (ParcoaParser *)buildParser {
     ParcoaParser *colon        = [[Parcoa unichar:':'] skipSurroundingSpaces];
@@ -78,4 +77,5 @@ static ParcoaParser *_parser;
     
     return json;
 }
+
 @end
