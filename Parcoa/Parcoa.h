@@ -2,16 +2,16 @@
    ____
   |  _ \ __ _ _ __ ___ ___   __ _   Parcoa - Objective-C Parser Combinators
   | |_) / _` | '__/ __/ _ \ / _` |
-  |  __/ (_| | | | (_| (_) | (_| |  Copyright (c) 2012 James Brotchie
+  |  __/ (_| | | | (_| (_) | (_| |  Copyright (c) 2012,2013 James Brotchie
   |_|   \__,_|_|  \___\___/ \__,_|  https://github.com/brotchie/Parcoa
 
 
   The MIT License
   
-  Copyright (c) 2012 James Brotchie
+  Copyright (c) 2012,2013 James Brotchie
     - brotchie@gmail.com
     - @brotchie
- 
+  
   Permission is hereby granted, free of charge, to any person obtaining
   a copy of this software and associated documentation files (the
   "Software"), to deal in the Software without restriction, including
