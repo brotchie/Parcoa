@@ -2,8 +2,8 @@
 **Parcoa** is a collection of parsers and parser combinators for Objective-C inspired by Haskell's [Parsec](http://www.haskell.org/haskellwiki/Parsec) package and Python's [Parcon](http://www.opengroove.org/parcon/parcon-tutorial.html) library. It is released under a MIT license.
 
 - [API Documentation](http://brotchie.github.com/Parcoa/docs/).
-- Primitive parsers for consuming unicode characters and strings can be found in [Parcoa+Primitives.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BPrimitives.h).
-- Parser Combinators for combining these parsers can be found in [Parcoa+Combinators.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BCombinators.h).
+- Primitive parsers for consuming unicode characters and strings are in [Parcoa+Primitives.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BPrimitives.h).
+- Parser Combinators for combining these parsers are in [Parcoa+Combinators.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BCombinators.h).
 - Example JSON and HTTP parsers in [ParcoaJSON.m](https://github.com/brotchie/Parcoa/blob/master/ParcoaExamples/ParcoaExamples/ParcoaJSON.m) and [ParcoaRFC2616.h](https://github.com/brotchie/Parcoa/blob/master/ParcoaExamples/ParcoaExamples/ParcoaRFC2616.m).
 - Example real-world usage as a replacement parser [NUIStyleParser.h](https://github.com/brotchie/nui/blob/parcoa/NUI/Core/NUIStyleParser.m) for nui, a library that lets you style iOS apps using a CSS-like style format.
 
