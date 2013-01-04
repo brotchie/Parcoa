@@ -161,8 +161,8 @@ Parcoa builds a static library `libParcoa.a`. The library target is in `Parcoa.x
 
 1. Clone the `Parcoa` github repostiory ```git clone https://github.com/brotchie/Parcoa.git```.
 2. Drag `Parcoa.xcodeproj` into your XCode project.
-3. Add `libParcoa.a` to `Linked Frameworks and Libraries` on your target's `Summary` tab.
-4. Ensure `Parcoa (Parcoa)` is in `Target Dependencies` on your target's `Build Phases` tab.
+3. Add `libParcoa.a` (`Parcoa OS X.dylib` on OSX) to `Link Binary With Libraries` on your target's `Build Phases` tab.
+4. Ensure `Parcoa (Parcoa)` (`Parcoa OS X (Parcoa)` on OSX) is in `Target Dependencies` on your target's `Build Phases` tab.
 5. Add the Parcoa directory as a recursive path to `User Header Search Paths` and set `Always Search User Paths` to `YES` on your target's `Build Settings` tab.
 6. Add `-ObjC` to `Other Linker Flags` on your target's `Build Settings` tab.
 
