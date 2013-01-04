@@ -58,15 +58,27 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/and:">&nbsp;&nbsp;&nbsp;&nbsp;- and:</option>
+	
 	<option value="//api/name/check:">&nbsp;&nbsp;&nbsp;&nbsp;- check:</option>
 	
 	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
 	
 	<option value="//api/name/initWithBlock:name:summary:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBlock:name:summary:</option>
 	
+	<option value="//api/name/or:">&nbsp;&nbsp;&nbsp;&nbsp;- or:</option>
+	
 	<option value="//api/name/predicateWithName:summary:">&nbsp;&nbsp;&nbsp;&nbsp;- predicateWithName:summary:</option>
 	
 	<option value="//api/name/predicateWithName:summaryWithFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- predicateWithName:summaryWithFormat:</option>
+	
+	<option value="//api/name/take:">&nbsp;&nbsp;&nbsp;&nbsp;- take:</option>
+	
+	<option value="//api/name/takeUntil">&nbsp;&nbsp;&nbsp;&nbsp;- takeUntil</option>
+	
+	<option value="//api/name/takeWhile">&nbsp;&nbsp;&nbsp;&nbsp;- takeWhile</option>
+	
+	<option value="//api/name/takeWhile1">&nbsp;&nbsp;&nbsp;&nbsp;- takeWhile1</option>
 	
 	
 	
@@ -89,6 +101,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Checking a Predicate">Checking a Predicate</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Rename an Existing Predicate">Rename an Existing Predicate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Combinators Methods">Combinators Methods</a></span></li>
 	
 </ul></li>
 
@@ -118,15 +132,27 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/and:">and:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/check:">check:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBlock:name:summary:">initWithBlock:name:summary:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/or:">or:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/predicateWithName:summary:">predicateWithName:summary:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/predicateWithName:summaryWithFormat:">predicateWithName:summaryWithFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/take:">take:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/takeUntil">takeUntil</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/takeWhile">takeWhile</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/takeWhile1">takeWhile1</a></span></li>
 	
 </ul></li>
 
@@ -273,6 +299,58 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithBlock:name:summary:">&ndash;&nbsp;initWithBlock:name:summary:</a></code>
 		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Combinators Methods" name="task_Combinators Methods"></a>
+						<h3 class="subsubtitle task-title">Combinators Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/or:">&ndash;&nbsp;or:</a></code>
+		<span class="tooltip"><p>Create a new predicate that matches when either the receiver
+or other matches.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/and:">&ndash;&nbsp;and:</a></code>
+		<span class="tooltip"><p>Create a new predicate that matches when the reciever and
+other matches.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/takeWhile">&ndash;&nbsp;takeWhile</a></code>
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/takeWhile:">[Parcoa takeWhile:]</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/takeWhile1">&ndash;&nbsp;takeWhile1</a></code>
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/takeWhile1:">[Parcoa takeWhile1:]</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/takeUntil">&ndash;&nbsp;takeUntil</a></code>
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/takeUntil:">[Parcoa takeUntil:]</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/take:">&ndash;&nbsp;take:</a></code>
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/take:count:">[Parcoa take:count:]</a></p></span>
 	</span>
 	
 	
@@ -470,6 +548,49 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/and:" title="and:"></a>
+	<h3 class="subsubtitle method-title">and:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new predicate that matches when the reciever and
+other matches.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaPredicate *)and:(ParcoaPredicate *)<em>other</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a new predicate that matches when the reciever and
+other matches.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaPredicate+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/check:" title="check:"></a>
 	<h3 class="subsubtitle method-title">check:</h3>
 	
@@ -530,6 +651,49 @@
 	<div class="method-subsection method-declaration"><code>- (id)initWithBlock:(ParcoaPredicateBlock)<em>block</em> name:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/or:" title="or:"></a>
+	<h3 class="subsubtitle method-title">or:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new predicate that matches when either the receiver
+or other matches.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaPredicate *)or:(ParcoaPredicate *)<em>other</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a new predicate that matches when either the receiver
+or other matches.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaPredicate+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -611,6 +775,186 @@
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">ParcoaPredicate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/take:" title="take:"></a>
+	<h3 class="subsubtitle method-title">take:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/take:count:">[Parcoa take:count:]</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)take:(NSUInteger)<em>n</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/take:count:">[Parcoa take:count:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaPredicate+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/takeUntil" title="takeUntil"></a>
+	<h3 class="subsubtitle method-title">takeUntil</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/takeUntil:">[Parcoa takeUntil:]</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)takeUntil</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/takeUntil:">[Parcoa takeUntil:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaPredicate+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/takeWhile" title="takeWhile"></a>
+	<h3 class="subsubtitle method-title">takeWhile</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/takeWhile:">[Parcoa takeWhile:]</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)takeWhile</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/takeWhile:">[Parcoa takeWhile:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaPredicate+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/takeWhile1" title="takeWhile1"></a>
+	<h3 class="subsubtitle method-title">takeWhile1</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/takeWhile1:">[Parcoa takeWhile1:]</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)takeWhile1</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/takeWhile1:">[Parcoa takeWhile1:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaPredicate+Combinators.h</code><br />
 	</div>				
 	
 	

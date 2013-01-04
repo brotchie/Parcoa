@@ -76,6 +76,10 @@
 	
 	<option value="//api/name/integer">&nbsp;&nbsp;&nbsp;&nbsp;+ integer</option>
 	
+	<option value="//api/name/isAlphanum">&nbsp;&nbsp;&nbsp;&nbsp;+ isAlphanum</option>
+	
+	<option value="//api/name/isLetter">&nbsp;&nbsp;&nbsp;&nbsp;+ isLetter</option>
+	
 	<option value="//api/name/isSpace">&nbsp;&nbsp;&nbsp;&nbsp;+ isSpace</option>
 	
 	<option value="//api/name/isUnichar:">&nbsp;&nbsp;&nbsp;&nbsp;+ isUnichar:</option>
@@ -99,6 +103,8 @@
 	<option value="//api/name/option:default:">&nbsp;&nbsp;&nbsp;&nbsp;+ option:default:</option>
 	
 	<option value="//api/name/optional:">&nbsp;&nbsp;&nbsp;&nbsp;+ optional:</option>
+	
+	<option value="//api/name/parser:dictionaryWithKeys:">&nbsp;&nbsp;&nbsp;&nbsp;+ parser:dictionaryWithKeys:</option>
 	
 	<option value="//api/name/parser:keepLeft:">&nbsp;&nbsp;&nbsp;&nbsp;+ parser:keepLeft:</option>
 	
@@ -140,6 +146,8 @@
 	
 	<option value="//api/name/take:">&nbsp;&nbsp;&nbsp;&nbsp;+ take:</option>
 	
+	<option value="//api/name/take:count:">&nbsp;&nbsp;&nbsp;&nbsp;+ take:count:</option>
+	
 	<option value="//api/name/takeUntil:">&nbsp;&nbsp;&nbsp;&nbsp;+ takeUntil:</option>
 	
 	<option value="//api/name/takeWhile1:">&nbsp;&nbsp;&nbsp;&nbsp;+ takeWhile1:</option>
@@ -168,15 +176,15 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Numbers Methods">Numbers Methods</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Primitives Methods">Primitives Methods</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NSDictionary Methods">NSDictionary Methods</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Predicates Methods">Predicates Methods</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NSDictionary Methods">NSDictionary Methods</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Combinators Methods">Combinators Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Numbers Methods">Numbers Methods</a></span></li>
 	
 </ul></li>
 
@@ -222,6 +230,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/integer">integer</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAlphanum">isAlphanum</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLetter">isLetter</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isSpace">isSpace</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isUnichar:">isUnichar:</a></span></li>
@@ -245,6 +257,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/option:default:">option:default:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/optional:">optional:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parser:dictionaryWithKeys:">parser:dictionaryWithKeys:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parser:keepLeft:">parser:keepLeft:</a></span></li>
 	
@@ -285,6 +299,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tab">tab</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/take:">take:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/take:count:">take:count:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/takeUntil:">takeUntil:</a></span></li>
 	
@@ -352,29 +368,6 @@ value.</p>
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						<a title="Numbers Methods" name="task_Numbers Methods"></a>
-						<h3 class="subsubtitle task-title">Numbers Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/integer">+&nbsp;integer</a></code>
-		<span class="tooltip"><p>Parses an integer and returns it as a NSNumber.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/bool">+&nbsp;bool</a></code>
-		<span class="tooltip"><p>Parses a boolean &ldquo;true&rdquo; or &ldquo;false&rdquo; and returns it
-as a NSNumber.</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
 						<a title="Primitives Methods" name="task_Primitives Methods"></a>
 						<h3 class="subsubtitle task-title">Primitives Methods</h3>
 
@@ -412,6 +405,13 @@ predicate.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/take:">+&nbsp;take:</a></code>
 		<span class="tooltip"><p>Any n unicode characters.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/take:count:">+&nbsp;take:count:</a></code>
+		<span class="tooltip"><p>Exactly n characters matching predicate.</p></span>
 	</span>
 	
 	
@@ -547,23 +547,6 @@ remains; FALSE otherwise.</p></span>
 						</ul>
 						
 						
-						<a title="NSDictionary Methods" name="task_NSDictionary Methods"></a>
-						<h3 class="subsubtitle task-title">NSDictionary Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/dictionary:">+&nbsp;dictionary:</a></code>
-		<span class="tooltip"><p>Naturally transforms the value of a parser
-returning a NSArray of two element NSArrays
-into a dictionary.</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
 						<a title="Predicates Methods" name="task_Predicates Methods"></a>
 						<h3 class="subsubtitle task-title">Predicates Methods</h3>
 
@@ -601,6 +584,46 @@ the supplied unicode character.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/isSpace">+&nbsp;isSpace</a></code>
 		<span class="tooltip"><p>Returns TRUE for any white<a href="#//api/name/space">space</a> character.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isLetter">+&nbsp;isLetter</a></code>
+		<span class="tooltip"><p>Return TRUE for any <a href="#//api/name/letter">letter</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAlphanum">+&nbsp;isAlphanum</a></code>
+		<span class="tooltip"><p>Return TRUE for any alpha numeric character.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="NSDictionary Methods" name="task_NSDictionary Methods"></a>
+						<h3 class="subsubtitle task-title">NSDictionary Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dictionary:">+&nbsp;dictionary:</a></code>
+		<span class="tooltip"><p>Naturally transforms the value of a parser
+returning a NSArray of two element NSArrays
+into a dictionary.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parser:dictionaryWithKeys:">+&nbsp;parser:dictionaryWithKeys:</a></code>
+		<span class="tooltip"><p>Transforms the value of a parser returning a NSArray into
+a dictionary by zipping the provided keys with the parser&rsquo;s
+returned array.</p></span>
 	</span>
 	
 	
@@ -785,6 +808,29 @@ into a single string.</p></span>
 		<code><a href="#//api/name/parser:valueAtIndex:">+&nbsp;parser:valueAtIndex:</a></code>
 		<span class="tooltip"><p>For parsers with NSArray return values returns the element at the
 provided index.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Numbers Methods" name="task_Numbers Methods"></a>
+						<h3 class="subsubtitle task-title">Numbers Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/integer">+&nbsp;integer</a></code>
+		<span class="tooltip"><p>Parses an integer and returns it as a NSNumber.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bool">+&nbsp;bool</a></code>
+		<span class="tooltip"><p>Parses a boolean &ldquo;true&rdquo; or &ldquo;false&rdquo; and returns it
+as a NSNumber.</p></span>
 	</span>
 	
 	
@@ -1515,6 +1561,88 @@ into a dictionary.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/isAlphanum" title="isAlphanum"></a>
+	<h3 class="subsubtitle method-title">isAlphanum</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return TRUE for any alpha numeric character.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaPredicate *)isAlphanum</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Return TRUE for any alpha numeric character.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Parcoa+Predicates.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isLetter" title="isLetter"></a>
+	<h3 class="subsubtitle method-title">isLetter</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return TRUE for any <a href="#//api/name/letter">letter</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaPredicate *)isLetter</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Return TRUE for any <a href="#//api/name/letter">letter</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Parcoa+Predicates.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/isSpace" title="isSpace"></a>
 	<h3 class="subsubtitle method-title">isSpace</h3>
 	
@@ -2011,6 +2139,51 @@ parser&rsquo;s value.</p>
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">Parcoa+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parser:dictionaryWithKeys:" title="parser:dictionaryWithKeys:"></a>
+	<h3 class="subsubtitle method-title">parser:dictionaryWithKeys:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Transforms the value of a parser returning a NSArray into
+a dictionary by zipping the provided keys with the parser&rsquo;s
+returned array.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)parser:(ParcoaParser *)<em>parser</em> dictionaryWithKeys:(NSArray *)<em>keys</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Transforms the value of a parser returning a NSArray into
+a dictionary by zipping the provided keys with the parser&rsquo;s
+returned array.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Parcoa+NSDictionary.h</code><br />
 	</div>				
 	
 	
@@ -2838,6 +3011,47 @@ containing all of the individual parser&rsquo;s values.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Any n unicode characters.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Parcoa+Primitives.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/take:count:" title="take:count:"></a>
+	<h3 class="subsubtitle method-title">take:count:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Exactly n characters matching predicate.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)take:(ParcoaPredicate *)<em>predicate</em> count:(NSUInteger)<em>n</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Exactly n characters matching predicate.</p>
 	</div>
 	
 	
