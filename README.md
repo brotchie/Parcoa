@@ -5,7 +5,7 @@
 - Primitive parsers for consuming unicode characters and strings are in [Parcoa+Primitives.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BPrimitives.h).
 - Parser Combinators for combining these parsers are in [Parcoa+Combinators.h](https://github.com/brotchie/Parcoa/blob/master/Parcoa/Parcoa%2BCombinators.h).
 - Example JSON and HTTP parsers in [ParcoaJSON.m](https://github.com/brotchie/Parcoa/blob/master/ParcoaExamples/ParcoaExamples/ParcoaJSON.m) and [ParcoaRFC2616.h](https://github.com/brotchie/Parcoa/blob/master/ParcoaExamples/ParcoaExamples/ParcoaRFC2616.m).
-- Example real-world usage as a replacement parser [NUIStyleParser.h](https://github.com/brotchie/nui/blob/parcoa/NUI/Core/NUIStyleParser.m) for nui, a library that lets you style iOS apps using a CSS-like style format.
+- Example real-world usage as a replacement parser [NUIStyleParser.m](https://github.com/brotchie/nui/blob/parcoa/NUI/Core/NUIStyleParser.m) for nui, a library that lets you style iOS apps using a CSS-like style format.
 
 ### Pure Parcoa Parsers
 A `ParcoaParser *` is a lite wrapper around a function [block](http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html) that takes a single `NSString *` argument, attempts to parse some value from this string, then returns an `OK` or `Fail` result. On success, the parser block returns the parsed *value*, the unconsumed *residual* input, and a message indicating what input would have allowed the parser to consume more characters. On failure, the parser block returns a string description of what it *expected* to find in the input.
