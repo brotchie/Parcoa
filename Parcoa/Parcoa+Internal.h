@@ -33,19 +33,9 @@
  
  */
 
+/** The Parcoa class is abstract and never initialised. We use
+ * the Parcoa class as a namespace, decorating it with categories
+ * containing class methods. */
 @interface Parcoa : NSObject
 
 @end
-
-/** Macros for forward declaration of recursive rules. */
-
-#define __ParcoaMacroConcat(A,B) A ## B
-#define __ParcoaForwardVariable(NAME) __ParcoaMacroConcat(__parcoa_forward_impl_,NAME)
-
-#define ParcoaForwardDeclaration(NAME) \
-__block ParcoaParser __ParcoaForwardVariable(NAME); \
-ParcoaParser NAME = ^ParcoaResult *(NSString *input) { \
-return __ParcoaForwardVariable(NAME)(input); \
-}
-
-#define ParcoaForwardImpl(NAME) __ParcoaForwardVariable(NAME)

@@ -35,9 +35,12 @@
 
 #import <Foundation/Foundation.h>
 
-/** An immutable context tree that captures the state
- *  of a failed parser. */
+/** An immutable expectation object that
+ *  describes what a parser *expected* to find. */
 @interface ParcoaExpectation : NSObject
+
+/// @name Properties
+
 /** The number of input characters remaining. */
 @property (readonly) NSUInteger charactersRemaining;
 
@@ -48,19 +51,28 @@
  *  than it did. */
 @property (readonly) NSString *expected;
 
-/** An array containing ParcoaFailContext children. */
+/** An array containing ParcoaExpectation children. */
 @property (readonly) NSArray *children;
-
-/** Creates an immutable ParcoFailContext. */
-+ (ParcoaExpectation *)expectationWithRemaining:(NSString *)remaining expected:(NSString *)expected children:(NSArray *)children;
 
 /** The minimum value of charactersRemaining for this context
  *  and all its chilsren. This property is memoized such that
  *  subsequent calls are costless. */
 - (NSUInteger)minCharactersRemaining;
 
+/// @name Create an Expectation
+
+/** Creates an immutable ParcoaExpectation. */
++ (ParcoaExpectation *)expectationWithRemaining:(NSString *)remaining expected:(NSString *)expected children:(NSArray *)children;
+
+/// @name Special Expectation Strings
+
 /** An expectation string indicating that there exists no input that would have
  *  allowed the parsers to consume more input. */
 + (NSString *)unsatisfiable;
+
+/** An expectation string indicating that the parser had a choice between
+ * many parsers. The parser which could have consumed the most input can
+ * be found by inspecting the choice expectation's children. */
 + (NSString *)choice;
+
 @end

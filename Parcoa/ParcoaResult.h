@@ -45,6 +45,8 @@ typedef enum {
  *  Parcoa parser. */
 @interface ParcoaResult : NSObject
 
+/// @name Properties
+
 /** The result type: OK or Fail */
 @property (readonly) ParcoaResultType type;
 
@@ -66,32 +68,47 @@ typedef enum {
 /** TRUE if Fail. */
 - (BOOL)isFail;
 
+/// @name Create a New Parsing Result
+
 /** Creates an OK result with value, residual input, and description of input
  *  that would let the parser consume more. */
 + (ParcoaResult *)ok:(id)value residual:(NSString *)residual expected:(NSString *)expected;
 
-/** Creates an OK result with value, residual input, and description of input
- *  that would let the parser consume more. Expected value is generated using a
- *  printf style format string. */
+/** ok:residual:expected: with printf style formatting for expected.
+ *
+ * @see ok:residual:expected:
+ */
 + (ParcoaResult *)ok:(id)value residual:(NSString *)residual expectedWithFormat:(NSString *)format, ...;
 
-/** Creates a Fail result. */
+/** Creates a Fail result with a description of what was expected. */
 + (ParcoaResult *)failWithRemaining:(NSString *)remaining expected:(NSString *)expected;
 
-/** Creates a Fail result using a printf style format string. */
+/** failWithRemaining:expected: with printf style formatting for expected.
+ *
+ * @see failWithRemaining:expected:
+ */
 + (ParcoaResult *)failWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
 
-/** Creates a Fail result by aggregating the expectations of an array of failures as children. */
+/// @name Create a Parsing Result by Aggreagating Other Results
+
+/** Creates a Fail result by aggregating the expectations of an array of child parser results. */
 + (ParcoaResult *)failWithChildren:(NSArray *)children remaining:(NSString *)remaining expected:(NSString *)expected;
 
+/** Creates an OK result by aggregating the expectations of an array of child parser results. */
 + (ParcoaResult *)okWithChildren:(NSArray *)children value:(id)value residual:(NSString *)residual expected:(NSString *)expected;
 
-/** Creates a Fail result with this result's expectation as a child. */
+/// @name Create a Parsing Result Using an Existing Result
+
+/** Creates a Fail result with the reciever's expectation as a child. */
 - (ParcoaResult *)prependExpectationWithRemaining:(NSString *)remaining expected:(NSString *)expected;
 
-/** Creates a Fail result with this result's expectation as a child; expected
- *  value generated using printf style format string. */
+/** prependExpectationWithRemaining:expected: with printf style formatting for expected.
+ *
+ * @see prependExpectationWithRemaining:expected:
+ */
 - (ParcoaResult *)prependExpectationWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
+
+/// @name Generate Tracebacks
 
 /** Generates a traceback of Parcoa expectations. If full is TRUE
  *  then a complete snapshot of the Parcoa expectation is given,
@@ -105,6 +122,11 @@ typedef enum {
  *         along with details of what the parser expected.
  */
 - (NSString *)traceback:(NSString *)input full:(BOOL)full;
+
+/** traceback:full: with full:FALSE. 
+ *
+ * @see traceback:full:
+ */
 - (NSString *)traceback:(NSString *)input;
 
 @end

@@ -37,6 +37,9 @@
 #import "ParcoaPredicate.h"
 
 @interface Parcoa (Predicates)
+
+/// @name Predicates
+
 /** Creates a predicate that returns TRUE for the
  *  the supplied unicode character. */
 + (ParcoaPredicate *)isUnichar:(unichar)c;

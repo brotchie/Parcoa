@@ -35,10 +35,40 @@
 
 #import "Parcoaparser.h"
 
+/** A forward declared parser.
+
+  Consider a simple expression parser. Because expressions are recursively defined
+  we use a forward declaration.
+      
+     // Forward declare an expression.
+     ParcoaParserForward *expression = [ParcoaParserForward forwardWithName:@"expression"
+     summary:@"expression forward declaration"];
+     ParcoaParser *integer = [Parcoa integer];
+     
+     ParcoaParser *add      = [[Parcoa unichar:'+'] skipSurroundingSpaces];
+     ParcoaParser *subtract = [[Parcoa unichar:'-'] skipSurroundingSpaces];
+     ParcoaParser *multiply = [[Parcoa unichar:'*'] skipSurroundingSpaces];
+     ParcoaParser *divide   = [[Parcoa unichar:'/'] skipSurroundingSpaces];
+     
+     ParcoaParser *term = [integer or: expression];
+     term = [term sepByKeep:[multiply or: divide]];
+     term = [term sepByKeep:[add or: subtract]];
+     
+     // Set the expression's implementation.
+     [expression setImplementation:term];
+ 
+*/
 @interface ParcoaParserForward : ParcoaParser {
 @private
     ParcoaParser *_implementation;
 }
+/// @name Define and Implement a Forward Declaration
+
+/** Creates a new forward declaration with the given name and summary. */
 + (ParcoaParserForward *)forwardWithName:(NSString *)name summary:(NSString *)summary;
+
+/** Sets the implementation of the forward declaration. Throws an exception if you
+ * try and set the implementation more than once. */
 - (void)setImplementation:(ParcoaParser *)parser;
+
 @end

@@ -39,8 +39,7 @@
 
 @interface Parcoa (Primitives)
 
-
-/** @name Basic Parsing */
+/** @name Character and String Parsers */
 
 /** A single unicode character that satisifes the supplied
  *  predicate.

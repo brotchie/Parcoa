@@ -41,24 +41,61 @@
  *  category adds instance methods to easily apply combinators. */
 @interface ParcoaParser (Combinators)
 
+/// @name ParcoaParser Instance Combinators
+
+/// @see [Parcoa parser:or:]
 - (ParcoaParser *)or:(ParcoaParser *)right;
 
-/** Equivalent to [Parcoa choice:self default:value]. */
+/** Equivalent to [Parcoa option:default:] with
+ * receiver and value as arguments. */
 - (ParcoaParser *)withDefault:(id)value;
 
+/// @see [Parcoa many:]
 - (ParcoaParser *)many;
+
+/// @see [Parcoa many1:]
 - (ParcoaParser *)many1;
+
+/// @see [Parcoa sepBy:delimiter:]
 - (ParcoaParser *)sepBy:(ParcoaParser *)delimiter;
+
+/// @see [Parcoa sepBy1:delimiter:]
 - (ParcoaParser *)sepBy1:(ParcoaParser *)delimiter;
+
+/// @see [Parcoa sepByKeep:delimiter:]
+- (ParcoaParser *)sepByKeep:(ParcoaParser *)delimiter;
+
+/// @see [Parcoa sepBy1Keep:delimiter:]
+- (ParcoaParser *)sepBy1Keep:(ParcoaParser *)delimiter;
+
+/// @see [Parcoa parser:then:]
 - (ParcoaParser *)then:(ParcoaParser *)right;
+
+/// @see [Parcoa parser:keepLeft:]
 - (ParcoaParser *)keepLeft:(ParcoaParser *)right;
+
+/// @see [Parcoa parser:keepRight:]
 - (ParcoaParser *)keepRight:(ParcoaParser *)right;
+
+/// @see [Parcoa between:parser:right:]
 - (ParcoaParser *)between:(ParcoaParser *)left and:(ParcoaParser *)right;
+
+/// @see [Parcoa concat:]
 - (ParcoaParser *)concat;
+
+/// @see [Parcoa concatMany:]
 - (ParcoaParser *)concatMany;
+
+/// @see [Parcoa concatMany1:]
 - (ParcoaParser *)concatMany1;
+
+/// @see [Parcoa skipSurroundingSpaces:]
 - (ParcoaParser *)skipSurroundingSpaces;
+
+/// @see [Parcoa parser:transform:name:]
 - (ParcoaParser *)transform:(ParcoaValueTransform)transform name:(NSString *)name;
+
+/// @see [Parcoa parser:valueAtIndex:]
 - (ParcoaParser *)valueAtIndex:(NSUInteger)index;
 
 @end

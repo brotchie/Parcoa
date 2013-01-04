@@ -41,17 +41,37 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Forward declare an expression.
+    ParcoaParserForward *expression = [ParcoaParserForward forwardWithName:@"expression"
+                                                                   summary:@"expression forward declaration"];
+    ParcoaParser *integer = [Parcoa integer];
+    
+    ParcoaParser *add      = [[Parcoa unichar:'+'] skipSurroundingSpaces];
+    ParcoaParser *subtract = [[Parcoa unichar:'-'] skipSurroundingSpaces];
+    ParcoaParser *multiply = [[Parcoa unichar:'*'] skipSurroundingSpaces];
+    ParcoaParser *divide   = [[Parcoa unichar:'/'] skipSurroundingSpaces];
+    
+    ParcoaParser *term = [integer or: expression];
+    term = [term sepByKeep:[multiply or: divide]];
+    term = [term sepByKeep:[add or: subtract]];
+    
+    // Set the expression's implementation.
+    [expression setImplementation:term];
+    
+    NSLog(@"%@", [expression parse:@"2 * 3 / 4- 4"]);
+    
     //NSLog(@"%d", [@"false" boolValue]);
     NSString *json = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"json"] encoding:NSUTF8StringEncoding error:nil];
     //json = @"{\"name\" : \"James\"}";
     json = @"[{\"name\" : \"James\", \"age\" : 28 \"active\" : true}]";
     //ParcoaResult *result = [Parcoa runParserWithTraceback:[ParcoaJSON parser] input:json];
     ParcoaResult *result = [[ParcoaJSON parser] parse:json];
-    if (result.isOK) {
+    /*if (result.isOK) {
         NSLog(@"%@", result.value);
     } else {
         NSLog(@"%@",[result traceback:json full:NO]);
-    }
+    }*/
     /*[Parcoa runParserWithTraceback:[ParcoaRFC2616 requestParser] input:@"GET /index.html HTTP/1.0\r\nUser-agent: test\r\ncookies: testing 1234\r\n\r\n"];
     NSLog(@"%@", [ParcoaRFC2616 responseParser](@"HTTP/1.0 200 OK\r\nContent-Type: text/plain\r\n\r\n"));*/
     self.window.backgroundColor = [UIColor whiteColor];

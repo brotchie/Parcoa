@@ -41,21 +41,67 @@
  */
 typedef ParcoaResult *(^ParcoaParserBlock)(NSString *input);
 
+/** The fundamental unit of parsing is Parcoa. ParcoaParser is a
+ *  lite wrapper around a ParcoaParserBlock. A ParcoaParser attempts
+ *  to parse an input string, returning an OK or Fail result.
+ *  All parsers within Parcoa are ParcoaParser objects.
+ *
+ *  - Parse a NSString using parse:.
+ *  - Create new parsers using the parserWithBlock:name:summary:
+ *  class method.
+ */
 @interface ParcoaParser : NSObject {
 @private
     ParcoaParserBlock _block;
 }
+
+/// @name Properties
+
+/** The parsers human readable name. */
 @property (nonatomic, readonly) NSString *name;
+
+/** A human readable summary of the parser. */
 @property (nonatomic, readonly) NSString *summary;
 
-+ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary;
-+ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summaryWithFormat:(NSString *)format, ...;
+/// @name Create a New Parser
 
+/** Initialises an allocated ParcoaParser with the given ParcoaParserBlock.
+ *
+ *  @see parserWithBlock:name:summary:
+ */
 - (id)initWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary;
 
+/** Creates a new ParcoaParser with the given ParcoaParserBlock.
+ *
+ *  @param block A pure function block that attempt to parse an input string
+ *               then returns a ParcoaResult.
+ *  @param name A human readable name.
+ *  @param name A human readable summary.
+ */
++ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summary:(NSString *)summary;
+
+/** parserWithBlock:name:summary: with printf style formatting
+ *  for summary.
+ *
+ *  @see parserWithBlock:name:summary:
+ */
++ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)block name:(NSString *)name summaryWithFormat:(NSString *)format, ...;
+
+/// @name Rename an Existing Parser
+
+/** Creates a new ParcoaParser with the receiver's block and a
+ *  new name and summary. */
 - (ParcoaParser *)parserWithName:(NSString *)name summary:(NSString *)summary;
+
+/** parserWithName:summary: with printf style formatting for summary.
+ *
+ * @see parserWithName:summary:
+ */
 - (ParcoaParser *)parserWithName:(NSString *)name summaryWithFormat:(NSString *)format, ...;
 
+/// @name Parse a String
+
+/** Supplies the parser block with input and returns the result. */
 - (ParcoaResult *)parse:(NSString *)input;
 
 @end

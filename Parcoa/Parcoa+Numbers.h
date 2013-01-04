@@ -37,6 +37,8 @@
 #import "ParcoaParser.h"
 
 @interface Parcoa (Numbers)
+/// @name Number Parsers
+
 /** Parses an integer and returns it as a NSNumber. */
 + (ParcoaParser *)integer;
 

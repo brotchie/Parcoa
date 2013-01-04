@@ -34,20 +34,49 @@
  */
 #import <Foundation/Foundation.h>
 
+/** The pure function wrapped by ParcoaPredicate objects.
+ * Takes a unichar and returns either TRUE or FALSE. */
 typedef BOOL (^ParcoaPredicateBlock)(unichar x);
 
+/** A wrapper around a ParcoaPredicateBlock.
+ 
+  For example, to create a predicate that matches the unichars 'a' and 'b':
+ 
+      [ParcoaPredicate predicateWithBlock:^BOOL(unichar x) {
+          return x == 'a' || x == 'b';
+      } name:@"a|b" summary:@"'a' or 'b'"];
+ 
+ */
 @interface ParcoaPredicate : NSObject {
 @private
     ParcoaPredicateBlock _block;
 }
+
+/// @name Properties
+
+/** The predicate's human readable name. */
 @property (nonatomic, readonly) NSString *name;
+
+/** A human readable summary of the predicate. */
 @property (nonatomic, readonly) NSString *summary;
 
+/// @name Checking a Predicate
+
+/** Applied the predicate block to c and returns the result. */
 - (BOOL)check:(unichar)c;
 
+/** Creates a new ParcoaPredicate with the given predicate block, name and summary. */
 + (ParcoaPredicate *)predicateWithBlock:(ParcoaPredicateBlock)block name:(NSString *)name summary:(NSString *)summary;
+
+/** predicateWithBlock:name:summary with printf style formatting for summary. */
 + (ParcoaPredicate *)predicateWithBlock:(ParcoaPredicateBlock)block name:(NSString *)name summaryWithFormat:(NSString *)format, ...;
 
+/// @name Rename an Existing Predicate
+
+/** Creates a new ParcoaPredicate with the receiver's block and a new
+ * name and summary. */
 - (ParcoaPredicate *)predicateWithName:(NSString *)name summary:(NSString *)summary;
+
+/** predicateWithName:summary: with printf style formatting for summary. */
 - (ParcoaPredicate *)predicateWithName:(NSString *)name summaryWithFormat:(NSString *)format, ...;
 @end

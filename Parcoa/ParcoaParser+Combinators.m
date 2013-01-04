@@ -61,6 +61,14 @@
     return [Parcoa sepBy1:self delimiter:delimiter];
 }
 
+- (ParcoaParser *)sepByKeep:(ParcoaParser *)delimiter {
+    return [Parcoa sepByKeep:self delimiter:delimiter];
+}
+
+- (ParcoaParser *)sepBy1Keep:(ParcoaParser *)delimiter {
+    return [Parcoa sepBy1Keep:self delimiter:delimiter];
+}
+
 - (ParcoaParser *)then:(ParcoaParser *)right {
     return [Parcoa sequential:@[self, right]];
 }

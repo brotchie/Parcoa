@@ -36,17 +36,20 @@
 #import "Parcoa+Internal.h"
 #import "ParcoaParser.h"
 
+/** A function applied in the ParcoaResult monad. Takes
+ * the value of a ParcoaResult and returns a transformed
+ * value. */
 typedef id (^ParcoaValueTransform)(id value);
 
 @interface Parcoa (Combinators)
 
-/** @name Combining Parsers with Combinators */
+/** @name Parser Combinators */
 
 /** Returns the value of the first parser to
  *  match in an array. */
 + (ParcoaParser *)choice:(NSArray *)parsers;
 
-/** Equivalent to [Parcoa choice:@[parser, right]]. */
+/** Equivalent to [Parcoa choice:] with @[parser, right] as an argument. */
 + (ParcoaParser *)parser:(ParcoaParser *)parser or:(ParcoaParser *)right;
 
 /** Matches a parser n times. */
@@ -80,12 +83,18 @@ typedef id (^ParcoaValueTransform)(id value);
  *  by a delimiter parser. */
 + (ParcoaParser *)sepBy1:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter;
 
+/** sepBy:delimiter: but keep delimiter values. */
++ (ParcoaParser *)sepByKeep:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter;
+
+/** sepBy1:delimiter: but keep delimiter values. */
++ (ParcoaParser *)sepBy1Keep:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter;
+
 /** Matches an array of parsers in order. If all parsers
  *  match OK then the result value is an array
  *  containing all of the individual parser's values. */
 + (ParcoaParser *)sequential:(NSArray *)parsers;
 
-/** Equivalent to [Parcoa sequential:@[parser, right]]. */
+/** Equivalent to [Parcoa sequential:] with @[parser, right] as an argument. */
 + (ParcoaParser *)parser:(ParcoaParser *)parser then:(ParcoaParser *)right;
 
 /** Matches both parsers and return the left parser's value. */

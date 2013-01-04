@@ -159,6 +159,25 @@
     } name:@"sepBy1" summaryWithFormat:@"%@, %@", parser, delimiter];
 }
 
++ (ParcoaParser *)sepByKeep:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter {
+    return [[Parcoa option:[Parcoa sepBy1Keep:parser delimiter:delimiter] default:@[]] parserWithName:@"sepByKeep" summaryWithFormat:@"%@, %@", parser, delimiter];
+}
+
++ (ParcoaParser *)sepBy1Keep:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+        ParcoaResult *result = [[Parcoa sequential:@[parser, [Parcoa many:[Parcoa sequential:@[delimiter, parser]]]]] parse:input];
+        if (result.isOK) {
+            NSMutableArray *value = [NSMutableArray arrayWithObject:result.value[0]];
+            [result.value[1] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [value addObjectsFromArray:obj];
+            }];
+            return [ParcoaResult okWithChildren:@[result] value:value residual:result.residual expected:@"more matches of delimiter and child parser"];
+        } else {
+            return [result prependExpectationWithRemaining:input expected:@"one or more separated items"];
+        }
+    } name:@"sepBy1Keep" summaryWithFormat:@"%@, %@", parser, delimiter];
+}
+
 + (ParcoaParser *)sequential:(NSArray *)parsers {
     NSString *summary = [[parsers valueForKeyPath:@"description"] componentsJoinedByString:@", "];
     return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
