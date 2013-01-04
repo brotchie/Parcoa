@@ -148,6 +148,7 @@ Install and configure [CocoaPods](http://cocoapods.org/).
 
 In the root of your project create a file named `Podfile` containing
 
+    platform :ios
     xcodeproj '<# YOUR PROJECT #>.xcodeproj'
     pod 'Parcoa', :git => "https://github.com/brotchie/Parcoa.git"
     
