@@ -90,7 +90,11 @@
 	
 	<option value="//api/name/sepBy1:">&nbsp;&nbsp;&nbsp;&nbsp;- sepBy1:</option>
 	
+	<option value="//api/name/sepBy1Keep:">&nbsp;&nbsp;&nbsp;&nbsp;- sepBy1Keep:</option>
+	
 	<option value="//api/name/sepBy:">&nbsp;&nbsp;&nbsp;&nbsp;- sepBy:</option>
+	
+	<option value="//api/name/sepByKeep:">&nbsp;&nbsp;&nbsp;&nbsp;- sepByKeep:</option>
 	
 	<option value="//api/name/skipSurroundingSpaces">&nbsp;&nbsp;&nbsp;&nbsp;- skipSurroundingSpaces</option>
 	
@@ -117,6 +121,14 @@
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create a New Parser">Create a New Parser</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Rename an Existing Parser">Rename an Existing Parser</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Parse a String">Parse a String</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NSDictionary Methods">NSDictionary Methods</a></span></li>
 	
@@ -182,7 +194,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy1:">sepBy1:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy1Keep:">sepBy1Keep:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy:">sepBy:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepByKeep:">sepByKeep:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/skipSurroundingSpaces">skipSurroundingSpaces</a></span></li>
 	
@@ -231,8 +247,17 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The primary <a href="../Classes/Parcoa.html">Parcoa</a> parser block: A function that accepts
-an input and returns an OK or Fail result.</p>
+						<p>The fundamental unit of parsing is <a href="../Classes/Parcoa.html">Parcoa</a>. ParcoaParser is a
+lite wrapper around a ParcoaParserBlock. A ParcoaParser attempts
+to parse an input string, returning an OK or Fail result.
+All parsers within <a href="../Classes/Parcoa.html">Parcoa</a> are ParcoaParser objects.</p>
+
+<ul>
+<li>Parse a NSString using <a href="#//api/name/parse:">parse:</a>.</li>
+<li>Create new parsers using the <a href="#//api/name/parserWithBlock:name:summary:">parserWithBlock:name:summary:</a>
+class method.</li>
+</ul>
+
 
 <p>The parser combinators in the Parcoa+Combinators category
 are all pure class methods. This ParcoaParser+Combinators
@@ -248,63 +273,89 @@ category adds instance methods to easily apply combinators.</p>
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
-		
+		<span class="tooltip"><p>The parsers human readable name.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/summary">&nbsp;&nbsp;summary</a></code>
-		
+		<span class="tooltip"><p>A human readable summary of the parser.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Create a New Parser" name="task_Create a New Parser"></a>
+						<h3 class="subsubtitle task-title">Create a New Parser</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithBlock:name:summary:">&ndash;&nbsp;initWithBlock:name:summary:</a></code>
+		<span class="tooltip"><p>Initialises an allocated ParcoaParser with the given ParcoaParserBlock.</p></span>
+	</span>
+	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parserWithBlock:name:summary:">+&nbsp;parserWithBlock:name:summary:</a></code>
-		
+		<span class="tooltip"><p>Creates a new ParcoaParser with the given ParcoaParserBlock.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parserWithBlock:name:summaryWithFormat:">+&nbsp;parserWithBlock:name:summaryWithFormat:</a></code>
-		
+		<span class="tooltip"><p><a href="#//api/name/parserWithBlock:name:summary:">parserWithBlock:name:summary:</a> with printf style formatting
+for <a href="#//api/name/summary">summary</a>.</p></span>
 	</span>
 	
 	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithBlock:name:summary:">&ndash;&nbsp;initWithBlock:name:summary:</a></code>
-		
-	</span>
-	
-	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Rename an Existing Parser" name="task_Rename an Existing Parser"></a>
+						<h3 class="subsubtitle task-title">Rename an Existing Parser</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parserWithName:summary:">&ndash;&nbsp;parserWithName:summary:</a></code>
-		
+		<span class="tooltip"><p>Creates a new ParcoaParser with the receiver&rsquo;s block and a
+new <a href="#//api/name/name">name</a> and <a href="#//api/name/summary">summary</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parserWithName:summaryWithFormat:">&ndash;&nbsp;parserWithName:summaryWithFormat:</a></code>
-		
+		<span class="tooltip"><p><a href="#//api/name/parserWithName:summary:">parserWithName:summary:</a> with printf style formatting for <a href="#//api/name/summary">summary</a>.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Parse a String" name="task_Parse a String"></a>
+						<h3 class="subsubtitle task-title">Parse a String</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parse:">&ndash;&nbsp;parse:</a></code>
-		
+		<span class="tooltip"><p>Supplies the parser block with input and returns the result.</p></span>
 	</span>
 	
 	
@@ -351,112 +402,127 @@ into a dictionary.</p></span>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/or:">&ndash;&nbsp;or:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/parser:or:">[Parcoa parser:or:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/withDefault:">&ndash;&nbsp;withDefault:</a></code>
-		<span class="tooltip"><p>Equivalent to [<a href="../Classes/Parcoa.html">Parcoa</a> choice:self default:value].</p></span>
+		<span class="tooltip"><p>Equivalent to <a href="../Classes/Parcoa.html#//api/name/option:default:">[Parcoa option:default:]</a> with
+receiver and value as arguments.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/many">&ndash;&nbsp;many</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/many:">[Parcoa many:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/many1">&ndash;&nbsp;many1</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/many1:">[Parcoa many1:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sepBy:">&ndash;&nbsp;sepBy:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/sepBy:delimiter:">[Parcoa sepBy:delimiter:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sepBy1:">&ndash;&nbsp;sepBy1:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/sepBy1:delimiter:">[Parcoa sepBy1:delimiter:]</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sepByKeep:">&ndash;&nbsp;sepByKeep:</a></code>
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/sepByKeep:delimiter:">[Parcoa sepByKeep:delimiter:]</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sepBy1Keep:">&ndash;&nbsp;sepBy1Keep:</a></code>
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/sepBy1Keep:delimiter:">[Parcoa sepBy1Keep:delimiter:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/then:">&ndash;&nbsp;then:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/parser:then:">[Parcoa parser:then:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/keepLeft:">&ndash;&nbsp;keepLeft:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/parser:keepLeft:">[Parcoa parser:keepLeft:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/keepRight:">&ndash;&nbsp;keepRight:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/parser:keepRight:">[Parcoa parser:keepRight:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/between:and:">&ndash;&nbsp;between:and:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/between:parser:right:">[Parcoa between:parser:right:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/concat">&ndash;&nbsp;concat</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/concat:">[Parcoa concat:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/concatMany">&ndash;&nbsp;concatMany</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/concatMany:">[Parcoa concatMany:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/concatMany1">&ndash;&nbsp;concatMany1</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/concatMany1:">[Parcoa concatMany1:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/skipSurroundingSpaces">&ndash;&nbsp;skipSurroundingSpaces</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/skipSurroundingSpaces:">[Parcoa skipSurroundingSpaces:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/transform:name:">&ndash;&nbsp;transform:name:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/parser:transform:name:">[Parcoa parser:transform:name:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/valueAtIndex:">&ndash;&nbsp;valueAtIndex:</a></code>
-		
+		<span class="tooltip"><p><a href="../Classes/Parcoa.html#//api/name/parser:valueAtIndex:">[Parcoa parser:valueAtIndex:]</a></p></span>
 	</span>
 	
 	
@@ -478,10 +544,40 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">name</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>The parsers human readable name.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *name</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The parsers human readable name.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -489,10 +585,40 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">summary</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>A human readable summary of the parser.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *summary</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A human readable summary of the parser.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -508,10 +634,56 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">parserWithBlock:name:summary:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new ParcoaParser with the given ParcoaParserBlock.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)<em>block</em> name:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A pure function block that attempt to parse an input string
+then returns a <a href="../Classes/ParcoaResult.html">ParcoaResult</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>A human readable <a href="#//api/name/summary">summary</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a new ParcoaParser with the given ParcoaParserBlock.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -519,10 +691,51 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">parserWithBlock:name:summaryWithFormat:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="#//api/name/parserWithBlock:name:summary:">parserWithBlock:name:summary:</a> with printf style formatting
+for <a href="#//api/name/summary">summary</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)parserWithBlock:(ParcoaParserBlock)<em>block</em> name:(NSString *)<em>name</em> summaryWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p><a href="#//api/name/parserWithBlock:name:summary:">parserWithBlock:name:summary:</a> with printf style formatting
+for <a href="#//api/name/summary">summary</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/parserWithBlock:name:summary:">+ parserWithBlock:name:summary:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -538,10 +751,44 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">between:and:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/between:parser:right:">[Parcoa between:parser:right:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)between:(ParcoaParser *)<em>left</em> and:(ParcoaParser *)<em>right</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/between:parser:right:">[Parcoa between:parser:right:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -549,10 +796,44 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">concat</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/concat:">[Parcoa concat:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)concat</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/concat:">[Parcoa concat:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -560,10 +841,44 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">concatMany</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/concatMany:">[Parcoa concatMany:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)concatMany</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/concatMany:">[Parcoa concatMany:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -571,10 +886,44 @@ into a dictionary.</p></span>
 	<h3 class="subsubtitle method-title">concatMany1</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/concatMany1:">[Parcoa concatMany1:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)concatMany1</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/concatMany1:">[Parcoa concatMany1:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -638,10 +987,49 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">initWithBlock:name:summary:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialises an allocated ParcoaParser with the given ParcoaParserBlock.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (id)initWithBlock:(ParcoaParserBlock)<em>block</em> name:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialises an allocated ParcoaParser with the given ParcoaParserBlock.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/parserWithBlock:name:summary:">+ parserWithBlock:name:summary:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -649,10 +1037,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">keepLeft:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/parser:keepLeft:">[Parcoa parser:keepLeft:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)keepLeft:(ParcoaParser *)<em>right</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/parser:keepLeft:">[Parcoa parser:keepLeft:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -660,10 +1082,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">keepRight:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/parser:keepRight:">[Parcoa parser:keepRight:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)keepRight:(ParcoaParser *)<em>right</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/parser:keepRight:">[Parcoa parser:keepRight:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -671,10 +1127,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">many</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/many:">[Parcoa many:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)many</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/many:">[Parcoa many:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -682,10 +1172,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">many1</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/many1:">[Parcoa many1:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)many1</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/many1:">[Parcoa many1:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -693,10 +1217,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">or:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/parser:or:">[Parcoa parser:or:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)or:(ParcoaParser *)<em>right</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/parser:or:">[Parcoa parser:or:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -704,10 +1262,40 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">parse:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Supplies the parser block with input and returns the result.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaResult *)parse:(NSString *)<em>input</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Supplies the parser block with input and returns the result.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -715,10 +1303,42 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">parserWithName:summary:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new ParcoaParser with the receiver&rsquo;s block and a
+new <a href="#//api/name/name">name</a> and <a href="#//api/name/summary">summary</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)parserWithName:(NSString *)<em>name</em> summary:(NSString *)<em>summary</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a new ParcoaParser with the receiver&rsquo;s block and a
+new <a href="#//api/name/name">name</a> and <a href="#//api/name/summary">summary</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -726,10 +1346,49 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">parserWithName:summaryWithFormat:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="#//api/name/parserWithName:summary:">parserWithName:summary:</a> with printf style formatting for <a href="#//api/name/summary">summary</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)parserWithName:(NSString *)<em>name</em> summaryWithFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p><a href="#//api/name/parserWithName:summary:">parserWithName:summary:</a> with printf style formatting for <a href="#//api/name/summary">summary</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/parserWithName:summary:">&ndash; parserWithName:summary:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -737,10 +1396,89 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">sepBy1:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/sepBy1:delimiter:">[Parcoa sepBy1:delimiter:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)sepBy1:(ParcoaParser *)<em>delimiter</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/sepBy1:delimiter:">[Parcoa sepBy1:delimiter:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sepBy1Keep:" title="sepBy1Keep:"></a>
+	<h3 class="subsubtitle method-title">sepBy1Keep:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/sepBy1Keep:delimiter:">[Parcoa sepBy1Keep:delimiter:]</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)sepBy1Keep:(ParcoaParser *)<em>delimiter</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/sepBy1Keep:delimiter:">[Parcoa sepBy1Keep:delimiter:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -748,10 +1486,89 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">sepBy:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/sepBy:delimiter:">[Parcoa sepBy:delimiter:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)sepBy:(ParcoaParser *)<em>delimiter</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/sepBy:delimiter:">[Parcoa sepBy:delimiter:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sepByKeep:" title="sepByKeep:"></a>
+	<h3 class="subsubtitle method-title">sepByKeep:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/sepByKeep:delimiter:">[Parcoa sepByKeep:delimiter:]</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)sepByKeep:(ParcoaParser *)<em>delimiter</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/sepByKeep:delimiter:">[Parcoa sepByKeep:delimiter:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -759,10 +1576,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">skipSurroundingSpaces</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/skipSurroundingSpaces:">[Parcoa skipSurroundingSpaces:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)skipSurroundingSpaces</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/skipSurroundingSpaces:">[Parcoa skipSurroundingSpaces:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -770,10 +1621,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">then:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/parser:then:">[Parcoa parser:then:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)then:(ParcoaParser *)<em>right</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/parser:then:">[Parcoa parser:then:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -781,10 +1666,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">transform:name:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/parser:transform:name:">[Parcoa parser:transform:name:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)transform:(ParcoaValueTransform)<em>transform</em> name:(NSString *)<em>name</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/parser:transform:name:">[Parcoa parser:transform:name:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -792,10 +1711,44 @@ into a dictionary.</p>
 	<h3 class="subsubtitle method-title">valueAtIndex:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="../Classes/Parcoa.html#//api/name/parser:valueAtIndex:">[Parcoa parser:valueAtIndex:]</a></p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (ParcoaParser *)valueAtIndex:(NSUInteger)<em>index</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/Parcoa.html#//api/name/parser:valueAtIndex:">[Parcoa parser:valueAtIndex:]</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaParser+Combinators.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -805,7 +1758,8 @@ into a dictionary.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Equivalent to [<a href="../Classes/Parcoa.html">Parcoa</a> choice:self default:value].</p>
+		<p>Equivalent to <a href="../Classes/Parcoa.html#//api/name/option:default:">[Parcoa option:default:]</a> with
+receiver and value as arguments.</p>
 	</div>		
 	
     
@@ -822,7 +1776,8 @@ into a dictionary.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Equivalent to [<a href="../Classes/Parcoa.html">Parcoa</a> choice:self default:value].</p>
+		<p>Equivalent to <a href="../Classes/Parcoa.html#//api/name/option:default:">[Parcoa option:default:]</a> with
+receiver and value as arguments.</p>
 	</div>
 	
 	

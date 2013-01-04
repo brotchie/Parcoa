@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -118,7 +120,11 @@
 	
 	<option value="//api/name/sepBy1:delimiter:">&nbsp;&nbsp;&nbsp;&nbsp;+ sepBy1:delimiter:</option>
 	
+	<option value="//api/name/sepBy1Keep:delimiter:">&nbsp;&nbsp;&nbsp;&nbsp;+ sepBy1Keep:delimiter:</option>
+	
 	<option value="//api/name/sepBy:delimiter:">&nbsp;&nbsp;&nbsp;&nbsp;+ sepBy:delimiter:</option>
+	
+	<option value="//api/name/sepByKeep:delimiter:">&nbsp;&nbsp;&nbsp;&nbsp;+ sepByKeep:delimiter:</option>
 	
 	<option value="//api/name/sequential:">&nbsp;&nbsp;&nbsp;&nbsp;+ sequential:</option>
 	
@@ -155,18 +161,20 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Primitives Methods">Primitives Methods</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Predicates Methods">Predicates Methods</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Numbers Methods">Numbers Methods</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Primitives Methods">Primitives Methods</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NSDictionary Methods">NSDictionary Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Predicates Methods">Predicates Methods</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Combinators Methods">Combinators Methods</a></span></li>
 	
@@ -258,7 +266,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy1:delimiter:">sepBy1:delimiter:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy1Keep:delimiter:">sepBy1Keep:delimiter:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepBy:delimiter:">sepBy:delimiter:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sepByKeep:delimiter:">sepByKeep:delimiter:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sequential:">sequential:</a></span></li>
 	
@@ -320,11 +332,47 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The Parcoa class is abstract and never initialised. We use
+the Parcoa class as a name<a href="#//api/name/space">space</a>, decorating it with categories
+containing class methods.
+A function applied in the <a href="../Classes/ParcoaResult.html">ParcoaResult</a> monad. Takes
+the value of a <a href="../Classes/ParcoaResult.html">ParcoaResult</a> and returns a transformed
+value.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
 						<a title="Tasks" name="tasks"></a>
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Numbers Methods" name="task_Numbers Methods"></a>
+						<h3 class="subsubtitle task-title">Numbers Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/integer">+&nbsp;integer</a></code>
+		<span class="tooltip"><p>Parses an integer and returns it as a NSNumber.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bool">+&nbsp;bool</a></code>
+		<span class="tooltip"><p>Parses a boolean &ldquo;true&rdquo; or &ldquo;false&rdquo; and returns it
+as a NSNumber.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
 						
 						
 						<a title="Primitives Methods" name="task_Primitives Methods"></a>
@@ -499,6 +547,23 @@ remains; FALSE otherwise.</p></span>
 						</ul>
 						
 						
+						<a title="NSDictionary Methods" name="task_NSDictionary Methods"></a>
+						<h3 class="subsubtitle task-title">NSDictionary Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dictionary:">+&nbsp;dictionary:</a></code>
+		<span class="tooltip"><p>Naturally transforms the value of a parser
+returning a NSArray of two element NSArrays
+into a dictionary.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
 						<a title="Predicates Methods" name="task_Predicates Methods"></a>
 						<h3 class="subsubtitle task-title">Predicates Methods</h3>
 
@@ -543,46 +608,6 @@ the supplied unicode character.</p></span>
 						</ul>
 						
 						
-						<a title="Numbers Methods" name="task_Numbers Methods"></a>
-						<h3 class="subsubtitle task-title">Numbers Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/integer">+&nbsp;integer</a></code>
-		<span class="tooltip"><p>Parses an integer and returns it as a NSNumber.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/bool">+&nbsp;bool</a></code>
-		<span class="tooltip"><p>Parses a boolean &ldquo;true&rdquo; or &ldquo;false&rdquo; and returns it
-as a NSNumber.</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						<a title="NSDictionary Methods" name="task_NSDictionary Methods"></a>
-						<h3 class="subsubtitle task-title">NSDictionary Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/dictionary:">+&nbsp;dictionary:</a></code>
-		<span class="tooltip"><p>Naturally transforms the value of a parser
-returning a NSArray of two element NSArrays
-into a dictionary.</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
 						<a title="Combinators Methods" name="task_Combinators Methods"></a>
 						<h3 class="subsubtitle task-title">Combinators Methods</h3>
 
@@ -598,7 +623,7 @@ match in an array.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parser:or:">+&nbsp;parser:or:</a></code>
-		<span class="tooltip"><p>Equivalent to [Parcoa choice:@[parser, right]].</p></span>
+		<span class="tooltip"><p>Equivalent to <a href="#//api/name/choice:">[Parcoa choice:]</a> with @[parser, right] as an argument.</p></span>
 	</span>
 	
 	
@@ -667,6 +692,20 @@ by a delimiter parser.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/sepByKeep:delimiter:">+&nbsp;sepByKeep:delimiter:</a></code>
+		<span class="tooltip"><p><a href="#//api/name/sepBy:delimiter:">sepBy:delimiter:</a> but keep delimiter values.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sepBy1Keep:delimiter:">+&nbsp;sepBy1Keep:delimiter:</a></code>
+		<span class="tooltip"><p><a href="#//api/name/sepBy1:delimiter:">sepBy1:delimiter:</a> but keep delimiter values.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/sequential:">+&nbsp;sequential:</a></code>
 		<span class="tooltip"><p>Matches an array of parsers in order. If all parsers
 match OK then the result value is an array
@@ -677,7 +716,7 @@ containing all of the individual parser&rsquo;s values.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/parser:then:">+&nbsp;parser:then:</a></code>
-		<span class="tooltip"><p>Equivalent to [Parcoa sequential:@[parser, right]].</p></span>
+		<span class="tooltip"><p>Equivalent to <a href="#//api/name/sequential:">[Parcoa sequential:]</a> with @[parser, right] as an argument.</p></span>
 	</span>
 	
 	
@@ -2109,7 +2148,7 @@ not consume output. Returns the value of parser.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Equivalent to [Parcoa choice:@[parser, right]].</p>
+		<p>Equivalent to <a href="#//api/name/choice:">[Parcoa choice:]</a> with @[parser, right] as an argument.</p>
 	</div>		
 	
     
@@ -2126,7 +2165,7 @@ not consume output. Returns the value of parser.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Equivalent to [Parcoa choice:@[parser, right]].</p>
+		<p>Equivalent to <a href="#//api/name/choice:">[Parcoa choice:]</a> with @[parser, right] as an argument.</p>
 	</div>
 	
 	
@@ -2150,7 +2189,7 @@ not consume output. Returns the value of parser.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Equivalent to [Parcoa sequential:@[parser, right]].</p>
+		<p>Equivalent to <a href="#//api/name/sequential:">[Parcoa sequential:]</a> with @[parser, right] as an argument.</p>
 	</div>		
 	
     
@@ -2167,7 +2206,7 @@ not consume output. Returns the value of parser.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Equivalent to [Parcoa sequential:@[parser, right]].</p>
+		<p>Equivalent to <a href="#//api/name/sequential:">[Parcoa sequential:]</a> with @[parser, right] as an argument.</p>
 	</div>
 	
 	
@@ -2400,6 +2439,47 @@ by a delimiter parser.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/sepBy1Keep:delimiter:" title="sepBy1Keep:delimiter:"></a>
+	<h3 class="subsubtitle method-title">sepBy1Keep:delimiter:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="#//api/name/sepBy1:delimiter:">sepBy1:delimiter:</a> but keep delimiter values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)sepBy1Keep:(ParcoaParser *)<em>parser</em> delimiter:(ParcoaParser *)<em>delimiter</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p><a href="#//api/name/sepBy1:delimiter:">sepBy1:delimiter:</a> but keep delimiter values.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Parcoa+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sepBy:delimiter:" title="sepBy:delimiter:"></a>
 	<h3 class="subsubtitle method-title">sepBy:delimiter:</h3>
 	
@@ -2426,6 +2506,47 @@ by a delimiter parser.</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Matches a parser zero or more times separated
 by a delimiter parser.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Parcoa+Combinators.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sepByKeep:delimiter:" title="sepByKeep:delimiter:"></a>
+	<h3 class="subsubtitle method-title">sepByKeep:delimiter:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="#//api/name/sepBy:delimiter:">sepBy:delimiter:</a> but keep delimiter values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (ParcoaParser *)sepByKeep:(ParcoaParser *)<em>parser</em> delimiter:(ParcoaParser *)<em>delimiter</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p><a href="#//api/name/sepBy:delimiter:">sepBy:delimiter:</a> but keep delimiter values.</p>
 	</div>
 	
 	

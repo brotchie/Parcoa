@@ -84,6 +84,12 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create an Expectation">Create an Expectation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Special Expectation Strings">Special Expectation Strings</a></span></li>
+	
 </ul></li>
 
 
@@ -159,8 +165,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>An immutable context tree that captures the state
-of a failed parser.</p>
+						<p>An immutable expectation object that
+describes what a parser <em><a href="#//api/name/expected">expected</a></em> to find.</p>
 					</div>
 					
 					
@@ -172,8 +178,8 @@ of a failed parser.</p>
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
 
 						<ul class="task-list">
 							<li>
@@ -197,16 +203,9 @@ than it did.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/children">&nbsp;&nbsp;children</a></code>
-		<span class="tooltip"><p>An array containing ParcoaFailContext children.</p></span>
+		<span class="tooltip"><p>An array containing ParcoaExpectation children.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/expectationWithRemaining:expected:children:">+&nbsp;expectationWithRemaining:expected:children:</a></code>
-		<span class="tooltip"><p>Creates an immutable ParcoFailContext.</p></span>
-	</span>
-	
 	
 </li><li>
 	<span class="tooltip">
@@ -217,7 +216,30 @@ subsequent calls are costless.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Create an Expectation" name="task_Create an Expectation"></a>
+						<h3 class="subsubtitle task-title">Create an Expectation</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expectationWithRemaining:expected:children:">+&nbsp;expectationWithRemaining:expected:children:</a></code>
+		<span class="tooltip"><p>Creates an immutable ParcoaExpectation.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Special Expectation Strings" name="task_Special Expectation Strings"></a>
+						<h3 class="subsubtitle task-title">Special Expectation Strings</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/unsatisfiable">+&nbsp;unsatisfiable</a></code>
 		<span class="tooltip"><p>An expectation string indicating that there exists no input that would have
@@ -228,7 +250,9 @@ allowed the parsers to consume more input.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/choice">+&nbsp;choice</a></code>
-		
+		<span class="tooltip"><p>An expectation string indicating that the parser had a choice between
+many parsers. The parser which could have consumed the most input can
+be found by inspecting the choice expectation&rsquo;s <a href="#//api/name/children">children</a>.</p></span>
 	</span>
 	
 	
@@ -315,7 +339,7 @@ allowed the parsers to consume more input.</p></span>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>An array containing ParcoaFailContext children.</p>
+		<p>An array containing ParcoaExpectation children.</p>
 	</div>		
 	
     
@@ -332,7 +356,7 @@ allowed the parsers to consume more input.</p></span>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>An array containing ParcoaFailContext children.</p>
+		<p>An array containing ParcoaExpectation children.</p>
 	</div>
 	
 	
@@ -411,10 +435,44 @@ than it did.</p>
 	<h3 class="subsubtitle method-title">choice</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>An expectation string indicating that the parser had a choice between
+many parsers. The parser which could have consumed the most input can
+be found by inspecting the choice expectation&rsquo;s <a href="#//api/name/children">children</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (NSString *)choice</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An expectation string indicating that the parser had a choice between
+many parsers. The parser which could have consumed the most input can
+be found by inspecting the choice expectation&rsquo;s <a href="#//api/name/children">children</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaExpectation.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -424,7 +482,7 @@ than it did.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates an immutable ParcoFailContext.</p>
+		<p>Creates an immutable ParcoaExpectation.</p>
 	</div>		
 	
     
@@ -441,7 +499,7 @@ than it did.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates an immutable ParcoFailContext.</p>
+		<p>Creates an immutable ParcoaExpectation.</p>
 	</div>
 	
 	

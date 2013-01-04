@@ -108,6 +108,16 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create a New Parsing Result">Create a New Parsing Result</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create a Parsing Result by Aggreagating Other Results">Create a Parsing Result by Aggreagating Other Results</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create a Parsing Result Using an Existing Result">Create a Parsing Result Using an Existing Result</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Generate Tracebacks">Generate Tracebacks</a></span></li>
+	
 </ul></li>
 
 
@@ -220,8 +230,8 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
 
 						<ul class="task-list">
 							<li>
@@ -269,7 +279,15 @@ if <a href="#//api/name/type">type</a> is Fail.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Create a New Parsing Result" name="task_Create a New Parsing Result"></a>
+						<h3 class="subsubtitle task-title">Create a New Parsing Result</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/ok:residual:expected:">+&nbsp;ok:residual:expected:</a></code>
 		<span class="tooltip"><p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
@@ -280,56 +298,77 @@ that would let the parser consume more.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/ok:residual:expectedWithFormat:">+&nbsp;ok:residual:expectedWithFormat:</a></code>
-		<span class="tooltip"><p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
-that would let the parser consume more. Expected <a href="#//api/name/value">value</a> is generated using a
-printf style format string.</p></span>
+		<span class="tooltip"><p><a href="#//api/name/ok:residual:expected:">ok:residual:expected:</a> with printf style formatting for expected.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/failWithRemaining:expected:">+&nbsp;failWithRemaining:expected:</a></code>
-		<span class="tooltip"><p>Creates a Fail result.</p></span>
+		<span class="tooltip"><p>Creates a Fail result with a <a href="#//api/name/description">description</a> of what was expected.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/failWithRemaining:expectedWithFormat:">+&nbsp;failWithRemaining:expectedWithFormat:</a></code>
-		<span class="tooltip"><p>Creates a Fail result using a printf style format string.</p></span>
+		<span class="tooltip"><p><a href="#//api/name/failWithRemaining:expected:">failWithRemaining:expected:</a> with printf style formatting for expected.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Create a Parsing Result by Aggreagating Other Results" name="task_Create a Parsing Result by Aggreagating Other Results"></a>
+						<h3 class="subsubtitle task-title">Create a Parsing Result by Aggreagating Other Results</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/failWithChildren:remaining:expected:">+&nbsp;failWithChildren:remaining:expected:</a></code>
-		<span class="tooltip"><p>Creates a Fail result by aggregating the expectations of an array of failures as children.</p></span>
+		<span class="tooltip"><p>Creates a Fail result by aggregating the expectations of an array of child parser results.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/okWithChildren:value:residual:expected:">+&nbsp;okWithChildren:value:residual:expected:</a></code>
-		
+		<span class="tooltip"><p>Creates an OK result by aggregating the expectations of an array of child parser results.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Create a Parsing Result Using an Existing Result" name="task_Create a Parsing Result Using an Existing Result"></a>
+						<h3 class="subsubtitle task-title">Create a Parsing Result Using an Existing Result</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/prependExpectationWithRemaining:expected:">&ndash;&nbsp;prependExpectationWithRemaining:expected:</a></code>
-		<span class="tooltip"><p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p></span>
+		<span class="tooltip"><p>Creates a Fail result with the reciever&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/prependExpectationWithRemaining:expectedWithFormat:">&ndash;&nbsp;prependExpectationWithRemaining:expectedWithFormat:</a></code>
-		<span class="tooltip"><p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child; expected
-<a href="#//api/name/value">value</a> generated using printf style format string.</p></span>
+		<span class="tooltip"><p><a href="#//api/name/prependExpectationWithRemaining:expected:">prependExpectationWithRemaining:expected:</a> with printf style formatting for expected.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Generate Tracebacks" name="task_Generate Tracebacks"></a>
+						<h3 class="subsubtitle task-title">Generate Tracebacks</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/traceback:full:">&ndash;&nbsp;traceback:full:</a></code>
 		<span class="tooltip"><p>Generates a traceback of <a href="../Classes/Parcoa.html">Parcoa</a> expectations. If full is TRUE
@@ -342,7 +381,7 @@ input is output.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/traceback:">&ndash;&nbsp;traceback:</a></code>
-		
+		<span class="tooltip"><p><a href="#//api/name/traceback:full:">traceback:full:</a> with full:FALSE.</p></span>
 	</span>
 	
 	
@@ -587,7 +626,7 @@ if <a href="#//api/name/type">type</a> is Fail.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates a Fail result by aggregating the expectations of an array of failures as children.</p>
+		<p>Creates a Fail result by aggregating the expectations of an array of child parser results.</p>
 	</div>		
 	
     
@@ -604,7 +643,7 @@ if <a href="#//api/name/type">type</a> is Fail.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a Fail result by aggregating the expectations of an array of failures as children.</p>
+		<p>Creates a Fail result by aggregating the expectations of an array of child parser results.</p>
 	</div>
 	
 	
@@ -628,7 +667,7 @@ if <a href="#//api/name/type">type</a> is Fail.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates a Fail result.</p>
+		<p>Creates a Fail result with a <a href="#//api/name/description">description</a> of what was expected.</p>
 	</div>		
 	
     
@@ -645,7 +684,7 @@ if <a href="#//api/name/type">type</a> is Fail.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a Fail result.</p>
+		<p>Creates a Fail result with a <a href="#//api/name/description">description</a> of what was expected.</p>
 	</div>
 	
 	
@@ -669,7 +708,7 @@ if <a href="#//api/name/type">type</a> is Fail.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates a Fail result using a printf style format string.</p>
+		<p><a href="#//api/name/failWithRemaining:expected:">failWithRemaining:expected:</a> with printf style formatting for expected.</p>
 	</div>		
 	
     
@@ -686,12 +725,21 @@ if <a href="#//api/name/type">type</a> is Fail.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a Fail result using a printf style format string.</p>
+		<p><a href="#//api/name/failWithRemaining:expected:">failWithRemaining:expected:</a> with printf style formatting for expected.</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/failWithRemaining:expected:">+ failWithRemaining:expected:</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -753,9 +801,7 @@ that would let the parser consume more.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
-that would let the parser consume more. Expected <a href="#//api/name/value">value</a> is generated using a
-printf style format string.</p>
+		<p><a href="#//api/name/ok:residual:expected:">ok:residual:expected:</a> with printf style formatting for expected.</p>
 	</div>		
 	
     
@@ -772,14 +818,21 @@ printf style format string.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates an OK result with <a href="#//api/name/value">value</a>, <a href="#//api/name/residual">residual</a> input, and <a href="#//api/name/description">description</a> of input
-that would let the parser consume more. Expected <a href="#//api/name/value">value</a> is generated using a
-printf style format string.</p>
+		<p><a href="#//api/name/ok:residual:expected:">ok:residual:expected:</a> with printf style formatting for expected.</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/ok:residual:expected:">+ ok:residual:expected:</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -796,10 +849,40 @@ printf style format string.</p>
 	<h3 class="subsubtitle method-title">okWithChildren:value:residual:expected:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an OK result by aggregating the expectations of an array of child parser results.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (ParcoaResult *)okWithChildren:(NSArray *)<em>children</em> value:(id)<em>value</em> residual:(NSString *)<em>residual</em> expected:(NSString *)<em>expected</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an OK result by aggregating the expectations of an array of child parser results.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -943,7 +1026,7 @@ printf style format string.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p>
+		<p>Creates a Fail result with the reciever&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p>
 	</div>		
 	
     
@@ -960,7 +1043,7 @@ printf style format string.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p>
+		<p>Creates a Fail result with the reciever&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child.</p>
 	</div>
 	
 	
@@ -984,8 +1067,7 @@ printf style format string.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child; expected
-<a href="#//api/name/value">value</a> generated using printf style format string.</p>
+		<p><a href="#//api/name/prependExpectationWithRemaining:expected:">prependExpectationWithRemaining:expected:</a> with printf style formatting for expected.</p>
 	</div>		
 	
     
@@ -1002,13 +1084,21 @@ printf style format string.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a Fail result with this result&rsquo;s <a href="#//api/name/expectation">expectation</a> as a child; expected
-<a href="#//api/name/value">value</a> generated using printf style format string.</p>
+		<p><a href="#//api/name/prependExpectationWithRemaining:expected:">prependExpectationWithRemaining:expected:</a> with printf style formatting for expected.</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/prependExpectationWithRemaining:expected:">&ndash; prependExpectationWithRemaining:expected:</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -1036,10 +1126,49 @@ printf style format string.</p>
 	<h3 class="subsubtitle method-title">traceback:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p><a href="#//api/name/traceback:full:">traceback:full:</a> with full:FALSE.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (NSString *)traceback:(NSString *)<em>input</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p><a href="#//api/name/traceback:full:">traceback:full:</a> with full:FALSE.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/traceback:full:">&ndash; traceback:full:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ParcoaResult.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
