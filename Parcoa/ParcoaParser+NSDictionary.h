@@ -40,4 +40,7 @@
  *  returning a NSArray of two element NSArrays
  *  into a dictionary. */
 - (ParcoaParser *)dictionary;
+
+/** @see [ParcoaParser parser:dictionaryWithKeys:]. */
+- (ParcoaParser *)dictionaryWithKeys:(NSArray *)keys;
 @end

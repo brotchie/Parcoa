@@ -47,4 +47,15 @@
         return dict;
     } name:@"dictionary"];
 }
+
++ (ParcoaParser *)parser:(ParcoaParser *)parser dictionaryWithKeys:(NSArray *)keys {
+    return [parser transform:^NSMutableDictionary *(NSArray *value) {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        NSAssert(value.count == keys.count, @"Values must be the same length as keys.");
+        [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            dict[keys[idx]] = obj;
+        }];
+        return dict;
+    } name:@"dictionaryWithKeys"];
+}
 @end

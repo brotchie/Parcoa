@@ -37,7 +37,12 @@
 #import "Parcoa+NSDictionary.h"
 
 @implementation ParcoaParser (NSDictionary)
+
 - (ParcoaParser *)dictionary {
     return [Parcoa dictionary:self];
+}
+
+- (ParcoaParser *)dictionaryWithKeys:(NSArray *)keys {
+    return [Parcoa parser:self dictionaryWithKeys:keys];
 }
 @end
