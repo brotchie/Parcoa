@@ -84,6 +84,17 @@
     } name:@"take" summaryWithFormat:@"%u unichars", n];
 }
 
++ (ParcoaParser *)take:(ParcoaPredicate *)predicate count:(NSUInteger)n {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+        ParcoaResult *result = [[Parcoa takeWhile1:predicate] parse:input];
+        if (result.isOK && [result.value length] >= n) {
+            return [ParcoaResult ok:[input substringToIndex:n] residual:[input substringFromIndex:n] expected:[ParcoaExpectation unsatisfiable]];
+        } else {
+            return [ParcoaResult failWithRemaining:input expectedWithFormat:@"%u characters matching %@", n, predicate];
+        }
+    } name:@"takeCount" summaryWithFormat:@"%u characters matching %@", n, predicate];
+}
+
 + (ParcoaParser *)oneOf:(NSString *)set {
     return [Parcoa satisfy:[Parcoa inClass:set]];
 }

@@ -49,4 +49,21 @@
     } name:@"and" summaryWithFormat:@"%@ && %@", self.summary, other.summary];
 }
 
+- (ParcoaParser *)takeWhile {
+    return [Parcoa takeWhile:self];
+}
+
+- (ParcoaParser *)takeWhile1 {
+    return [Parcoa takeWhile1:self];
+}
+
+- (ParcoaParser *)takeUntil {
+    return [Parcoa takeUntil:self];
+}
+
+- (ParcoaParser *)take:(NSUInteger)n {
+    return [Parcoa take:self count:n];
+}
+
+
 @end

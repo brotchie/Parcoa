@@ -36,6 +36,10 @@
 #import "ParcoaTests.h"
 #import "Parcoa.h"
 
+#define _Concat(A,B) A##B
+#define STAssertParseOK(PARSER,INPUT) STAssertTrue([PARSER parse:INPUT].isOK, @"%@ should parse.", INPUT)
+#define STAssertParseFail(PARSER,INPUT) STAssertTrue([PARSER parse:INPUT].isFail, @"%@ should fail.", INPUT)
+
 @implementation ParcoaTests
 
 - (void)testParcoaUnichar
@@ -82,6 +86,15 @@
     STAssertTrue(hello.isOK, @"hello should match.");
     STAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
     STAssertTrue(fail.isFail, @"fail should fail.");
+}
+
+- (void)testParcoaTakeCount
+{
+    ParcoaParser *take = [Parcoa take:[Parcoa isUnichar:'a'] count:4];
+    STAssertParseOK(take, @"aaaa");
+    STAssertParseOK(take, @"aaaaa");
+    STAssertParseFail(take, @"aaa");
+    STAssertParseFail(take, @"bbbb");
 }
 
 - (void)testParcoaTakeWhile

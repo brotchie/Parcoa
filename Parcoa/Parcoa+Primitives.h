@@ -62,6 +62,9 @@
  */
 + (ParcoaParser *)take:(NSUInteger)n;
 
+/** Exactly n characters matching predicate. */
++ (ParcoaParser *)take:(ParcoaPredicate *)predicate count:(NSUInteger)n;
+
 /** A single character that a member of the set. */
 + (ParcoaParser *)oneOf:(NSString *)set;
 

@@ -45,4 +45,16 @@
  * other matches. */
 - (ParcoaPredicate *)and:(ParcoaPredicate *)other;
 
+/** @see [Parcoa takeWhile:] */
+- (ParcoaParser *)takeWhile;
+
+/** @see [Parcoa takeWhile1:] */
+- (ParcoaParser *)takeWhile1;
+
+/** @see [Parcoa takeUntil:] */
+- (ParcoaParser *)takeUntil;
+
+/** @see [Parcoa take:count:] */
+- (ParcoaParser *)take:(NSUInteger)n;
+
 @end
