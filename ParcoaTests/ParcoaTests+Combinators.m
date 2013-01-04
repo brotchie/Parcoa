@@ -63,4 +63,15 @@
     STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
     STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
 }
+
+- (void)testPredicateCombinators {
+    ParcoaPredicate *alphanum = [Parcoa inCharacterSet:[NSCharacterSet letterCharacterSet] setName:@"letter"];
+    ParcoaPredicate *dash = [Parcoa isUnichar:'-'];
+    ParcoaPredicate *both = [dash or: alphanum];
+    STAssertFalse([dash check:'a'], @"a shouldn't match dash.");
+    STAssertFalse([alphanum check:'-'], @"- shouldn't match alphanum.");
+    
+    STAssertTrue([both check:'a'], @"a should match both.");
+    STAssertTrue([both check:'-'], @"dash should match both.");
+}
 @end

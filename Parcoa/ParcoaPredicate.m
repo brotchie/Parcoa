@@ -43,8 +43,6 @@
 @synthesize name = _name;
 @synthesize summary = _summary;
 
-
-
 + (ParcoaPredicate *)predicateWithBlock:(ParcoaPredicateBlock)block name:(NSString *)name summary:(NSString *)summary {
     return [[ParcoaPredicate alloc] initWithBlock:block name:name summary:summary];
 }

@@ -49,6 +49,8 @@
 #import "Parcoa+Numbers.h"
 #import "Parcoa+NSDictionary.h"
 
+#import "ParcoaPredicate+Combinators.h"
+
 #import "ParcoaParser+Combinators.h"
 #import "ParcoaParser+NSDictionary.h"
 

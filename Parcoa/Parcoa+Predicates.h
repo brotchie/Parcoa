@@ -55,4 +55,10 @@
 
 /** Returns TRUE for any whitespace character. */
 + (ParcoaPredicate *)isSpace;
+
+/** Return TRUE for any letter. */
++ (ParcoaPredicate *)isLetter;
+
+/** Return TRUE for any alpha numeric character. */
++ (ParcoaPredicate *)isAlphanum;
 @end

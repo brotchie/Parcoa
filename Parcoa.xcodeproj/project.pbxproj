@@ -75,6 +75,10 @@
 		E5A2DF5B16966CD400EFC414 /* ParcoaParserForward.h in Headers */ = {isa = PBXBuildFile; fileRef = E5836C7716958C8300D9C21A /* ParcoaParserForward.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5A2DF5C16966CD400EFC414 /* ParcoaPredicate.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F62B3816956D9A0052CF6D /* ParcoaPredicate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5A2DF5D16966CD400EFC414 /* NSString+Parcoa.h in Headers */ = {isa = PBXBuildFile; fileRef = E55CFCD51694216800CC08DA /* NSString+Parcoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5BCC77E1696A3690017F99F /* ParcoaPredicate+Combinators.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BCC77C1696A3690017F99F /* ParcoaPredicate+Combinators.h */; };
+		E5BCC77F1696A3690017F99F /* ParcoaPredicate+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BCC77D1696A3690017F99F /* ParcoaPredicate+Combinators.m */; };
+		E5BCC7811696A36D0017F99F /* ParcoaPredicate+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BCC77D1696A3690017F99F /* ParcoaPredicate+Combinators.m */; };
+		E5BCC7821696A58B0017F99F /* ParcoaPredicate+Combinators.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BCC77D1696A3690017F99F /* ParcoaPredicate+Combinators.m */; };
 		E5F0A68816954DFE00A1C5E2 /* ParcoaExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F0A68616954DFE00A1C5E2 /* ParcoaExpectation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5F0A68916954DFE00A1C5E2 /* ParcoaExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F0A68716954DFE00A1C5E2 /* ParcoaExpectation.m */; };
 		E5F62B31169569A90052CF6D /* ParcoaParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F62B2F169569A90052CF6D /* ParcoaParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -150,6 +154,8 @@
 		E5A2DF3516966C1000EFC414 /* Parcoa OSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parcoa OSX-Prefix.pch"; sourceTree = "<group>"; };
 		E5A2DF3616966C1000EFC414 /* Parcoa_OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parcoa_OSX.h; sourceTree = "<group>"; };
 		E5A2DF3716966C1000EFC414 /* Parcoa_OSX.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parcoa_OSX.m; sourceTree = "<group>"; };
+		E5BCC77C1696A3690017F99F /* ParcoaPredicate+Combinators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParcoaPredicate+Combinators.h"; sourceTree = "<group>"; };
+		E5BCC77D1696A3690017F99F /* ParcoaPredicate+Combinators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ParcoaPredicate+Combinators.m"; sourceTree = "<group>"; };
 		E5F0A68616954DFE00A1C5E2 /* ParcoaExpectation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParcoaExpectation.h; sourceTree = "<group>"; };
 		E5F0A68716954DFE00A1C5E2 /* ParcoaExpectation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParcoaExpectation.m; sourceTree = "<group>"; };
 		E5F62B2F169569A90052CF6D /* ParcoaParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParcoaParser.h; sourceTree = "<group>"; };
@@ -322,6 +328,8 @@
 				E5F62B41169586760052CF6D /* ParcoaParser+Combinators.m */,
 				E5836C7B169592AB00D9C21A /* ParcoaParser+NSDictionary.h */,
 				E5836C7C169592AC00D9C21A /* ParcoaParser+NSDictionary.m */,
+				E5BCC77C1696A3690017F99F /* ParcoaPredicate+Combinators.h */,
+				E5BCC77D1696A3690017F99F /* ParcoaPredicate+Combinators.m */,
 			);
 			name = Combinators;
 			sourceTree = "<group>";
@@ -376,6 +384,7 @@
 				E5836C7916958C8300D9C21A /* ParcoaParserForward.h in Headers */,
 				E5836C7D169592AC00D9C21A /* ParcoaParser+NSDictionary.h in Headers */,
 				E55CFCCC16905CB800CC08DA /* Parcoa+Combinators.h in Headers */,
+				E5BCC77E1696A3690017F99F /* ParcoaPredicate+Combinators.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +541,7 @@
 				E5836C7A16958C8300D9C21A /* ParcoaParserForward.m in Sources */,
 				E5836C7E169592AC00D9C21A /* ParcoaParser+NSDictionary.m in Sources */,
 				E5836C84169596A900D9C21A /* Parcoa+Internal.m in Sources */,
+				E5BCC77F1696A3690017F99F /* ParcoaPredicate+Combinators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +563,7 @@
 				E5836C73169589E000D9C21A /* ParcoaParser+Combinators.m in Sources */,
 				E5836C7516958A4D00D9C21A /* ParcoaTests+Combinators.m in Sources */,
 				E5836C85169596A900D9C21A /* Parcoa+Internal.m in Sources */,
+				E5BCC7821696A58B0017F99F /* ParcoaPredicate+Combinators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +586,7 @@
 				E5A2DF4D16966CBF00EFC414 /* ParcoaPredicate.m in Sources */,
 				E5A2DF4E16966CBF00EFC414 /* NSString+Parcoa.m in Sources */,
 				E5A2DF3816966C1000EFC414 /* Parcoa_OSX.m in Sources */,
+				E5BCC7811696A36D0017F99F /* ParcoaPredicate+Combinators.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +793,7 @@
 				E5A2DF3B16966C1000EFC414 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

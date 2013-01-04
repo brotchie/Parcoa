@@ -64,4 +64,12 @@
     return [Parcoa inCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] setName:@"whitespace"];
 }
 
++ (ParcoaPredicate *)isLetter {
+    return [Parcoa inCharacterSet:[NSCharacterSet letterCharacterSet] setName:@"letter"];
+}
+
++ (ParcoaPredicate *)isAlphanum {
+    return [Parcoa inCharacterSet:[NSCharacterSet alphanumericCharacterSet] setName:@"alphanum"];
+}
+
 @end
