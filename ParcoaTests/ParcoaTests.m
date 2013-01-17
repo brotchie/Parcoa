@@ -37,26 +37,26 @@
 #import "Parcoa.h"
 
 #define _Concat(A,B) A##B
-#define STAssertParseOK(PARSER,INPUT) STAssertTrue([PARSER parse:INPUT].isOK, @"%@ should parse.", INPUT)
-#define STAssertParseFail(PARSER,INPUT) STAssertTrue([PARSER parse:INPUT].isFail, @"%@ should fail.", INPUT)
+#define STAssertParseOK(PARSER,INPUT) STAssertTrue([PARSER parseString:INPUT].isOK, @"%@ should parse.", INPUT)
+#define STAssertParseFail(PARSER,INPUT) STAssertTrue([PARSER parseString:INPUT].isFail, @"%@ should fail.", INPUT)
 
 @implementation ParcoaTests
 
 - (void)testParcoaUnichar
 {
     ParcoaParser *unichar = [Parcoa unichar:'a'];
-    ParcoaResult *ok = [unichar parse:@"ab"];
-    ParcoaResult *fail = [unichar parse:@"bb" ];
+    ParcoaResult *ok = [unichar parseString:@"ab"];
+    ParcoaResult *fail = [unichar parseString:@"bb" ];
     STAssertTrue(ok.isOK, @"ab should match.");
     STAssertTrue(fail.isFail, @"bb shouldn't match");
-    STAssertEqualObjects(ok.residual, @"b", @"Residual should be b.");
+    STAssertEqualObjects(ok.residual.string, @"b", @"Residual should be b.");
 }
 
 - (void)testParcoaString
 {
     ParcoaParser *hello = [Parcoa string:@"hello"];
-    ParcoaResult *ok = [hello parse:@"hello world"];
-    ParcoaResult *fail = [hello parse:@"nothing"];
+    ParcoaResult *ok = [hello parseString:@"hello world"];
+    ParcoaResult *fail = [hello parseString:@"nothing"];
     STAssertTrue(ok.isOK, @"hello world should match.");
     STAssertTrue(fail.isFail, @"nothing shouldn't match.");
 }
@@ -66,9 +66,9 @@
     ParcoaParser *or = [Parcoa choice:@[
                        [Parcoa string:@"hello"],
                        [Parcoa string:@"world"]]];
-    ParcoaResult *hello = [or parse:@"hello"];
-    ParcoaResult *world = [or parse:@"world"];
-    ParcoaResult *fail  = [or parse:@"nothing"];
+    ParcoaResult *hello = [or parseString:@"hello"];
+    ParcoaResult *world = [or parseString:@"world"];
+    ParcoaResult *fail  = [or parseString:@"nothing"];
     
     STAssertTrue(hello.isOK, @"hello should match.");
     STAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
@@ -80,8 +80,8 @@
 - (void)testParcoaTake
 {
     ParcoaParser *take = [Parcoa take:5];
-    ParcoaResult *hello = [take parse:@"hello world"];
-    ParcoaResult *fail = [take parse:@"hell"];
+    ParcoaResult *hello = [take parseString:@"hello world"];
+    ParcoaResult *fail = [take parseString:@"hell"];
     
     STAssertTrue(hello.isOK, @"hello should match.");
     STAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
@@ -101,8 +101,8 @@
 {
     ParcoaParser *takeWhile = [Parcoa takeWhile:[Parcoa isUnichar:'A']];
 
-    ParcoaResult *many = [takeWhile parse:@"AAAABBBB"];
-    ParcoaResult *none = [takeWhile parse:@"BBBB"];
+    ParcoaResult *many = [takeWhile parseString:@"AAAABBBB"];
+    ParcoaResult *none = [takeWhile parseString:@"BBBB"];
 
     STAssertEqualObjects(many.value, @"AAAA", @"Value should be AAAA.");
     STAssertEqualObjects(none.value, @"", @"Value should be an empty string.");
@@ -111,8 +111,8 @@
 - (void)testParcoaCount
 {
     ParcoaParser *count = [Parcoa count:[Parcoa string:@"Hello"] n:3];
-    ParcoaResult *ok = [count parse:@"HelloHelloHello"];
-    ParcoaResult *fail = [count parse:@"HelloWorldHello"];
+    ParcoaResult *ok = [count parseString:@"HelloHelloHello"];
+    ParcoaResult *fail = [count parseString:@"HelloWorldHello"];
     
     STAssertTrue(ok.isOK, @"HelloHelloHello should match.");
     NSLog(@"%@", ok.value);
@@ -124,9 +124,9 @@
 - (void)testParcoaMany
 {
     ParcoaParser *many = [Parcoa many:[Parcoa string:@"Hello"]];
-    ParcoaResult *empty = [many parse:@""];
-    ParcoaResult *ok0 = [many parse:@"World"];
-    ParcoaResult *ok3 = [many parse:@"HelloHelloHello"];
+    ParcoaResult *empty = [many parseString:@""];
+    ParcoaResult *ok0 = [many parseString:@"World"];
+    ParcoaResult *ok3 = [many parseString:@"HelloHelloHello"];
     
     STAssertTrue(empty.isOK, @"Empty string should match.");
     STAssertTrue(ok0.isOK, @"World should match.");
@@ -138,9 +138,9 @@
 - (void)testParcoaMany1
 {
     ParcoaParser *many1 = [Parcoa many1:[Parcoa string:@"Hello"]];
-    ParcoaResult *empty = [many1 parse:@""];
-    ParcoaResult *fail0 = [many1 parse:@"World"];
-    ParcoaResult *ok3 = [many1 parse:@"HelloHelloHello"];
+    ParcoaResult *empty = [many1 parseString:@""];
+    ParcoaResult *fail0 = [many1 parseString:@"World"];
+    ParcoaResult *ok3 = [many1 parseString:@"HelloHelloHello"];
     
     STAssertTrue(empty.isFail, @"Empty string shouldn't match.");
     STAssertTrue(fail0.isFail, @"World shouldn't match.");
@@ -153,8 +153,8 @@
     ParcoaParser *sequential = [Parcoa sequential:@[
                                [Parcoa string:@"Hello"],
                                [Parcoa string:@"World"]]];
-    ParcoaResult *ok = [sequential parse:@"HelloWorld"];
-    ParcoaResult *fail = [sequential parse:@"Hello World"];
+    ParcoaResult *ok = [sequential parseString:@"HelloWorld"];
+    ParcoaResult *fail = [sequential parseString:@"Hello World"];
     STAssertTrue(ok.isOK, @"HelloWorld should match.");
     STAssertTrue(fail.isFail, @"Hello World shouldn't match.");
     

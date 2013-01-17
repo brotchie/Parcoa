@@ -41,7 +41,7 @@
 + (ParcoaParser *)choice:(NSArray *)parsers {
     NSString *summary = [[parsers valueForKeyPath:@"description"] componentsJoinedByString:@", "];
     
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         NSMutableArray *failures = [NSMutableArray array];
         for (NSUInteger i = 0; i < parsers.count; i++) {
             
@@ -64,9 +64,9 @@
 }
 
 + (ParcoaParser *)count:(ParcoaParser *)parser n:(NSUInteger)n {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         NSMutableArray *values = [NSMutableArray array];
-        NSString *residual = input;
+        ParcoaString *residual = input;
         
         for (NSUInteger i = 0; i < n; i++) {
             ParcoaResult *result = [parser parse:residual];
@@ -82,7 +82,7 @@
 }
 
 + (ParcoaParser *)option:(ParcoaParser *)parser default:(id)value {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *result = [parser parse:input];
         if (result.isOK) {
             return result;
@@ -97,7 +97,7 @@
 }
 
 + (ParcoaParser *)parser:(ParcoaParser *)parser notFollowedBy:(ParcoaParser *)following {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *result = [parser parse:input];
         
         // Don't need to consider the must fail parser if
@@ -121,11 +121,11 @@
 }
 
 + (ParcoaParser *)many1:(ParcoaParser *)parser {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         NSMutableArray *values = [NSMutableArray array];
         NSMutableArray *results = [NSMutableArray array];
         
-        NSString *residual = input;
+        ParcoaString *residual = input;
         ParcoaResult *result = [parser parse:residual];
         
         while (result.isOK) {
@@ -148,7 +148,7 @@
 }
 
 + (ParcoaParser *)sepBy1:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *result = [[Parcoa sequential:@[parser, [Parcoa many:[Parcoa parser:delimiter keepRight:parser]]]] parse:input];
         if (result.isOK) {
             id value = [@[result.value[0]] arrayByAddingObjectsFromArray:result.value[1]];
@@ -164,7 +164,7 @@
 }
 
 + (ParcoaParser *)sepBy1Keep:(ParcoaParser *)parser delimiter:(ParcoaParser *)delimiter {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *result = [[Parcoa sequential:@[parser, [Parcoa many:[Parcoa sequential:@[delimiter, parser]]]]] parse:input];
         if (result.isOK) {
             NSMutableArray *value = [NSMutableArray arrayWithObject:result.value[0]];
@@ -180,10 +180,10 @@
 
 + (ParcoaParser *)sequential:(NSArray *)parsers {
     NSString *summary = [[parsers valueForKeyPath:@"description"] componentsJoinedByString:@", "];
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         NSMutableArray *values = [NSMutableArray array];
         NSMutableArray *results = [NSMutableArray array];
-        NSString *residual = input;
+        ParcoaString *residual = input;
         for (NSUInteger i = 0; i < parsers.count; i++) {
             ParcoaParser *parser = parsers[i];
             ParcoaResult *result = [parser parse:residual];
@@ -217,7 +217,7 @@
 }
 
 + (ParcoaParser *)parser:(ParcoaParser *)parser transform:(ParcoaValueTransform)transform name:(NSString *)name {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *result = [parser parse:input];
         if (result.isOK) {
             return [ParcoaResult ok:transform(result.value) residual:result.residual expected:result.expectation.expected];

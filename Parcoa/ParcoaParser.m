@@ -34,6 +34,7 @@
 */
 
 #import "ParcoaParser.h"
+#import "ParcoaString.h"
 
 @implementation ParcoaParser
 @synthesize name = _name;
@@ -73,8 +74,12 @@
     return [self parserWithName:name summary:summary];
 }
 
-- (ParcoaResult *)parse:(NSString *)input {
+- (ParcoaResult *)parse:(ParcoaString *)input {
     return _block(input);
+}
+
+- (ParcoaResult *)parseString:(NSString *)input {
+    return [self parse:[ParcoaString stringWithString:input]];
 }
 
 - (NSString *)description {

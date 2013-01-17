@@ -44,8 +44,8 @@
     ParcoaParser *notfollowed = [Parcoa parser:let notFollowedBy:alphanum];
     
     NSString *input = @"lets arg1";
-    ParcoaResult *ok = [let parse:input];
-    ParcoaResult *fail = [notfollowed parse:input];
+    ParcoaResult *ok = [let parseString:input];
+    ParcoaResult *fail = [notfollowed parseString:input];
     
     STAssertTrue(ok.isOK, @"let will match lets.");
     STAssertTrue(fail.isFail, @"notfollow won't match lets.");
@@ -54,9 +54,9 @@
 - (void)testParcoaSepBy1
 {
     ParcoaParser *sepBy1 = [Parcoa sepBy1:[Parcoa string:@"Hello"] delimiter:[Parcoa string:@","]];
-    ParcoaResult *failnone = [sepBy1 parse:@""];
-    ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
-    ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
+    ParcoaResult *failnone = [sepBy1 parseString:@""];
+    ParcoaResult *ok = [sepBy1 parseString:@"Hello,Hello,Hello"];
+    ParcoaResult *fail = [sepBy1 parseString:@"World,World,Hello"];
     
     STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
     STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");

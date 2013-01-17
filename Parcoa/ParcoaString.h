@@ -33,28 +33,18 @@
  
  */
 
-#import "Parcoa.h"
+#import <Foundation/Foundation.h>
 
-@interface ParcoaPredicate (Combinators)
+@interface ParcoaString : NSObject
+@property (nonatomic, readonly, retain) NSString *string;
+- (id)initWithString:(NSString *)string;
+- (id)initWithString:(NSString *)string range:(NSRange)range;
++ (ParcoaString *)stringWithString:(NSString *)string;
 
-/** Create a new predicate that matches when either the receiver
- * or other matches. */
-- (ParcoaPredicate *)or:(ParcoaPredicate *)other;
-
-/** Create a new predicate that matches when the reciever and
- * other matches. */
-- (ParcoaPredicate *)and:(ParcoaPredicate *)other;
-
-/** @see [Parcoa takeWhile:] */
-- (ParcoaParser *)takeWhile;
-
-/** @see [Parcoa takeWhile1:] */
-- (ParcoaParser *)takeWhile1;
-
-/** @see [Parcoa takeUntil:] */
-- (ParcoaParser *)takeUntil;
-
-/** @see [Parcoa take:count:] */
-- (ParcoaParser *)take:(NSUInteger)n;
-
+- (NSUInteger)length;
+- (unichar)characterAtIndex:(NSUInteger)index;
+- (ParcoaString *)substringFromIndex:(NSUInteger)index;
+- (ParcoaString *)substringToIndex:(NSUInteger)index;
+- (BOOL)hasPrefix:(NSString *)prefix;
+- (BOOL)hasSuffix:(NSString *)suffix;
 @end

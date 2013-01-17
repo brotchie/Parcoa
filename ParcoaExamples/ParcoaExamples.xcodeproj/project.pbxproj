@@ -10,7 +10,7 @@
 		E5A2DF0416966AB400EFC414 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A2DF0316966AB400EFC414 /* Foundation.framework */; };
 		E5A2DF0716966AB400EFC414 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A2DF0616966AB400EFC414 /* main.m */; };
 		E5A2DF2516966B6300EFC414 /* ParcoaJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A2DF2216966B6300EFC414 /* ParcoaJSON.m */; };
-		E5A2DF5E16966CF300EFC414 /* Parcoa OSX.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A2DF3E16966C9700EFC414 /* Parcoa OSX.dylib */; };
+		E5A2DF5E16966CF300EFC414 /* Parcoa OS X.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A2DF3E16966C9700EFC414 /* Parcoa OS X.dylib */; };
 		E5A2DF6116966D8600EFC414 /* Examples.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A2DF6016966D8600EFC414 /* Examples.m */; };
 		E5A2DF621696729000EFC414 /* ParcoaRFC2616.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A2DF2416966B6300EFC414 /* ParcoaRFC2616.m */; };
 /* End PBXBuildFile section */
@@ -77,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5A2DF5E16966CF300EFC414 /* Parcoa OSX.dylib in Frameworks */,
+				E5A2DF5E16966CF300EFC414 /* Parcoa OS X.dylib in Frameworks */,
 				E5A2DF0416966AB400EFC414 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +139,7 @@
 			children = (
 				E5A2DF1A16966ABE00EFC414 /* libParcoa.a */,
 				E5A2DF1C16966ABE00EFC414 /* ParcoaTests.octest */,
-				E5A2DF3E16966C9700EFC414 /* Parcoa OSX.dylib */,
+				E5A2DF3E16966C9700EFC414 /* Parcoa OS X.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,10 +212,10 @@
 			remoteRef = E5A2DF1B16966ABE00EFC414 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E5A2DF3E16966C9700EFC414 /* Parcoa OSX.dylib */ = {
+		E5A2DF3E16966C9700EFC414 /* Parcoa OS X.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = "Parcoa OSX.dylib";
+			path = "Parcoa OS X.dylib";
 			remoteRef = E5A2DF3D16966C9700EFC414 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -340,6 +340,7 @@
 				E5A2DF1016966AB400EFC414 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

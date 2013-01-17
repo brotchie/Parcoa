@@ -36,6 +36,8 @@
 #import <Foundation/Foundation.h>
 #import "ParcoaExpectation.h"
 
+@class ParcoaString;
+
 typedef enum {
     ParcoaResultFail,
     ParcoaResultOK
@@ -57,7 +59,7 @@ typedef enum {
 
 /** The residual input remaining after parsing. nil
  *  if type is Fail. */
-@property (readonly) NSString *residual;
+@property (readonly) ParcoaString *residual;
 
 /** The parsed value. nil if type is Fail. */
 @property (readonly) id value;
@@ -72,41 +74,41 @@ typedef enum {
 
 /** Creates an OK result with value, residual input, and description of input
  *  that would let the parser consume more. */
-+ (ParcoaResult *)ok:(id)value residual:(NSString *)residual expected:(NSString *)expected;
++ (ParcoaResult *)ok:(id)value residual:(ParcoaString *)residual expected:(NSString *)expected;
 
 /** ok:residual:expected: with printf style formatting for expected.
  *
  * @see ok:residual:expected:
  */
-+ (ParcoaResult *)ok:(id)value residual:(NSString *)residual expectedWithFormat:(NSString *)format, ...;
++ (ParcoaResult *)ok:(id)value residual:(ParcoaString *)residual expectedWithFormat:(NSString *)format, ...;
 
 /** Creates a Fail result with a description of what was expected. */
-+ (ParcoaResult *)failWithRemaining:(NSString *)remaining expected:(NSString *)expected;
++ (ParcoaResult *)failWithRemaining:(ParcoaString *)remaining expected:(NSString *)expected;
 
 /** failWithRemaining:expected: with printf style formatting for expected.
  *
  * @see failWithRemaining:expected:
  */
-+ (ParcoaResult *)failWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
++ (ParcoaResult *)failWithRemaining:(ParcoaString *)remaining expectedWithFormat:(NSString *)format, ...;
 
 /// @name Create a Parsing Result by Aggreagating Other Results
 
 /** Creates a Fail result by aggregating the expectations of an array of child parser results. */
-+ (ParcoaResult *)failWithChildren:(NSArray *)children remaining:(NSString *)remaining expected:(NSString *)expected;
++ (ParcoaResult *)failWithChildren:(NSArray *)children remaining:(ParcoaString *)remaining expected:(NSString *)expected;
 
 /** Creates an OK result by aggregating the expectations of an array of child parser results. */
-+ (ParcoaResult *)okWithChildren:(NSArray *)children value:(id)value residual:(NSString *)residual expected:(NSString *)expected;
++ (ParcoaResult *)okWithChildren:(NSArray *)children value:(id)value residual:(ParcoaString *)residual expected:(NSString *)expected;
 
 /// @name Create a Parsing Result Using an Existing Result
 
 /** Creates a Fail result with the reciever's expectation as a child. */
-- (ParcoaResult *)prependExpectationWithRemaining:(NSString *)remaining expected:(NSString *)expected;
+- (ParcoaResult *)prependExpectationWithRemaining:(ParcoaString *)remaining expected:(NSString *)expected;
 
 /** prependExpectationWithRemaining:expected: with printf style formatting for expected.
  *
  * @see prependExpectationWithRemaining:expected:
  */
-- (ParcoaResult *)prependExpectationWithRemaining:(NSString *)remaining expectedWithFormat:(NSString *)format, ...;
+- (ParcoaResult *)prependExpectationWithRemaining:(ParcoaString *)remaining expectedWithFormat:(NSString *)format, ...;
 
 /// @name Generate Tracebacks
 

@@ -36,6 +36,7 @@
 #import <Foundation/Foundation.h>
 #import "Parcoa+Internal.h"
 
+#import "ParcoaString.h"
 #import "ParcoaExpectation.h"
 #import "ParcoaResult.h"
 #import "ParcoaParser.h"

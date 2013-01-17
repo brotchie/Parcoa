@@ -44,7 +44,7 @@
                        "  \"URL\"  : \"https://github.com/brotchie/Parcoa\",\n"
                        "  \"active\" : true}]";
     
-    ParcoaResult *result = [[ParcoaJSON parser] parse:input];
+    ParcoaResult *result = [[ParcoaJSON parser] parseString:input];
     id json = result.value;
     
     // ParcoaJSON parses JSON into valid Cocoa objects.
@@ -53,7 +53,7 @@
     NSString *failInput = @"[{\"name\" : \"Parcoa\",\n"
     "  \"URL\"  : \"https://github.com/brotchie/Parcoa\"\n"
     "  \"active\" : true}]";
-    ParcoaResult *failResult = [[ParcoaJSON parser] parse:failInput];
+    ParcoaResult *failResult = [[ParcoaJSON parser] parseString:failInput];
     
     // On failure Parcoa can generate a traceback listing what input
     // was expected.
@@ -70,8 +70,8 @@
                           "Content-Type: text/plain\r\n"
                           "\r\n";
     
-    ParcoaResult *requestResult = [[ParcoaRFC2616 requestParser] parse:request];
-    ParcoaResult *responseResult = [[ParcoaRFC2616 responseParser] parse:response];
+    ParcoaResult *requestResult = [[ParcoaRFC2616 requestParser] parseString:request];
+    ParcoaResult *responseResult = [[ParcoaRFC2616 responseParser] parseString:response];
     
     NSLog(@"Request: %@", requestResult.value);
     NSLog(@"Response: %@", responseResult.value);

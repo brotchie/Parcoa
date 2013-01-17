@@ -35,14 +35,15 @@
 
 #import "Parcoa+Primitives.h"
 #import "Parcoa+Predicates.h"
+#import "ParcoaString.h"
 
 @implementation Parcoa (Primitives)
 
 + (ParcoaParser *)satisfy:(ParcoaPredicate *)predicate {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         if (input.length && [predicate check:[input characterAtIndex:0]]) {
-            NSString *value = [input substringToIndex:1];
-            NSString *residual = [input substringFromIndex:1];
+            NSString *value = [input substringToIndex:1].string;
+            ParcoaString *residual = [input substringFromIndex:1];
             return [ParcoaResult ok:value residual:residual expected:[ParcoaExpectation unsatisfiable]];
         } else {
             return [ParcoaResult failWithRemaining:input expectedWithFormat:@"Character matching predicate %@", predicate.description];
@@ -55,7 +56,7 @@
 }
 
 + (ParcoaParser *)string:(NSString *)string {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         if ([input hasPrefix:string]) {
             return [ParcoaResult ok:string residual:[input substringFromIndex:string.length] expected:[ParcoaExpectation unsatisfiable]];
         } else {
@@ -65,7 +66,7 @@
 }
 
 + (ParcoaParser *)peek:(NSString *)string {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         if ([input hasPrefix:string]) {
             return [ParcoaResult ok:string residual:input expected:[ParcoaExpectation unsatisfiable]];
         } else {
@@ -75,9 +76,9 @@
 }
 
 + (ParcoaParser *)take:(NSUInteger)n {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         if (input.length >= n) {
-            return [ParcoaResult ok:[input substringToIndex:n] residual:[input substringFromIndex:n] expected:[ParcoaExpectation unsatisfiable]];
+            return [ParcoaResult ok:[input substringToIndex:n].string residual:[input substringFromIndex:n] expected:[ParcoaExpectation unsatisfiable]];
         } else {
             return [ParcoaResult failWithRemaining:input expectedWithFormat:@"%u unichars", n];
         }
@@ -85,10 +86,10 @@
 }
 
 + (ParcoaParser *)take:(ParcoaPredicate *)predicate count:(NSUInteger)n {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *result = [[Parcoa takeWhile1:predicate] parse:input];
         if (result.isOK && [result.value length] >= n) {
-            return [ParcoaResult ok:[input substringToIndex:n] residual:[input substringFromIndex:n] expected:[ParcoaExpectation unsatisfiable]];
+            return [ParcoaResult ok:[input substringToIndex:n].string residual:[input substringFromIndex:n] expected:[ParcoaExpectation unsatisfiable]];
         } else {
             return [ParcoaResult failWithRemaining:input expectedWithFormat:@"%u characters matching %@", n, predicate];
         }
@@ -104,20 +105,20 @@
 }
 
 + (ParcoaParser *)takeWhile:(ParcoaPredicate *)condition {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         NSUInteger i;
         for (i = 0; i < input.length; i++) {
             if (![condition check:[input characterAtIndex:i]])
                 break;
         }
-        NSString *value = [input substringToIndex:i];
-        NSString *residual = [input substringFromIndex:i];
+        NSString *value = [input substringToIndex:i].string;
+        ParcoaString *residual = [input substringFromIndex:i];
         return [ParcoaResult ok:value residual:residual expectedWithFormat:@"Character matching predicate %@", condition.description];
     } name:@"takeWhile" summary:condition.description];
 }
 
 + (ParcoaParser *)takeWhile1:(ParcoaPredicate *)condition {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         ParcoaResult *head = [[Parcoa satisfy:condition] parse:input];
         if (head.isOK) {
             ParcoaResult *tail = [[Parcoa takeWhile:condition] parse:head.residual];
@@ -130,26 +131,26 @@
 }
 
 + (ParcoaParser *)takeUntil:(ParcoaPredicate *)condition {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         NSUInteger i;
         for (i = 0; i < input.length; i++) {
             if ([condition check:[input characterAtIndex:i]])
                 break;
         }
-        NSString *value = [input substringToIndex:i];
-        NSString *residual = [input substringFromIndex:i];
+        NSString *value = [input substringToIndex:i].string;
+        ParcoaString *residual = [input substringFromIndex:i];
         return [ParcoaResult ok:value residual:residual expectedWithFormat:@"Character not matching predicate %@", condition.description];
     } name:@"takeUntil" summary:condition.description];
 }
 
 + (ParcoaParser *)atEnd {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         return [ParcoaResult ok:[NSNumber numberWithBool:input.length == 0] residual:input expected:[ParcoaExpectation unsatisfiable]];
     } name:@"atEnd" summary:nil];
 }
 
 + (ParcoaParser *)endOfInput {
-    return [ParcoaParser parserWithBlock:^ParcoaResult *(NSString *input) {
+    return [ParcoaParser parserWithBlock:^ParcoaResult *(ParcoaString *input) {
         if (input.length == 0) {
             return [ParcoaResult ok:[NSNull null] residual:input expected:[ParcoaExpectation unsatisfiable]];
         } else {
