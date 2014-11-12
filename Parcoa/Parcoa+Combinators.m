@@ -246,7 +246,7 @@
 }
 
 + (ParcoaParser *)parser:(ParcoaParser *)parser valueAtIndex:(NSUInteger)index {
-    NSString *name = [NSString stringWithFormat:@"valueAtIndex(%u)", index];
+    NSString *name = [NSString stringWithFormat:@"valueAtIndex(%lu)", (unsigned long)index];
     return [Parcoa parser:parser transform:^id(NSArray *value) {
         return value[index];
     } name:name];

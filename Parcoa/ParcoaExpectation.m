@@ -76,7 +76,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Remaining: %u Expected: %@", self.charactersRemaining, self.expected];
+    return [NSString stringWithFormat:@"Remaining: %lu Expected: %@", (unsigned long)self.charactersRemaining, self.expected];
 }
 
 + (NSString *)unsatisfiable {
