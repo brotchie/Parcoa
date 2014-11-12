@@ -448,7 +448,7 @@
 			name = ParcoaTests;
 			productName = ParcoaTests;
 			productReference = E50C9B6F16903D1A00851B04 /* ParcoaTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		E5A2DF2B16966C1000EFC414 /* Parcoa OS X */ = {
 			isa = PBXNativeTarget;
@@ -473,7 +473,8 @@
 		E50C9B5516903D1900851B04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0610;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Factorial Products Pty. Ltd.";
 			};
 			buildConfigurationList = E50C9B5816903D1900851B04 /* Build configuration list for PBXProject "Parcoa" */;
@@ -667,7 +668,7 @@
 				GCC_PREFIX_HEADER = "Parcoa/Parcoa-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.0;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -680,7 +681,7 @@
 				GCC_PREFIX_HEADER = "Parcoa/Parcoa-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.0;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -718,7 +719,7 @@
 		E5A2DF3A16966C1000EFC414 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -738,7 +739,7 @@
 		E5A2DF3B16966C1000EFC414 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
