@@ -47,8 +47,8 @@
     ParcoaResult *ok = [let parse:input];
     ParcoaResult *fail = [notfollowed parse:input];
     
-    STAssertTrue(ok.isOK, @"let will match lets.");
-    STAssertTrue(fail.isFail, @"notfollow won't match lets.");
+    XCTAssertTrue(ok.isOK, @"let will match lets.");
+    XCTAssertTrue(fail.isFail, @"notfollow won't match lets.");
 }
 
 - (void)testParcoaSepBy1
@@ -58,20 +58,20 @@
     ParcoaResult *ok = [sepBy1 parse:@"Hello,Hello,Hello"];
     ParcoaResult *fail = [sepBy1 parse:@"World,World,Hello"];
     
-    STAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
-    STAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
-    STAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
+    XCTAssertTrue(failnone.isFail, @"Empty string shouldn't match.");
+    XCTAssertTrue(ok.isOK, @"Hello,Hello,Hello should match.");
+    XCTAssertTrue([ok.value count] == 3, @"OK value should have three elements.");
+    XCTAssertTrue(fail.isFail, @"Hello,World,Hello shouldn't match.");
 }
 
 - (void)testPredicateCombinators {
     ParcoaPredicate *alphanum = [Parcoa inCharacterSet:[NSCharacterSet letterCharacterSet] setName:@"letter"];
     ParcoaPredicate *dash = [Parcoa isUnichar:'-'];
     ParcoaPredicate *both = [dash or: alphanum];
-    STAssertFalse([dash check:'a'], @"a shouldn't match dash.");
-    STAssertFalse([alphanum check:'-'], @"- shouldn't match alphanum.");
+    XCTAssertFalse([dash check:'a'], @"a shouldn't match dash.");
+    XCTAssertFalse([alphanum check:'-'], @"- shouldn't match alphanum.");
     
-    STAssertTrue([both check:'a'], @"a should match both.");
-    STAssertTrue([both check:'-'], @"dash should match both.");
+    XCTAssertTrue([both check:'a'], @"a should match both.");
+    XCTAssertTrue([both check:'-'], @"dash should match both.");
 }
 @end

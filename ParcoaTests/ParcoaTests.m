@@ -37,8 +37,8 @@
 #import "Parcoa.h"
 
 #define _Concat(A,B) A##B
-#define STAssertParseOK(PARSER,INPUT) STAssertTrue([PARSER parse:INPUT].isOK, @"%@ should parse.", INPUT)
-#define STAssertParseFail(PARSER,INPUT) STAssertTrue([PARSER parse:INPUT].isFail, @"%@ should fail.", INPUT)
+#define STAssertParseOK(PARSER,INPUT) XCTAssertTrue([PARSER parse:INPUT].isOK, @"%@ should parse.", INPUT)
+#define STAssertParseFail(PARSER,INPUT) XCTAssertTrue([PARSER parse:INPUT].isFail, @"%@ should fail.", INPUT)
 
 @implementation ParcoaTests
 
@@ -47,9 +47,9 @@
     ParcoaParser *unichar = [Parcoa unichar:'a'];
     ParcoaResult *ok = [unichar parse:@"ab"];
     ParcoaResult *fail = [unichar parse:@"bb" ];
-    STAssertTrue(ok.isOK, @"ab should match.");
-    STAssertTrue(fail.isFail, @"bb shouldn't match");
-    STAssertEqualObjects(ok.residual, @"b", @"Residual should be b.");
+    XCTAssertTrue(ok.isOK, @"ab should match.");
+    XCTAssertTrue(fail.isFail, @"bb shouldn't match");
+    XCTAssertEqualObjects(ok.residual, @"b", @"Residual should be b.");
 }
 
 - (void)testParcoaString
@@ -57,8 +57,8 @@
     ParcoaParser *hello = [Parcoa string:@"hello"];
     ParcoaResult *ok = [hello parse:@"hello world"];
     ParcoaResult *fail = [hello parse:@"nothing"];
-    STAssertTrue(ok.isOK, @"hello world should match.");
-    STAssertTrue(fail.isFail, @"nothing shouldn't match.");
+    XCTAssertTrue(ok.isOK, @"hello world should match.");
+    XCTAssertTrue(fail.isFail, @"nothing shouldn't match.");
 }
 
 - (void)testParcoaChoice
@@ -70,11 +70,11 @@
     ParcoaResult *world = [or parse:@"world"];
     ParcoaResult *fail  = [or parse:@"nothing"];
     
-    STAssertTrue(hello.isOK, @"hello should match.");
-    STAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
-    STAssertTrue(world.isOK, @"world should match.");
-    STAssertTrue([world.value isEqualToString:@"world"], @"world value should be world.");
-    STAssertTrue(fail.isFail, @"nothing shouldn't match.");
+    XCTAssertTrue(hello.isOK, @"hello should match.");
+    XCTAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
+    XCTAssertTrue(world.isOK, @"world should match.");
+    XCTAssertTrue([world.value isEqualToString:@"world"], @"world value should be world.");
+    XCTAssertTrue(fail.isFail, @"nothing shouldn't match.");
 }
 
 - (void)testParcoaTake
@@ -83,9 +83,9 @@
     ParcoaResult *hello = [take parse:@"hello world"];
     ParcoaResult *fail = [take parse:@"hell"];
     
-    STAssertTrue(hello.isOK, @"hello should match.");
-    STAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
-    STAssertTrue(fail.isFail, @"fail should fail.");
+    XCTAssertTrue(hello.isOK, @"hello should match.");
+    XCTAssertTrue([hello.value isEqualToString:@"hello"], @"hello value should be hello.");
+    XCTAssertTrue(fail.isFail, @"fail should fail.");
 }
 
 - (void)testParcoaTakeCount
@@ -104,8 +104,8 @@
     ParcoaResult *many = [takeWhile parse:@"AAAABBBB"];
     ParcoaResult *none = [takeWhile parse:@"BBBB"];
 
-    STAssertEqualObjects(many.value, @"AAAA", @"Value should be AAAA.");
-    STAssertEqualObjects(none.value, @"", @"Value should be an empty string.");
+    XCTAssertEqualObjects(many.value, @"AAAA", @"Value should be AAAA.");
+    XCTAssertEqualObjects(none.value, @"", @"Value should be an empty string.");
 }
 
 - (void)testParcoaCount
@@ -114,11 +114,11 @@
     ParcoaResult *ok = [count parse:@"HelloHelloHello"];
     ParcoaResult *fail = [count parse:@"HelloWorldHello"];
     
-    STAssertTrue(ok.isOK, @"HelloHelloHello should match.");
+    XCTAssertTrue(ok.isOK, @"HelloHelloHello should match.");
     NSLog(@"%@", ok.value);
-    STAssertTrue([ok.value count] == 3, @"Result should have three entries.");
-    STAssertEqualObjects([ok.value objectAtIndex:0], @"Hello", @"Result should have Hello as entries.");
-    STAssertTrue(fail.isFail, @"HelloWorldHello shouldn't match.");
+    XCTAssertTrue([ok.value count] == 3, @"Result should have three entries.");
+    XCTAssertEqualObjects([ok.value objectAtIndex:0], @"Hello", @"Result should have Hello as entries.");
+    XCTAssertTrue(fail.isFail, @"HelloWorldHello shouldn't match.");
 }
 
 - (void)testParcoaMany
@@ -128,11 +128,11 @@
     ParcoaResult *ok0 = [many parse:@"World"];
     ParcoaResult *ok3 = [many parse:@"HelloHelloHello"];
     
-    STAssertTrue(empty.isOK, @"Empty string should match.");
-    STAssertTrue(ok0.isOK, @"World should match.");
-    STAssertTrue([ok0.value count] == 0, @"World should have count 0.");
-    STAssertTrue(ok3.isOK, @"HelloHelloHello should match.");
-    STAssertTrue([ok3.value count] == 3, @"HelloHelloHello should have count 3.");
+    XCTAssertTrue(empty.isOK, @"Empty string should match.");
+    XCTAssertTrue(ok0.isOK, @"World should match.");
+    XCTAssertTrue([ok0.value count] == 0, @"World should have count 0.");
+    XCTAssertTrue(ok3.isOK, @"HelloHelloHello should match.");
+    XCTAssertTrue([ok3.value count] == 3, @"HelloHelloHello should have count 3.");
 }
 
 - (void)testParcoaMany1
@@ -142,10 +142,10 @@
     ParcoaResult *fail0 = [many1 parse:@"World"];
     ParcoaResult *ok3 = [many1 parse:@"HelloHelloHello"];
     
-    STAssertTrue(empty.isFail, @"Empty string shouldn't match.");
-    STAssertTrue(fail0.isFail, @"World shouldn't match.");
-    STAssertTrue(ok3.isOK, @"HelloHelloHello should match.");
-    STAssertTrue([ok3.value count] == 3, @"HelloHelloHello should have count 3.");
+    XCTAssertTrue(empty.isFail, @"Empty string shouldn't match.");
+    XCTAssertTrue(fail0.isFail, @"World shouldn't match.");
+    XCTAssertTrue(ok3.isOK, @"HelloHelloHello should match.");
+    XCTAssertTrue([ok3.value count] == 3, @"HelloHelloHello should have count 3.");
 }
 
 - (void)testParcoaSequential
@@ -155,10 +155,10 @@
                                [Parcoa string:@"World"]]];
     ParcoaResult *ok = [sequential parse:@"HelloWorld"];
     ParcoaResult *fail = [sequential parse:@"Hello World"];
-    STAssertTrue(ok.isOK, @"HelloWorld should match.");
-    STAssertTrue(fail.isFail, @"Hello World shouldn't match.");
+    XCTAssertTrue(ok.isOK, @"HelloWorld should match.");
+    XCTAssertTrue(fail.isFail, @"Hello World shouldn't match.");
     
-    STAssertTrue([ok.value count] == 2, @"Result count should be 2.");
+    XCTAssertTrue([ok.value count] == 2, @"Result count should be 2.");
 }
 
 
