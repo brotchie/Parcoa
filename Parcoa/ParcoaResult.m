@@ -162,7 +162,7 @@
 - (NSString *)formatTraceback:(NSString *)input expectation:(ParcoaExpectation *)expectation indent:(NSUInteger)indent {
     ParcoaLineColumn position = [input lineAndColumnForIndex:input.length - expectation.charactersRemaining];
     NSString *tabs = [@"" stringByPaddingToLength:indent withString:@"\t" startingAtIndex:0];
-    return [NSString stringWithFormat:@"%@Line %u Column %u: Expected %@.\n", tabs, position.line, position.column, expectation.expected];
+    return [NSString stringWithFormat:@"%@Line %lu Column %lu: Expected %@.\n", tabs, (unsigned long)position.line, (unsigned long)position.column, expectation.expected];
 }
 
 @end

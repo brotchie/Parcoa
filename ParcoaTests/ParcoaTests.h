@@ -33,8 +33,8 @@
 
 */
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface ParcoaTests : SenTestCase
+@interface ParcoaTests : XCTestCase
 
 @end

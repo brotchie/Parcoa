@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E50C9B6216903D1A00851B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50C9B6116903D1A00851B04 /* Foundation.framework */; };
 		E50C9B6716903D1A00851B04 /* Parcoa.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E50C9B6616903D1A00851B04 /* Parcoa.h */; };
-		E50C9B7116903D1A00851B04 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50C9B7016903D1A00851B04 /* SenTestingKit.framework */; };
 		E50C9B7316903D1A00851B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50C9B7216903D1A00851B04 /* UIKit.framework */; };
 		E50C9B7416903D1A00851B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50C9B6116903D1A00851B04 /* Foundation.framework */; };
 		E50C9B7716903D1A00851B04 /* libParcoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E50C9B5E16903D1A00851B04 /* libParcoa.a */; };
@@ -123,7 +122,6 @@
 		E50C9B6616903D1A00851B04 /* Parcoa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parcoa.h; sourceTree = "<group>"; };
 		E50C9B6816903D1A00851B04 /* Parcoa+Internal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Parcoa+Internal.m"; sourceTree = "<group>"; };
 		E50C9B6F16903D1A00851B04 /* ParcoaTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParcoaTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E50C9B7016903D1A00851B04 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		E50C9B7216903D1A00851B04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		E50C9B7A16903D1A00851B04 /* ParcoaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ParcoaTests-Info.plist"; sourceTree = "<group>"; };
 		E50C9B7C16903D1A00851B04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E50C9B7116903D1A00851B04 /* SenTestingKit.framework in Frameworks */,
 				E50C9B7316903D1A00851B04 /* UIKit.framework in Frameworks */,
 				E50C9B7416903D1A00851B04 /* Foundation.framework in Frameworks */,
 				E50C9B7716903D1A00851B04 /* libParcoa.a in Frameworks */,
@@ -226,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				E50C9B6116903D1A00851B04 /* Foundation.framework */,
-				E50C9B7016903D1A00851B04 /* SenTestingKit.framework */,
 				E50C9B7216903D1A00851B04 /* UIKit.framework */,
 				E5A2DF2D16966C1000EFC414 /* Cocoa.framework */,
 				E5A2DF2F16966C1000EFC414 /* Other Frameworks */,
@@ -448,7 +444,7 @@
 			name = ParcoaTests;
 			productName = ParcoaTests;
 			productReference = E50C9B6F16903D1A00851B04 /* ParcoaTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E5A2DF2B16966C1000EFC414 /* Parcoa OS X */ = {
 			isa = PBXNativeTarget;
@@ -473,7 +469,8 @@
 		E50C9B5516903D1900851B04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0610;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Factorial Products Pty. Ltd.";
 			};
 			buildConfigurationList = E50C9B5816903D1900851B04 /* Build configuration list for PBXProject "Parcoa" */;
@@ -667,7 +664,7 @@
 				GCC_PREFIX_HEADER = "Parcoa/Parcoa-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.0;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -680,7 +677,7 @@
 				GCC_PREFIX_HEADER = "Parcoa/Parcoa-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.0;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -691,12 +688,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Parcoa/Parcoa-Prefix.pch";
 				INFOPLIST_FILE = "ParcoaTests/ParcoaTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -706,19 +703,19 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Parcoa/Parcoa-Prefix.pch";
 				INFOPLIST_FILE = "ParcoaTests/ParcoaTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 		E5A2DF3A16966C1000EFC414 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -738,7 +735,7 @@
 		E5A2DF3B16966C1000EFC414 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
