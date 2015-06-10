@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Parcoa"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Objective-C Parser Combinators."
   s.homepage     = "https://github.com/brotchie/Parcoa"
   s.license      = 'MIT'
